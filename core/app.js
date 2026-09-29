@@ -210,11 +210,12 @@ function pickVoice(lang,gender){
   pool.sort(function(a,b){return sc(b)-sc(a)});
   return {v:pool[0].v,match:match&&!!gender,female:isF(pool[0])};
 }
+var noVoiceSaid=false;
 function speak(text,lang,rate,face){
   rate=rate||1;var gender=face?GENDER:null;
   var dur=text.length*msPerChar(lang)/rate+300;
   function mouth(){if(face){lipStart({text:text,dur:dur});clearTimeout(talkT);talkT=setTimeout(lipStop,dur*2.2+1500)}}
-  if(!('speechSynthesis' in window)){mouth();toast(_('เครื่องนี้ยังไม่รองรับเสียงอ่าน'));return}
+  if(!('speechSynthesis' in window)){mouth();if(!noVoiceSaid){noVoiceSaid=true;toast(_('เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari'))}return}
   try{
     speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate;
@@ -315,8 +316,14 @@ function faceSVG(ch,mood){return PT_ART.avatar(ch,mood)}
 
 /* ---------- views ---------- */
 function catById(id){return CATS.filter(function(x){return x.id===id})[0]}
+var HAS_SR=!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+var IN_APP=/\bLine\/|FBAN|FBAV|Instagram|MicroMessenger/i.test(navigator.userAgent||'');
+function tipHTML(){
+  if(HAS_SR)return '';
+  return '<div class="tip"><p>'+esc(_('เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย'))+'</p><div class="acts">'+(IN_APP?'<button class="btn sm primary" data-act="openext">'+esc(_('เปิดในเบราว์เซอร์'))+'</button>':'')+'<button class="btn sm" data-act="copylink">'+esc(_('คัดลอกลิงก์'))+'</button></div></div>';
+}
 function vMenu(){
-  var h=_('<div class="hero"><h2>ฝึกคุยกับลูกค้า</h2><p>เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ</p></div>')+'<button class="langbar" data-act="langs"><span class="lbf">'+PT_ART.avatar(cast(),'happy')+'</span><span class="lbt"><b>'+esc(cast().name)+'</b><span class="small muted">'+esc(origin())+'</span></span><span class="lbl">'+flag(NATIVE)+'<i>→</i>'+flag(TARGET)+'</span></button><div class="cats">';
+  var h=tipHTML()+_('<div class="hero"><h2>ฝึกคุยกับลูกค้า</h2><p>เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ</p></div>')+'<button class="langbar" data-act="langs"><span class="lbf">'+PT_ART.avatar(cast(),'happy')+'</span><span class="lbt"><b>'+esc(cast().name)+'</b><span class="small muted">'+esc(origin())+'</span></span><span class="lbl">'+flag(NATIVE)+'<i>→</i>'+flag(TARGET)+'</span></button><div class="cats">';
   CATS.forEach(function(c){
     var ch=cast();
     h+='<button class="catcard" data-act="cat" data-cat="'+c.id+'"><span class="cbg">'+PT_ART.scene(c.id)+'</span><span class="cshade"></span><span class="cav">'+faceSVG(ch,'happy')+'</span><span class="ctext"><b>'+c.th+'</b><span class="cen">'+c.en+'</span><span class="cmeta"><i class="live"></i>'+esc(ch.name)+_(' โทรเข้า · ')+c.turns.length+_(' ข้อ</span></span></button>');
@@ -540,7 +547,9 @@ document.addEventListener('click',function(e){
   var b=e.target.closest('[data-act]');if(!b)return;
   var a=b.getAttribute('data-act');
   var L=function(){return st.lines[+b.getAttribute('data-i')]};
-  if(a==='langs'){openLangModal()}
+  if(a==='openext'){try{var ux=new URL(location.href);ux.searchParams.set('openExternalBrowser','1');location.href=ux.toString()}catch(e){copyText(location.href)}}
+  else if(a==='copylink'){copyText(location.href.split('?')[0])}
+  else if(a==='langs'){openLangModal()}
   else if(a==='langclose'){var lmx=$('#lang');if(lmx)lmx.hidden=true}
   else if(a==='lang-n'){setLangs(b.getAttribute('data-l'),null,null)}
   else if(a==='lang-t'){setLangs(null,b.getAttribute('data-l'),null)}

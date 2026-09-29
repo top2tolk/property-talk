@@ -262,3 +262,4 @@ header.top h1{font-size:17px}
 .lchips .chip{display:inline-flex;align-items:center;gap:8px}
 .lchips .chip .flag{width:26px;height:17px}
 .lchips .chip.on .flag{box-shadow:0 0 0 2px var(--accent-ink)}
+.tip{background:var(--accent-soft);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px}

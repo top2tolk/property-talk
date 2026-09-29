@@ -109,6 +109,8 @@ def main():
 
     print("created customers/%s/" % a.slug)
     print("link path : customers/%s/" % a.slug)
+    print("LINE link : https://<user>.github.io/<repo>/customers/%s/?openExternalBrowser=1" % a.slug)
+    print("            (the ?openExternalBrowser=1 part makes LINE open Chrome/Safari, where microphone and voices work)")
     if code:
         print("access code: %s   (send this to the customer; it is NOT stored anywhere in the repo)" % code)
     else:

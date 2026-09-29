@@ -463,7 +463,6 @@
   "เบราว์เซอร์นี้ยังไม่รองรับการฟังเสียง ใช้ Chrome หรือเลือกประโยคตอบแทน": "Dieser Browser kann nicht zuhören. Nutzen Sie Chrome oder wählen Sie stattdessen eine Antwort.",
   "ไมค์ถูกบล็อก กรุณาอนุญาตการใช้ไมค์ในเบราว์เซอร์ หรือเลือกประโยคตอบแทน": "Das Mikrofon ist blockiert. Erlauben Sie den Mikrofonzugriff im Browser oder wählen Sie stattdessen eine Antwort.",
   "เล่นเสียงไม่ได้ในเครื่องนี้": "Ton kann auf diesem Gerät nicht abgespielt werden",
-  "เครื่องนี้ยังไม่รองรับเสียงอ่าน": "Dieses Gerät unterstützt keine Vorlesestimmen",
   "คัดลอกแล้ว": "Kopiert",
   "คัดลอกไม่ได้ ลองกดค้างที่ข้อความ": "Kopieren nicht möglich. Halten Sie den Text gedrückt.",
   "หมดแล้ว ระบบหยุดแปลจนกว่าจะเติมเงิน": "Aufgebraucht. Die Übersetzung stoppt bis zur Aufladung.",
@@ -488,6 +487,10 @@
   "ลูกค้าพูด": "Der Kunde spricht",
   "พิมพ์หรือพูด": "Tippen oder sprechen",
   "ภาษาของฉัน": "Meine Sprache",
-  "ภาษาคู่สนทนา": "Sprache des Gesprächspartners"
+  "ภาษาคู่สนทนา": "Sprache des Gesprächspartners",
+  "เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari": "Dieses Gerät hat keine eingebaute Stimme. Öffnen Sie die Seite in Chrome oder Safari.",
+  "เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย": "Dieser Browser kann das Mikrofon nicht nutzen. Öffnen Sie die Seite in Chrome (Android) oder Safari (iPhone), um zu sprechen. Bis dahin können Sie eine Antwort antippen.",
+  "เปิดในเบราว์เซอร์": "Im Browser öffnen",
+  "คัดลอกลิงก์": "Link kopieren"
  }
 }

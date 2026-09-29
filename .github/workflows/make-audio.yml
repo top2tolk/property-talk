@@ -2,6 +2,8 @@ name: Make audio
 
 # Run this by hand from the Actions tab. It reads OPENAI_API_KEY from the repository secrets,
 # creates any missing mp3 files in core/audio and commits them.
+# Default engine: free Microsoft neural voices (edge-tts), no key and no cost.
+# To use paid OpenAI voices instead, add the secret OPENAI_API_KEY and start the run with engine = openai.
 on:
   workflow_dispatch:
     inputs:
@@ -9,6 +11,10 @@ on:
         description: "Remake every file (type yes)"
         required: false
         default: "no"
+      engine:
+        description: "edge (free, default) or openai (paid, needs OPENAI_API_KEY)"
+        required: false
+        default: "edge"
 
 permissions:
   contents: write
@@ -25,9 +31,12 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           FORCE: ${{ github.event.inputs.force }}
+          TTS_ENGINE: ${{ github.event.inputs.engine }}
         run: |
+          pip install edge-tts
           if [ "$FORCE" = "yes" ]; then python tools/make_audio.py --force; else python tools/make_audio.py; fi
       - name: Commit files
+        if: always()
         run: |
           git config user.name "audio-bot"
           git config user.email "audio-bot@users.noreply.github.com"

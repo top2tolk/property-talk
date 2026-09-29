@@ -374,7 +374,6 @@
   "เบราว์เซอร์นี้ยังไม่รองรับการฟังเสียง ใช้ Chrome หรือเลือกประโยคตอบแทน": "This browser cannot listen. Use Chrome, or choose a reply instead.",
   "ไมค์ถูกบล็อก กรุณาอนุญาตการใช้ไมค์ในเบราว์เซอร์ หรือเลือกประโยคตอบแทน": "The microphone is blocked. Allow microphone access in the browser, or choose a reply instead.",
   "เล่นเสียงไม่ได้ในเครื่องนี้": "Cannot play audio on this device",
-  "เครื่องนี้ยังไม่รองรับเสียงอ่าน": "This device does not support read-aloud voices",
   "คัดลอกแล้ว": "Copied",
   "คัดลอกไม่ได้ ลองกดค้างที่ข้อความ": "Could not copy. Try pressing and holding the text.",
   "หมดแล้ว ระบบหยุดแปลจนกว่าจะเติมเงิน": "Used up. Translation stops until you top up.",
@@ -399,6 +398,10 @@
   "ลูกค้าพูด": "The client speaks",
   "พิมพ์หรือพูด": "Type or speak",
   "ภาษาของฉัน": "My language",
-  "ภาษาคู่สนทนา": "Partner's language"
+  "ภาษาคู่สนทนา": "Partner's language",
+  "เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari": "This device has no built-in voice. Try opening in Chrome or Safari.",
+  "เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย": "This browser cannot use the microphone. Open the page in Chrome (Android) or Safari (iPhone) to speak your replies. For now, tap a reply to choose it.",
+  "เปิดในเบราว์เซอร์": "Open in browser",
+  "คัดลอกลิงก์": "Copy link"
  }
 }
