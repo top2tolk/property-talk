@@ -181,16 +181,47 @@ function setTalk(on){if(!on)lipStop()}
 var ac=null,ringTimer=null;
 function ringOnce(){
   try{
-    ac=ac||new (window.AudioContext||window.webkitAudioContext)();var t=ac.currentTime;
+    ac=ac||new (window.AudioContext||window.webkitAudioContext)();if(ac.state==='suspended')ac.resume();var t=ac.currentTime;
     [[0,880],[.18,660],[.36,880],[.54,660]].forEach(function(n){
       var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=n[1];
-      g.gain.setValueAtTime(0,t+n[0]);g.gain.linearRampToValueAtTime(.12,t+n[0]+.02);g.gain.linearRampToValueAtTime(0,t+n[0]+.16);
+      g.gain.setValueAtTime(0,t+n[0]);g.gain.linearRampToValueAtTime(.4,t+n[0]+.02);g.gain.linearRampToValueAtTime(0,t+n[0]+.16);
       o.connect(g);g.connect(ac.destination);o.start(t+n[0]);o.stop(t+n[0]+.18);
     });
   }catch(e){}
 }
-function startRing(){stopRing();ringOnce();ringTimer=setInterval(ringOnce,2200)}
-function stopRing(){clearInterval(ringTimer);ringTimer=null}
+/* Ringtone: a short synthesised chime built as a WAV blob and played with a normal <audio> element (works on every phone browser after a tap). */
+var ringUrl=null,ringAudio=null;
+function ringWav(){
+  var sr=11025,dur=2.4,n=Math.floor(sr*dur),pcm=new Int16Array(n);
+  var notes=[[0,880],[.16,1108.7],[.32,1318.5],[.48,1108.7],[.95,880],[1.11,1108.7],[1.27,1318.5],[1.43,1108.7]];
+  notes.forEach(function(nt){
+    var s0=Math.floor(nt[0]*sr),len=Math.floor(.32*sr);
+    for(var i=0;i<len&&s0+i<n;i++){
+      var tt=i/sr,env=Math.exp(-tt*8)*Math.min(1,tt/.004),f=nt[1];
+      var v=Math.sin(2*Math.PI*f*tt)+.45*Math.sin(2*Math.PI*2*f*tt)+.18*Math.sin(2*Math.PI*3*f*tt);
+      pcm[s0+i]+=Math.round(v*env*9500);
+    }
+  });
+  var buf=new ArrayBuffer(44+n*2),dv=new DataView(buf);
+  function w(o,s){for(var k=0;k<s.length;k++)dv.setUint8(o+k,s.charCodeAt(k))}
+  w(0,'RIFF');dv.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');dv.setUint32(16,16,true);dv.setUint16(20,1,true);dv.setUint16(22,1,true);
+  dv.setUint32(24,sr,true);dv.setUint32(28,sr*2,true);dv.setUint16(32,2,true);dv.setUint16(34,16,true);w(36,'data');dv.setUint32(40,n*2,true);
+  for(var m=0;m<n;m++)dv.setInt16(44+m*2,Math.max(-32768,Math.min(32767,pcm[m])),true);
+  return URL.createObjectURL(new Blob([buf],{type:'audio/wav'}));
+}
+function buzz(){try{if(navigator.vibrate)navigator.vibrate([250,120,250])}catch(e){}}
+function startRing(){
+  stopRing();buzz();ringTimer=setInterval(buzz,2400);
+  try{
+    ringUrl=ringUrl||ringWav();
+    ringAudio=new Audio(ringUrl);ringAudio.loop=true;ringAudio.volume=1;
+    var pr=ringAudio.play();if(pr&&pr.catch)pr.catch(function(){ringOnce()});
+  }catch(e){ringOnce()}
+}
+function stopRing(){
+  clearInterval(ringTimer);ringTimer=null;
+  try{if(ringAudio){ringAudio.pause();ringAudio=null}if(navigator.vibrate)navigator.vibrate(0)}catch(e){}
+}
 function stopAllSound(){try{if(curAudio){curAudio.pause();curAudio=null}if('speechSynthesis' in window)speechSynthesis.cancel()}catch(e){}setTalk(false)}
 var talkT=null,curAudio=null;
 /* ---- voices: choose a female or male device voice for the client the user picked ---- */
