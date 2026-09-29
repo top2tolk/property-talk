@@ -20,7 +20,7 @@
   var MOUTH_FOR = { neutral: 'neutral', happy: 'smile', delighted: 'grin', thinking: 'think', concerned: 'frown', surprised: 'o' };
 
   /* Mouth shapes. Keys: neutral smile grin think frown o a ee m */
-  function mouth(ch, key) {
+  function mouthRaw(ch, key) {
     var lipU = ch.lips || '#c4707a';
     var lipL = mix(lipU, '#ffffff', 0.1);
     var dark = '#2f1014';
@@ -72,27 +72,208 @@
     return s;
   }
 
-  function eye(cx, cy, o) {
-    var open = o.open || 1;
-    var ry = (o.wide ? 14 : 12) * open;
-    var lash = o.lash || 3;
+  /* ---------- face geometry ----------
+     Optional character fields (all have defaults that reproduce the original template):
+       faceW faceLen jaw chin cheek foreheadH | eyeShape eyeW eyeH eyeGap eyeTilt eyeDy fold crease irisR lashes ridge
+       browShape browY browThick browW browTilt browColor | noseW noseLen noseBridge | lipFull mouthW | earSize neckW */
+  function num(v, d) { return typeof v === 'number' && isFinite(v) ? v : d; }
+  var GEO_KEYS = ['faceW', 'faceLen', 'jaw', 'chin', 'cheek', 'foreheadH', 'eyeShape', 'eyeW', 'eyeH', 'eyeGap', 'eyeTilt', 'noseW', 'noseLen', 'lipFull', 'mouthW', 'neckW', 'earSize'];
+  function geom(ch) {
+    var g = {}, k;
+    g.def = true;
+    for (k = 0; k < GEO_KEYS.length; k++) if (ch[GEO_KEYS[k]] != null) g.def = false;
+    g.W = num(ch.faceW, 1); g.L = num(ch.faceLen, 1);
+    g.jaw = num(ch.jaw, 0.5); g.chin = num(ch.chin, 0.5); g.cheek = num(ch.cheek, 0.5);
+    g.dy = (num(ch.foreheadH, 1) - 1) * 40;
+    g.eyeY = 196 + g.dy + num(ch.eyeDy, 0);
+    g.ex = 42 * num(ch.eyeGap, 1);
+    g.chinY = 314 + g.dy + (g.L - 1) * 126;
+    g.noseW = num(ch.noseW, 1); g.noseLen = num(ch.noseLen, 1); g.bridge = num(ch.noseBridge, 0.5);
+    g.lip = num(ch.lipFull, 1); g.mw = num(ch.mouthW, 1);
+    g.mouthY = Math.min(278 + g.dy + (g.noseLen - 1) * 58 + (g.L - 1) * 63, g.chinY - 30);
+    g.noseBase = 186 + g.dy + 69 * g.noseLen;
+    g.ear = num(ch.earSize, 1); g.neck = num(ch.neckW, 1);
+    g.hw0 = 84 * g.W + (g.cheek - 0.5) * 6 * g.W;
+    return g;
+  }
+
+  var FACE_OLD = 'M116 188 C116 120 152 86 200 86 C248 86 284 120 284 188 C284 248 256 304 200 314 C144 304 116 248 116 188Z';
+  function facePath(g) {
+    if (g.def) return FACE_OLD;
+    var W = g.W, c = 200, cy = g.chinY, span = cy - 188;
+    var hw1 = W * (78.7 + (g.cheek - 0.5) * 14);
+    var hw2 = W * (69 + (g.jaw - 0.5) * 20);
+    var hw3 = Math.max(22, W * (48 + (g.jaw - 0.5) * 24 + (g.chin - 0.5) * 12));
+    var hw4 = Math.max(11, W * (24 + (g.chin - 0.5) * 20 + (g.jaw - 0.5) * 12));
+    var P = [[c + g.hw0, 188], [c + hw1, 188 + span * 0.345], [c + hw2, 188 + span * 0.647], [c + hw3, 188 + span * 0.875], [c + hw4, 188 + span * 0.966], [c, cy]];
+    var T = [], i, n = P.length - 1;
+    T[0] = [0, P[1][1] - P[0][1]];
+    for (i = 1; i < n; i++) T[i] = [(P[i + 1][0] - P[i - 1][0]) * 0.5, (P[i + 1][1] - P[i - 1][1]) * 0.5];
+    T[n] = [-Math.max(hw4 * 1.9, 26), 0];
+    var f = function (v) { return v.toFixed(1); };
+    var segs = [];
+    for (i = 0; i < n; i++) segs.push([[P[i][0] + T[i][0] / 3, P[i][1] + T[i][1] / 3], [P[i + 1][0] - T[i + 1][0] / 3, P[i + 1][1] - T[i + 1][1] / 3], P[i + 1]]);
+    var mx = function (p) { return [400 - p[0], p[1]]; };
+    var d = 'M' + f(c - g.hw0) + ' 188 C' + f(c - g.hw0) + ' 120 ' + f(c - 48 * W) + ' 86 200 86 C' + f(c + 48 * W) + ' 86 ' + f(c + g.hw0) + ' 120 ' + f(c + g.hw0) + ' 188';
+    for (i = 0; i < segs.length; i++) d += ' C' + f(segs[i][0][0]) + ' ' + f(segs[i][0][1]) + ' ' + f(segs[i][1][0]) + ' ' + f(segs[i][1][1]) + ' ' + f(segs[i][2][0]) + ' ' + f(segs[i][2][1]);
+    for (i = segs.length - 1; i >= 0; i--) {
+      var a = mx(segs[i][1]), b = mx(segs[i][0]), e = i > 0 ? mx(segs[i - 1][2]) : [c - g.hw0, 188];
+      d += ' C' + f(a[0]) + ' ' + f(a[1]) + ' ' + f(b[0]) + ' ' + f(b[1]) + ' ' + f(e[0]) + ' ' + f(e[1]);
+    }
+    return d + 'Z';
+  }
+  function hwAt(g, y) {
+    /* approximate half width of the face at height y (used for ears) */
+    var span = g.chinY - 188, y1 = 188 + span * 0.345, w1 = g.W * (78.7 + (g.cheek - 0.5) * 14);
+    if (y <= 188) return g.hw0;
+    if (y >= y1) return w1;
+    return g.hw0 + (w1 - g.hw0) * (y - 188) / (y1 - 188);
+  }
+
+  /* Mouth: keep the original shapes, then place and scale them from the face geometry. */
+  function mouth(ch, key) {
+    var g = geom(ch);
+    var sy = 1 + (g.lip - 1) * 0.55;
+    if (g.def) return mouthRaw(ch, key);
+    return '<g transform="translate(200 ' + g.mouthY.toFixed(1) + ') scale(' + g.mw.toFixed(3) + ' ' + sy.toFixed(3) + ') translate(-200 -278)">' + mouthRaw(ch, key) + '</g>';
+  }
+
+  /* ---------- brows: tapered filled shapes built from the mood templates ---------- */
+  var BROW_STYLE = { arch: { arch: 1.3, taper: 0.6 }, soft: { arch: 1, taper: 0.5 }, straight: { arch: 0.3, taper: 0.55 }, flat: { arch: 0.1, taper: 0.5 }, high: { arch: 1.55, taper: 0.7 }, heavy: { arch: 0.7, taper: 0.25 } };
+  function bzp(p0, p1, p2, p3, t) {
+    var a = (1 - t) * (1 - t) * (1 - t), b = 3 * (1 - t) * (1 - t) * t, c = 3 * (1 - t) * t * t, d = t * t * t;
+    return [a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]];
+  }
+  function browPoly(d, side, cxNew, o) {
+    var n = d.match(/-?\d+\.?\d*/g).map(Number);
+    var c0 = side < 0 ? 157 : 243;
+    var P = [[n[0], n[1]], [n[2], n[3]], [n[4], n[5]], [n[6], n[7]]].map(function (p) { return [cxNew + (p[0] - c0) * o.sx, p[1]]; });
+    var inner = side < 0 ? 3 : 0, outer = side < 0 ? 0 : 3, i;
+    var ax = P[0][0], ay = P[0][1], bx = P[3][0], by = P[3][1];
+    for (i = 1; i < 3; i++) { var t0 = (P[i][0] - ax) / (bx - ax), yc = ay + (by - ay) * t0; P[i][1] = yc + (P[i][1] - yc) * o.arch; }
+    var span = Math.abs(P[outer][0] - P[inner][0]) || 1;
+    for (i = 0; i < 4; i++) P[i][1] += o.dy - o.tilt * (Math.abs(P[i][0] - P[inner][0]) / span);
+    var N = 18, up = [], lo = [], k, t, p, q, tx, ty, l, s, h;
+    for (k = 0; k <= N; k++) {
+      t = k / N; p = bzp(P[0], P[1], P[2], P[3], t);
+      q = bzp(P[0], P[1], P[2], P[3], Math.min(1, t + 0.02)); var q0 = bzp(P[0], P[1], P[2], P[3], Math.max(0, t - 0.02));
+      tx = q[0] - q0[0]; ty = q[1] - q0[1]; l = Math.sqrt(tx * tx + ty * ty) || 1;
+      s = side < 0 ? 1 - t : t;
+      h = Math.max(0.55, o.w / 2 * (1 - o.taper * Math.pow(s, 1.3)));
+      /* the lower edge is straighter than the upper edge, like a real brow */
+      up.push([p[0] + (ty / l) * h * 1.05, p[1] - (tx / l) * h * 1.05]);
+      lo.push([p[0] - (ty / l) * h * 0.95, p[1] + (tx / l) * h * 0.95]);
+    }
+    var pts = up.concat(lo.reverse()), out = '';
+    for (k = 0; k < pts.length; k++) out += (k ? 'L' : 'M') + pts[k][0].toFixed(1) + ' ' + pts[k][1].toFixed(1);
+    return out + 'Z';
+  }
+
+  /* ---------- eyes ---------- */
+  var EYE_SHAPES = {
+    round:  { hu: 12,   hl: 12,  pk: 0.5,  ca: 0,    cb: 0.552, cc: 0.552, tilt: 0,    crease: 1 },
+    almond: { hu: 11.6, hl: 9.2, pk: 0.42, ca: 0.26,  cb: 0.17,  cc: 0.5,   tilt: 2.4,  crease: 0.8 },
+    mono:   { hu: 9.2,  hl: 7.6, pk: 0.44, ca: 0.24,  cb: 0.14,  cc: 0.5,   tilt: 2.2,  crease: 0 },
+    hooded: { hu: 9.8,  hl: 8.8, pk: 0.4,  ca: 0.2,   cb: 0.2,   cc: 0.5,   tilt: -0.4, crease: 0.9, hood: 1 },
+    deep:   { hu: 11,   hl: 9.4, pk: 0.5,  ca: 0.14,  cb: 0.38,  cc: 0.52,  tilt: 0.6,  crease: 1, deep: 1 }
+  };
+  function P2(p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }
+  function eye(cx, cy, out, o) {
+    var S = EYE_SHAPES[o.shape] || EYE_SHAPES.round, u = o.u;
+    var op = (o.open || 1) * (o.wide ? 14 / 12 : 1) * (o.eh || 1);
+    var ew = 21 * (o.ew || 1), hu = S.hu * op, hl = S.hl * op, tilt = S.tilt + (o.tilt || 0);
+    var I = [cx - out * ew, cy + tilt * 0.35], O = [cx + out * ew, cy - tilt * 0.65];
+    var yc = function (t) { return I[1] + (O[1] - I[1]) * t; };
+    var Pu = [I[0] + out * 2 * ew * S.pk, yc(S.pk) - hu];
+    var dx1 = Math.abs(Pu[0] - I[0]), dx2 = Math.abs(O[0] - Pu[0]);
+    var c1 = [I[0] + out * S.ca * dx1, I[1] - hu * S.cb], c2 = [Pu[0] - out * S.cc * dx1, Pu[1]];
+    var c3 = [Pu[0] + out * S.cc * dx2, Pu[1]], c4 = [O[0] - out * S.ca * dx2, O[1] - hu * S.cb * 0.9];
+    var lp = 0.55;
+    var Q = [I[0] + out * 2 * ew * lp, yc(lp) + hl];
+    var dq1 = Math.abs(O[0] - Q[0]), dq2 = Math.abs(Q[0] - I[0]), cbl = Math.min(0.552, S.cb * 1.15);
+    var c5 = [O[0] - out * S.ca * dq1, O[1] + hl * cbl], c6 = [Q[0] + out * S.cc * dq1, Q[1]];
+    var c7 = [Q[0] - out * S.cc * dq2, Q[1]], c8 = [I[0] + out * S.ca * dq2, I[1] + hl * cbl];
+    var U = 'M' + P2(I) + ' C' + P2(c1) + ' ' + P2(c2) + ' ' + P2(Pu) + ' C' + P2(c3) + ' ' + P2(c4) + ' ' + P2(O);
+    var full = U + ' C' + P2(c5) + ' ' + P2(c6) + ' ' + P2(Q) + ' C' + P2(c7) + ' ' + P2(c8) + ' ' + P2(I) + 'Z';
+    var upperPt = function (t) { return t < 0.5 ? bzp(I, c1, c2, Pu, t * 2) : bzp(Pu, c3, c4, O, (t - 0.5) * 2); };
+    var lash = o.lash || 3, id = 'ec' + u + (out < 0 ? 'l' : 'r');
+    var creaseAmt = (o.crease != null ? o.crease : S.crease);
     var s = '<g class="eye">';
-    s += '<ellipse cx="' + cx + '" cy="' + (cy + 2) + '" rx="27" ry="15" fill="' + o.skinLo + '" opacity=".25" filter="url(#f' + o.u + ')"/>';
-    s += '<ellipse cx="' + cx + '" cy="' + cy + '" rx="21" ry="' + ry + '" fill="url(#ew' + o.u + ')"/>';
-    if (open < 1) s += '<clipPath id="ec' + o.u + cx + '"><ellipse cx="' + cx + '" cy="' + cy + '" rx="21" ry="' + ry + '"/></clipPath><g clip-path="url(#ec' + o.u + cx + ')">';
-    s += '<g class="iris"><circle cx="' + cx + '" cy="' + cy + '" r="10.6" fill="url(#ir' + o.u + ')"/>';
-    s += '<circle cx="' + cx + '" cy="' + cy + '" r="10.6" fill="none" stroke="' + mix(o.eyes, '#000000', 0.5) + '" stroke-width="1.2" opacity=".7"/>';
-    s += '<circle cx="' + cx + '" cy="' + cy + '" r="4.8" fill="#08090b"/>';
+    /* soft shadow around the eye socket */
+    s += '<ellipse cx="' + cx + '" cy="' + (cy + 2) + '" rx="' + (ew + 6) + '" ry="' + (Math.max(hu, hl) + 3) + '" fill="' + o.skinLo + '" opacity=".25" filter="url(#f' + u + ')"/>';
+    /* brow ridge / deep-set shadow */
+    var ridge = o.ridge != null ? o.ridge : (S.deep ? 0.6 : 0);
+    if (ridge > 0) s += '<ellipse cx="' + (cx + out * 2) + '" cy="' + (cy - hu - 6) + '" rx="' + (ew * 1.1) + '" ry="9" fill="' + o.skinDk + '" opacity="' + (0.2 * ridge).toFixed(2) + '" filter="url(#f' + u + ')"/>';
+    if (S.mono || o.shape === 'mono') s += '<ellipse cx="' + cx + '" cy="' + (cy - hu - 3) + '" rx="' + (ew * 0.95) + '" ry="6" fill="' + o.skinLo + '" opacity=".22" filter="url(#f' + u + ')"/>';
+    s += '<path d="' + full + '" fill="url(#ew' + u + ')"/>';
+    s += '<clipPath id="' + id + '"><path d="' + full + '"/></clipPath><g clip-path="url(#' + id + ')">';
+    var R = 10.6 * (o.ir || 1);
+    s += '<g class="iris"><circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="url(#ir' + u + ')"/>';
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="' + mix(o.eyes, '#000000', 0.5) + '" stroke-width="1.2" opacity=".7"/>';
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (R * 0.453).toFixed(2) + '" fill="#08090b"/>';
     s += '<circle cx="' + (cx - 3.5) + '" cy="' + (cy - 3.5) + '" r="2.8" fill="#fff" opacity=".95"/>';
     s += '<circle cx="' + (cx + 3.5) + '" cy="' + (cy + 3.6) + '" r="1.3" fill="#fff" opacity=".55"/></g>';
-    if (open < 1) s += '</g>';
-    s += '<path d="M' + (cx - 22) + ' ' + (cy + 1) + ' C' + (cx - 12) + ' ' + (cy - ry - 4) + ' ' + (cx + 12) + ' ' + (cy - ry - 4) + ' ' + (cx + 22) + ' ' + (cy + 1) + '" fill="none" stroke="#15100e" stroke-width="' + lash + '" stroke-linecap="round"/>';
-    s += '<path d="M' + (cx - 20) + ' ' + (cy - ry - 2) + ' C' + (cx - 10) + ' ' + (cy - ry - 11) + ' ' + (cx + 10) + ' ' + (cy - ry - 11) + ' ' + (cx + 20) + ' ' + (cy - ry - 2) + '" fill="none" stroke="' + o.skinLo + '" stroke-width="2" opacity=".55"/>';
-    if (o.squint) {
-      s += '<path d="M' + (cx - 23) + ' ' + (cy + 4) + ' C' + (cx - 12) + ' ' + (cy + 4 - o.squint) + ' ' + (cx + 12) + ' ' + (cy + 4 - o.squint) + ' ' + (cx + 23) + ' ' + (cy + 4) + ' C' + (cx + 14) + ' ' + (cy + 20) + ' ' + (cx - 14) + ' ' + (cy + 20) + ' ' + (cx - 23) + ' ' + (cy + 4) + 'Z" fill="' + o.skin + '"/>';
+    /* shadow cast by the upper lid on the eyeball */
+    s += '<path d="' + U + '" fill="none" stroke="#1a0f0c" stroke-width="7" opacity=".22" filter="url(#f' + u + ')"/>';
+    s += '</g>';
+    /* faint lower lid line */
+    s += '<path d="M' + P2(O) + ' C' + P2(c5) + ' ' + P2(c6) + ' ' + P2(Q) + ' C' + P2(c7) + ' ' + P2(c8) + ' ' + P2(I) + '" fill="none" stroke="' + o.skinDk + '" stroke-width="1.4" opacity=".38" stroke-linecap="round"/>';
+    /* upper lash line, with a small flick for lashes */
+    var flick = (o.lashes || 0) > 0;
+    s += '<path d="' + U + (flick ? ' L' + (O[0] + out * 3.4).toFixed(1) + ' ' + (O[1] - 2.4).toFixed(1) : '') + '" fill="none" stroke="#15100e" stroke-width="' + lash + '" stroke-linecap="round" stroke-linejoin="round"/>';
+    if (flick) {
+      var ln = 2 + o.lashes * 2.2, m, ut, p1, p0, tx, ty, l;
+      s += '<g stroke="#15100e" stroke-width="1.1" stroke-linecap="round" fill="none" opacity=".85">';
+      for (m = 0; m < 5; m++) {
+        ut = 0.5 + m * 0.11;
+        p1 = upperPt(ut); p0 = upperPt(ut - 0.03);
+        tx = p1[0] - p0[0]; ty = p1[1] - p0[1]; l = Math.sqrt(tx * tx + ty * ty) || 1;
+        var nx = ty / l * (out > 0 ? 1 : -1), ny = -tx / l * (out > 0 ? 1 : -1);
+        if (ny > 0) { nx = -nx; ny = -ny; }
+        s += '<path d="M' + p1[0].toFixed(1) + ' ' + p1[1].toFixed(1) + ' l' + (nx * ln + out * 1.2).toFixed(1) + ' ' + (ny * ln).toFixed(1) + '"/>';
+      }
+      s += '</g>';
     }
-    s += '<g class="lid" style="transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0)"><ellipse cx="' + cx + '" cy="' + (cy - 1) + '" rx="23" ry="15" fill="' + o.skin + '"/>';
-    s += '<path d="M' + (cx - 22) + ' ' + (cy + 8) + ' C' + (cx - 10) + ' ' + (cy + 15) + ' ' + (cx + 10) + ' ' + (cy + 15) + ' ' + (cx + 22) + ' ' + (cy + 8) + '" fill="none" stroke="#15100e" stroke-width="2.6" stroke-linecap="round"/></g>';
+    /* upper lid crease */
+    if (creaseAmt > 0.02) {
+      var gap = (S.hood ? 3.2 : S.deep ? 7.2 : 4.6 + hu * 0.34) * (0.85 + 0.3 * creaseAmt);
+      var a = upperPt(0.16), b = upperPt(0.5), cc = upperPt(0.92);
+      var sh = S.hood ? 0.55 : 1;
+      s += '<path d="M' + (a[0]).toFixed(1) + ' ' + (a[1] - gap * 0.85).toFixed(1) + ' Q' + b[0].toFixed(1) + ' ' + (b[1] - gap * 1.55).toFixed(1) + ' ' + cc[0].toFixed(1) + ' ' + (cc[1] - gap * sh).toFixed(1) + '" fill="none" stroke="' + o.skinDk + '" stroke-width="2" stroke-linecap="round" opacity="' + (0.5 * Math.min(1, creaseAmt)).toFixed(2) + '"/>';
+      if (S.hood) {
+        var e0 = upperPt(0.4), e1 = upperPt(0.95);
+        s += '<path d="M' + e0[0].toFixed(1) + ' ' + (e0[1] - 1).toFixed(1) + ' Q' + b[0].toFixed(1) + ' ' + (b[1] - gap * 1.4).toFixed(1) + ' ' + e1[0].toFixed(1) + ' ' + (e1[1] - gap * 0.7).toFixed(1) + ' L' + e1[0].toFixed(1) + ' ' + (e1[1] - 1).toFixed(1) + ' Q' + ((e0[0] + e1[0]) / 2).toFixed(1) + ' ' + (e0[1] - 3).toFixed(1) + ' ' + e0[0].toFixed(1) + ' ' + (e0[1] - 1).toFixed(1) + 'Z" fill="' + o.skinLo + '" opacity=".38" filter="url(#f' + u + ')"/>';
+      }
+    } else {
+      /* monolid: a smooth lid with only a soft shade above the lash line */
+      var m0 = upperPt(0.1), m1 = upperPt(0.5), m2 = upperPt(0.95);
+      s += '<path d="M' + m0[0].toFixed(1) + ' ' + (m0[1] - 3).toFixed(1) + ' Q' + m1[0].toFixed(1) + ' ' + (m1[1] - 8).toFixed(1) + ' ' + m2[0].toFixed(1) + ' ' + (m2[1] - 3).toFixed(1) + '" fill="none" stroke="' + o.skinDk + '" stroke-width="2.4" opacity=".14" stroke-linecap="round"/>';
+    }
+    /* epicanthic fold covering the inner corner */
+    var fd = o.fold || 0;
+    if (fd > 0.02) {
+      var fx = ew * 0.34 * fd;
+      var fp = 'M' + (I[0] - out * 3).toFixed(1) + ' ' + (I[1] - hu * 0.85).toFixed(1) +
+        ' C' + (I[0] + out * ew * 0.2 * fd).toFixed(1) + ' ' + (I[1] - hu * 0.85).toFixed(1) + ' ' + (I[0] + out * fx * 0.95).toFixed(1) + ' ' + (I[1] - hu * 0.35).toFixed(1) + ' ' + (I[0] + out * fx).toFixed(1) + ' ' + (I[1] + hl * 0.18).toFixed(1) +
+        ' C' + (I[0] + out * fx * 0.5).toFixed(1) + ' ' + (I[1] + hl * 0.62).toFixed(1) + ' ' + (I[0] - out * 1).toFixed(1) + ' ' + (I[1] + hl * 0.62).toFixed(1) + ' ' + (I[0] - out * 3).toFixed(1) + ' ' + (I[1] + hl * 0.35).toFixed(1) + 'Z';
+      s += '<path d="' + fp + '" fill="' + o.skin + '"/>';
+      s += '<path d="M' + (I[0] - out * 3).toFixed(1) + ' ' + (I[1] - hu * 0.85).toFixed(1) + ' C' + (I[0] + out * ew * 0.2 * fd).toFixed(1) + ' ' + (I[1] - hu * 0.85).toFixed(1) + ' ' + (I[0] + out * fx * 0.95).toFixed(1) + ' ' + (I[1] - hu * 0.35).toFixed(1) + ' ' + (I[0] + out * fx).toFixed(1) + ' ' + (I[1] + hl * 0.18).toFixed(1) + ' C' + (I[0] + out * fx * 0.5).toFixed(1) + ' ' + (I[1] + hl * 0.55).toFixed(1) + ' ' + (I[0] - out * 0.5).toFixed(1) + ' ' + (I[1] + hl * 0.55).toFixed(1) + ' ' + (I[0] - out * 2).toFixed(1) + ' ' + (I[1] + hl * 0.42).toFixed(1) + '" fill="none" stroke="' + o.skinDk + '" stroke-width="1" opacity=".22"/>';
+    }
+    /* smiling squint: the lower lid rises */
+    if (o.squint) {
+      var sq = Math.min(o.squint, o.squint * hl / 12 * 1.25 + 0.5);
+      var sqp = 'M' + (I[0] - out * 2).toFixed(1) + ' ' + (I[1] + 3).toFixed(1) + ' C' + (I[0] + out * ew * 0.5).toFixed(1) + ' ' + (I[1] + 3 - sq).toFixed(1) + ' ' + (O[0] - out * ew * 0.5).toFixed(1) + ' ' + (O[1] + 3 - sq).toFixed(1) + ' ' + (O[0] + out * 2).toFixed(1) + ' ' + (O[1] + 3).toFixed(1) +
+        ' C' + (O[0] - out * ew * 0.5).toFixed(1) + ' ' + (O[1] + hl + 10).toFixed(1) + ' ' + (I[0] + out * ew * 0.5).toFixed(1) + ' ' + (I[1] + hl + 10).toFixed(1) + ' ' + (I[0] - out * 2).toFixed(1) + ' ' + (I[1] + 3).toFixed(1) + 'Z';
+      s += '<path d="' + sqp + '" fill="' + o.skin + '"/>';
+      s += '<path d="M' + (I[0] - out * 2).toFixed(1) + ' ' + (I[1] + 3).toFixed(1) + ' C' + (I[0] + out * ew * 0.5).toFixed(1) + ' ' + (I[1] + 3 - sq).toFixed(1) + ' ' + (O[0] - out * ew * 0.5).toFixed(1) + ' ' + (O[1] + 3 - sq).toFixed(1) + ' ' + (O[0] + out * 2).toFixed(1) + ' ' + (O[1] + 3).toFixed(1) + '" fill="none" stroke="' + o.skinDk + '" stroke-width="1.4" opacity=".35"/>';
+    }
+    /* eyelid used for blinking: covers exactly this eye shape and closes to a lash line */
+    var sag = 0.85 * hl;
+    var cl = 'M' + P2(I) + ' C' + P2([I[0] + out * ew * 0.55, I[1] + sag]) + ' ' + P2([O[0] - out * ew * 0.55, O[1] + sag]) + ' ' + P2(O);
+    s += '<g class="lid" style="transform-box:fill-box;transform-origin:50% 0;transform:scaleY(0)"><path d="' + full + '" fill="' + o.skin + '" stroke="' + o.skin + '" stroke-width="7" stroke-linejoin="round"/>';
+    s += '<path d="' + cl + '" fill="none" stroke="#15100e" stroke-width="2.6" stroke-linecap="round"/>';
+    if (flick) s += '<path d="M' + P2(O) + ' l' + (out * 3.2) + ' -1.6" stroke="#15100e" stroke-width="2.2" stroke-linecap="round"/>';
+    s += '</g>';
     s += '</g>';
     return s;
   }
@@ -505,6 +686,7 @@
     var blush = (delighted ? 0.3 : happy ? 0.2 : 0.1) + (ch.blush || 0);
     var k = { u: u, ch: ch, skin: skin, skinHi: skinHi, skinLo: skinLo, skinDk: skinDk, hair: hair, hairHi: hairHi, hairLo: hairLo, jacket: jacket, inner: inner, jHi: jHi, jLo: jLo, accent: accent, trim: trim };
     var att = ch.attire, hat = ch.hat;
+    var g = geom(ch), fpath = facePath(g);
     var hidesHair = hat === 'ushanka';
     var p = [];
     p.push('<svg class="avatar" viewBox="0 0 400 480" role="img" aria-label="' + esc(ch.name) + '" xmlns="http://www.w3.org/2000/svg"><defs>');
@@ -518,7 +700,7 @@
     p.push('<radialGradient id="ew' + u + '" cx=".5" cy=".5" r=".6"><stop offset=".55" stop-color="#fbf9f6"/><stop offset="1" stop-color="#cfc6c0"/></radialGradient>');
     p.push('<radialGradient id="ir' + u + '" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="' + mix(ch.eyes, '#ffffff', 0.35) + '"/><stop offset=".6" stop-color="' + ch.eyes + '"/><stop offset="1" stop-color="' + mix(ch.eyes, '#000000', 0.55) + '"/></radialGradient>');
     p.push('<radialGradient id="pl' + u + '" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9cfc2"/></radialGradient>');
-    p.push('<clipPath id="cf' + u + '"><path d="M116 188 C116 120 152 86 200 86 C248 86 284 120 284 188 C284 248 256 304 200 314 C144 304 116 248 116 188Z"/></clipPath>');
+    p.push('<clipPath id="cf' + u + '"><path d="' + fpath + '"/></clipPath>');
     p.push('<filter id="f' + u + '" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5"/></filter>');
     p.push('<filter id="g' + u + '" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="10"/></filter>');
     var pk = ch.pattern || PAT_FOR[att];
@@ -531,7 +713,8 @@
 
     /* body */
     p.push('<g class="abody">');
-    p.push('<path d="M166 280 L166 374 C166 394 234 394 234 374 L234 280Z" fill="url(#nk' + u + ')"/>');
+    var nh = 34 * g.neck;
+    p.push('<path d="M' + (200 - nh) + ' 280 L' + (200 - nh) + ' 374 C' + (200 - nh) + ' 394 ' + (200 + nh) + ' 394 ' + (200 + nh) + ' 374 L' + (200 + nh) + ' 280Z" fill="url(#nk' + u + ')"/>');
     var ab = att ? attireBody(k) : null;
     if (ab === null) {
       p.push('<path d="M0 480 C10 418 76 390 146 376 L254 376 C324 390 390 418 400 480Z" fill="url(#jk' + u + ')"/>');
@@ -551,56 +734,86 @@
     /* head */
     p.push('<g class="ahead">');
     p.push(hairBack(k));
-    p.push('<ellipse cx="114" cy="206" rx="13" ry="27" fill="' + skinLo + '"/><ellipse cx="286" cy="206" rx="13" ry="27" fill="' + skinLo + '"/>');
-    p.push('<ellipse cx="114" cy="208" rx="6" ry="15" fill="' + skinDk + '" opacity=".35"/><ellipse cx="286" cy="208" rx="6" ry="15" fill="' + skinDk + '" opacity=".35"/>');
-    if (ch.earring) p.push('<circle cx="112" cy="232" r="4" fill="' + ch.earring + '"/><circle cx="288" cy="232" r="4" fill="' + ch.earring + '"/>');
-    p.push('<ellipse cx="200" cy="322" rx="32" ry="20" fill="' + skinDk + '" opacity=".45" filter="url(#f' + u + ')"/>');
-    p.push('<path d="M116 188 C116 120 152 86 200 86 C248 86 284 120 284 188 C284 248 256 304 200 314 C144 304 116 248 116 188Z" fill="url(#sk' + u + ')"/>');
+    var eY = 206 + g.dy, eR = g.def ? 86 : hwAt(g, eY) + 4, es = g.ear;
+    p.push('<ellipse cx="' + (200 - eR) + '" cy="' + eY + '" rx="' + 13 * es + '" ry="' + 27 * es + '" fill="' + skinLo + '"/><ellipse cx="' + (200 + eR) + '" cy="' + eY + '" rx="' + 13 * es + '" ry="' + 27 * es + '" fill="' + skinLo + '"/>');
+    p.push('<ellipse cx="' + (200 - eR) + '" cy="' + (eY + 2) + '" rx="' + 6 * es + '" ry="' + 15 * es + '" fill="' + skinDk + '" opacity=".35"/><ellipse cx="' + (200 + eR) + '" cy="' + (eY + 2) + '" rx="' + 6 * es + '" ry="' + 15 * es + '" fill="' + skinDk + '" opacity=".35"/>');
+    if (ch.earring) p.push('<circle cx="' + (200 - eR + 2) + '" cy="' + (eY + 26 * es) + '" r="4" fill="' + ch.earring + '"/><circle cx="' + (200 + eR - 2) + '" cy="' + (eY + 26 * es) + '" r="4" fill="' + ch.earring + '"/>');
+    p.push('<ellipse cx="200" cy="' + (g.chinY + 8) + '" rx="' + 32 * g.neck + '" ry="20" fill="' + skinDk + '" opacity=".45" filter="url(#f' + u + ')"/>');
+    p.push('<path d="' + fpath + '" fill="url(#sk' + u + ')"/>');
     p.push('<g clip-path="url(#cf' + u + ')">');
+    p.push('<g transform="translate(200 188) scale(' + g.W + ' ' + (1 + (g.L - 1) * 0.8).toFixed(3) + ') translate(-200 -188)">');
     p.push('<path d="M262 130 C282 160 288 214 268 268 C262 288 250 300 236 306" fill="none" stroke="' + skinDk + '" stroke-width="16" opacity=".14" filter="url(#f' + u + ')"/>');
     p.push('<path d="M124 150 C118 190 126 236 148 268" fill="none" stroke="#ffffff" stroke-width="3" opacity=".22" stroke-linecap="round"/>');
     p.push('<ellipse cx="150" cy="236" rx="30" ry="20" fill="' + skinHi + '" opacity=".22" filter="url(#f' + u + ')"/>');
     p.push('<ellipse cx="138" cy="248" rx="27" ry="17" fill="#ff7a70" opacity="' + blush + '" filter="url(#f' + u + ')"/><ellipse cx="262" cy="248" rx="27" ry="17" fill="#ff7a70" opacity="' + blush + '" filter="url(#f' + u + ')"/>');
     p.push('</g>');
+    if (!g.def) {
+      /* structure shading: rim of the face (stronger with a square jaw), cheekbones and hollows */
+      var ck = g.cheek, cxo = 62 * g.W;
+      p.push('<path d="' + fpath + '" fill="none" stroke="' + skinDk + '" stroke-width="14" opacity="' + (0.05 + g.jaw * 0.11).toFixed(3) + '" filter="url(#f' + u + ')"/>');
+      p.push('<ellipse cx="' + (200 - cxo) + '" cy="' + (222 + g.dy) + '" rx="20" ry="10" fill="' + skinHi + '" opacity="' + (0.12 + ck * 0.3).toFixed(2) + '" filter="url(#f' + u + ')" transform="rotate(-18 ' + (200 - cxo) + ' ' + (222 + g.dy) + ')"/>');
+      p.push('<ellipse cx="' + (200 + cxo) + '" cy="' + (222 + g.dy) + '" rx="20" ry="10" fill="' + skinHi + '" opacity="' + (0.06 + ck * 0.18).toFixed(2) + '" filter="url(#f' + u + ')" transform="rotate(18 ' + (200 + cxo) + ' ' + (222 + g.dy) + ')"/>');
+      var hol = Math.max(0, ck - 0.35) * 0.16 + Math.max(0, g.jaw - 0.55) * 0.06;
+      if (hol > 0.01) p.push('<ellipse cx="' + (200 - 54 * g.W) + '" cy="' + (g.mouthY - 20) + '" rx="12" ry="24" fill="' + skinDk + '" opacity="' + hol.toFixed(2) + '" filter="url(#f' + u + ')"/><ellipse cx="' + (200 + 54 * g.W) + '" cy="' + (g.mouthY - 20) + '" rx="12" ry="24" fill="' + skinDk + '" opacity="' + (hol * 1.3).toFixed(2) + '" filter="url(#f' + u + ')"/>');
+    }
+    p.push('</g>');
 
     /* eyes */
-    var eo = { u: u, skin: skin, skinLo: skinLo, eyes: ch.eyes, squint: squint, wide: mood === 'surprised', open: ch.eyeOpen, lash: ch.lash };
-    p.push(eye(158, 196, eo));
-    p.push(eye(242, 196, eo));
-    var b = BROWS[mood], bw = ch.brow || 7;
-    p.push('<path d="' + b[0] + '" stroke="' + browC + '" stroke-width="' + bw + '" stroke-linecap="round" fill="none" opacity=".92"/>');
-    p.push('<path d="' + b[1] + '" stroke="' + browC + '" stroke-width="' + bw + '" stroke-linecap="round" fill="none" opacity=".92"/>');
+    var eo = { u: u, skin: skin, skinLo: skinLo, skinDk: skinDk, eyes: ch.eyes, squint: squint, wide: mood === 'surprised', open: ch.eyeOpen, lash: ch.lash,
+      shape: ch.eyeShape || 'round', ew: ch.eyeW, eh: ch.eyeH, tilt: ch.eyeTilt, fold: ch.fold, crease: ch.crease, ir: ch.irisR, lashes: ch.lashes, ridge: ch.ridge };
+    var exL = 200 - g.ex, exR = 200 + g.ex, ey = g.eyeY;
+    p.push(eye(exL, ey, -1, eo));
+    p.push(eye(exR, ey, 1, eo));
+    var b = BROWS[mood], bw = (ch.brow || 7) * (ch.browThick || 1) * 1.12;
+    var bst = BROW_STYLE[ch.browShape] || BROW_STYLE.soft;
+    var bo = { sx: (ch.browW || 1) * (ch.eyeW || 1), arch: bst.arch, taper: bst.taper, dy: g.dy + (ch.browY || 0) + (eo.shape === 'deep' ? 2 : 0), tilt: ch.browTilt || 0, w: bw };
+    var bcol = ch.browColor || browC;
+    p.push('<path d="' + browPoly(b[0], -1, exL - 1, bo) + '" fill="' + bcol + '" stroke="' + bcol + '" stroke-width=".8" stroke-linejoin="round" opacity=".92"/>');
+    p.push('<path d="' + browPoly(b[1], 1, exR + 1, bo) + '" fill="' + bcol + '" stroke="' + bcol + '" stroke-width=".8" stroke-linejoin="round" opacity=".92"/>');
 
     /* nose */
-    p.push('<path d="M206 186 C210 214 216 232 222 242 C214 254 198 256 190 247 C198 245 204 236 204 220Z" fill="' + skinLo + '" opacity=".3"/>');
+    var bg = g.bridge;
+    p.push('<g transform="translate(200 ' + (186 + g.dy) + ') scale(' + g.noseW + ' ' + g.noseLen + ') translate(-200 -186)">');
+    p.push('<path d="M206 186 C210 214 216 232 222 242 C214 254 198 256 190 247 C198 245 204 236 204 220Z" fill="' + skinLo + '" opacity="' + (0.16 + bg * 0.28).toFixed(2) + '"/>');
     p.push('<ellipse cx="200" cy="255" rx="16" ry="5" fill="' + skinDk + '" opacity=".22" filter="url(#f' + u + ')"/>');
     p.push('<ellipse cx="196" cy="240" rx="8" ry="6" fill="' + skinHi + '" opacity=".55"/>');
     p.push('<ellipse cx="188" cy="248" rx="3.6" ry="2.4" fill="' + skinDk + '" opacity=".45"/><ellipse cx="212" cy="248" rx="3.6" ry="2.4" fill="' + skinDk + '" opacity=".45"/>');
+    if (!g.def) {
+      p.push('<path d="M182 244 C176 247 176 254 185 256 M218 244 C224 247 224 254 215 256" fill="none" stroke="' + skinDk + '" stroke-width="1.6" stroke-linecap="round" opacity=".2"/>');
+      /* bridge: a high bridge gets a lit ridge and shadowed sides, a low bridge stays soft and flat */
+      p.push('<path d="M199 196 C199 212 198 226 197 238" fill="none" stroke="' + skinHi + '" stroke-width="' + (2 + bg * 3).toFixed(1) + '" stroke-linecap="round" opacity="' + (0.06 + Math.max(0, bg - 0.4) * 0.5).toFixed(2) + '"/>');
+      p.push('<path d="M187 196 C189 214 190 228 190 240 M213 196 C211 214 210 228 210 240" fill="none" stroke="' + skinDk + '" stroke-width="3" stroke-linecap="round" opacity="' + (Math.max(0, bg - 0.35) * 0.3).toFixed(2) + '" filter="url(#f' + u + ')"/>');
+      if (bg < 0.4) p.push('<ellipse cx="200" cy="208" rx="13" ry="16" fill="' + skinHi + '" opacity="' + ((0.4 - bg) * 0.5).toFixed(2) + '" filter="url(#f' + u + ')"/>');
+    }
+    p.push('</g>');
 
     /* beard */
     if (ch.beard) {
-      p.push('<path d="M118 214 C120 282 156 322 200 324 C244 322 280 282 282 214 C270 254 246 268 200 268 C154 268 130 254 118 214Z" fill="url(#hr' + u + ')" opacity=".96"/>');
-      p.push('<path d="M164 254 C180 246 194 251 200 254 C206 251 220 246 236 254 C222 264 210 260 200 260 C190 260 178 264 164 254Z" fill="' + hairLo + '" opacity=".9"/>');
+      p.push('<g transform="translate(200 188) scale(' + g.W + ' ' + (g.L * (g.chinY > 0 ? 1 : 1)).toFixed(3) + ') translate(-200 -188)"><path d="M118 214 C120 282 156 322 200 324 C244 322 280 282 282 214 C270 254 246 268 200 268 C154 268 130 254 118 214Z" fill="url(#hr' + u + ')" opacity=".96"/></g>');
+      p.push('<g transform="translate(200 ' + (g.def ? 260 : g.mouthY - 18).toFixed(1) + ') scale(' + g.mw + ' 1) translate(-200 -260)"><path d="M164 254 C180 246 194 251 200 254 C206 251 220 246 236 254 C222 264 210 260 200 260 C190 260 178 264 164 254Z" fill="' + hairLo + '" opacity=".9"/></g>');
     }
 
     /* mouth */
     p.push('<g class="mouth">' + mouth(ch, MOUTH_FOR[mood]) + '</g>');
-    if (!ch.beard) p.push('<ellipse cx="200" cy="304" rx="22" ry="8" fill="' + skinDk + '" opacity=".14" filter="url(#f' + u + ')"/>');
+    if (!ch.beard) p.push('<ellipse cx="200" cy="' + (g.mouthY + 26) + '" rx="' + 22 * g.mw + '" ry="8" fill="' + skinDk + '" opacity=".14" filter="url(#f' + u + ')"/>');
 
     /* age lines */
     var age = ch.age || 0;
     if (age > 0) {
-      var ao = (0.06 + age * 0.12).toFixed(2);
+      var ao = ((0.03 + age * 0.12) * (age < 0.3 ? 0.5 : 0.85)).toFixed(2), ox = g.ex + 21 * (ch.eyeW || 1) + 5, ny = g.mouthY - 26, nxs = 26 + 6 * g.noseW, nxe = 30 * g.mw + 4;
       p.push('<g fill="none" stroke="' + skinDk + '" stroke-width="2.2" stroke-linecap="round" opacity="' + ao + '">');
-      p.push('<path d="M148 138 C176 132 224 132 252 138"/><path d="M154 150 C180 145 220 145 246 150"/>');
-      p.push('<path d="M126 196 l-10 -5 M126 204 l-11 1 M126 212 l-9 6 M274 196 l10 -5 M274 204 l11 1 M274 212 l9 6"/>');
-      p.push('<path d="M164 252 C156 266 156 278 164 290 M236 252 C244 266 244 278 236 290"/></g>');
+      p.push('<path d="M148 ' + (138 + g.dy) + ' C176 ' + (132 + g.dy) + ' 224 ' + (132 + g.dy) + ' 252 ' + (138 + g.dy) + '"/><path d="M154 ' + (150 + g.dy) + ' C180 ' + (145 + g.dy) + ' 220 ' + (145 + g.dy) + ' 246 ' + (150 + g.dy) + '"/>');
+      p.push('<path d="M' + (200 - ox) + ' ' + (ey) + ' l-10 -5 M' + (200 - ox) + ' ' + (ey + 8) + ' l-11 1 M' + (200 - ox) + ' ' + (ey + 16) + ' l-9 6 M' + (200 + ox) + ' ' + ey + ' l10 -5 M' + (200 + ox) + ' ' + (ey + 8) + ' l11 1 M' + (200 + ox) + ' ' + (ey + 16) + ' l9 6"/>');
+      p.push('<path d="M' + (200 - nxs) + ' ' + ny + ' C' + (200 - nxs - 8) + ' ' + (ny + 14) + ' ' + (200 - nxe - 8) + ' ' + (ny + 26) + ' ' + (200 - nxe) + ' ' + (ny + 38) + ' M' + (200 + nxs) + ' ' + ny + ' C' + (200 + nxs + 8) + ' ' + (ny + 14) + ' ' + (200 + nxe + 8) + ' ' + (ny + 26) + ' ' + (200 + nxe) + ' ' + (ny + 38) + '"/>');
+      if (age > 0.3) p.push('<path d="M' + (exL - 16) + ' ' + (ey + 17) + ' C' + (exL - 4) + ' ' + (ey + 23) + ' ' + (exL + 8) + ' ' + (ey + 22) + ' ' + (exL + 16) + ' ' + (ey + 18) + ' M' + (exR - 16) + ' ' + (ey + 18) + ' C' + (exR - 8) + ' ' + (ey + 22) + ' ' + (exR + 4) + ' ' + (ey + 23) + ' ' + (exR + 16) + ' ' + (ey + 17) + '" opacity=".7"/>');
+      p.push('</g>');
     }
 
     /* glasses */
     if (ch.glasses) {
-      p.push('<g fill="none" stroke="#b6905a" stroke-width="3.2"><circle cx="158" cy="196" r="30" fill="#ffffff" fill-opacity=".05"/><circle cx="242" cy="196" r="30" fill="#ffffff" fill-opacity=".05"/><path d="M188 192 C196 186 204 186 212 192"/><path d="M128 190 L112 186 M272 190 L288 186"/></g>');
-      p.push('<path d="M138 178 C144 170 156 166 166 168" stroke="#fff" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/><path d="M222 178 C228 170 240 166 250 168" stroke="#fff" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>');
+      var gh = Math.max(4, g.ex - 30);
+      p.push('<g fill="none" stroke="#b6905a" stroke-width="3.2"><circle cx="' + exL + '" cy="' + ey + '" r="30" fill="#ffffff" fill-opacity=".05"/><circle cx="' + exR + '" cy="' + ey + '" r="30" fill="#ffffff" fill-opacity=".05"/><path d="M' + (200 - gh) + ' ' + (ey - 4) + ' C196 ' + (ey - 10) + ' 204 ' + (ey - 10) + ' ' + (200 + gh) + ' ' + (ey - 4) + '"/><path d="M' + (exL - 30) + ' ' + (ey - 6) + ' L' + (exL - 46) + ' ' + (ey - 10) + ' M' + (exR + 30) + ' ' + (ey - 6) + ' L' + (exR + 46) + ' ' + (ey - 10) + '"/></g>');
+      p.push('<path d="M' + (exL - 20) + ' ' + (ey - 18) + ' C' + (exL - 14) + ' ' + (ey - 26) + ' ' + (exL - 2) + ' ' + (ey - 30) + ' ' + (exL + 8) + ' ' + (ey - 28) + '" stroke="#fff" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/><path d="M' + (exR - 20) + ' ' + (ey - 18) + ' C' + (exR - 14) + ' ' + (ey - 26) + ' ' + (exR - 2) + ' ' + (ey - 30) + ' ' + (exR + 8) + ' ' + (ey - 28) + '" stroke="#fff" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>');
     }
 
     /* front hair, headwear */
@@ -691,6 +904,6 @@
     return '<svg class="scene" viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' + f(u) + '</svg>';
   }
 
-  root.PT_ART = { avatar: avatar, mouth: mouth, scene: scene, mix: mix, TALK: ['a', 'o', 'ee', 'a', 'm', 'o', 'ee', 'a', 'm'], MOODS: Object.keys(BROWS) };
+  root.PT_ART = { avatar: avatar, mouth: mouth, geom: geom, scene: scene, mix: mix, TALK: ['a', 'o', 'ee', 'a', 'm', 'o', 'ee', 'a', 'm'], MOODS: Object.keys(BROWS) };
   if (typeof module !== 'undefined' && module.exports) module.exports = root.PT_ART;
 })(typeof window !== 'undefined' ? window : globalThis);
