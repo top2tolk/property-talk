@@ -26,7 +26,9 @@
    "r": [
     "Of course. How many bedrooms do you need?",
     "Of course, I would be happy to help. How many bedrooms do you need, and what is your budget?",
-    "Certainly, it would be my pleasure to help. May I ask how many bedrooms you need and roughly what budget you have in mind?"
+    "Certainly, it would be my pleasure to help. May I ask how many bedrooms you need and roughly what budget you have in mind?",
+    "Sure thing! I would love to help. How many bedrooms are you thinking?",
+    "Absolutely! I know some very quiet spots near the beach. Tell me your bedrooms and budget, and I will shortlist the best ones for you."
    ]
   },
   "general-2": {
@@ -34,7 +36,9 @@
    "r": [
     "No problem, but let me explain the options.",
     "It is not a problem for buying, but the visa is a separate matter. I can explain the options.",
-    "Many foreign buyers do the same, but the visa is a separate matter, so I recommend confirming it with a lawyer."
+    "Many foreign buyers do the same, but the visa is a separate matter, so I recommend confirming it with a lawyer.",
+    "No worries, lots of people do that! The visa is the part to check.",
+    "Good news: staying part of the year is common. Let me walk you through the visa options, and I can introduce a trusted lawyer if you would like."
    ]
   },
   "general-3": {
@@ -42,7 +46,9 @@
    "r": [
     "A village has shared facilities. A villa is more private.",
     "A house in a village has shared facilities and security, while a private villa gives you more privacy.",
-    "A house in a village usually shares facilities such as security and a clubhouse, while a private villa gives you more privacy and space, though you handle more of the maintenance yourself."
+    "A house in a village usually shares facilities such as security and a clubhouse, while a private villa gives you more privacy and space, though you handle more of the maintenance yourself.",
+    "A village feels social and safe. A villa feels like your own world.",
+    "If you like a community feel with security, a village suits you. If privacy matters most, a villa is better. Which sounds more like you?"
    ]
   },
   "general-4": {
@@ -50,7 +56,9 @@
    "r": [
     "Yes. I will send you three options tomorrow.",
     "Yes, I will prepare three options and send you the details on Line tomorrow.",
-    "Certainly. I will prepare three options that match your needs and send the details on Line tomorrow, so we can choose which ones to visit."
+    "Certainly. I will prepare three options that match your needs and send the details on Line tomorrow, so we can choose which ones to visit.",
+    "Sure! I will send you three good ones tomorrow.",
+    "Yes, and I will choose three that fit what you told me. I will message you tomorrow, and we can book visits for this week."
    ]
   },
   "home-1": {
@@ -58,7 +66,9 @@
    "r": [
     "Yes, all appliances are included.",
     "Yes, the refrigerator, oven and cooktop are all included in the price.",
-    "Yes, the price includes the refrigerator, oven and cooktop. I can send you the full inventory list if you like."
+    "Yes, the price includes the refrigerator, oven and cooktop. I can send you the full inventory list if you like.",
+    "Yep, all the appliances stay with the house!",
+    "Yes, the fridge, oven and cooktop all stay. If you like, I can list every item so you know exactly what you get."
    ]
   },
   "home-2": {
@@ -66,7 +76,9 @@
    "r": [
     "Three bedrooms, all with air conditioning.",
     "There are three bedrooms, and each one has its own air conditioner.",
-    "The house has three bedrooms, and every bedroom comes with a separate air conditioner. Would you like to see the master bedroom first?"
+    "The house has three bedrooms, and every bedroom comes with a separate air conditioner. Would you like to see the master bedroom first?",
+    "Three bedrooms, and each has its own air conditioner!",
+    "Three bedrooms, each with its own air conditioner. Shall we start with the master bedroom? It is my favorite room."
    ]
   },
   "home-3": {
@@ -74,7 +86,9 @@
    "r": [
     "Yes, both are good.",
     "The water pressure is strong, and all three bathrooms have a water heater.",
-    "The water pressure is very good because there is a pump tank, and every bathroom has its own water heater."
+    "The water pressure is very good because there is a pump tank, and every bathroom has its own water heater.",
+    "Yes, the pressure is great, and every bathroom has hot water!",
+    "Yes, the pressure is strong thanks to the pump tank, and each bathroom has hot water. I can turn on the taps so you can feel it."
    ]
   },
   "home-4": {
@@ -82,7 +96,9 @@
    "r": [
     "About two thousand baht a month.",
     "The previous owner paid about two thousand baht a month, with the air conditioning on.",
-    "The previous owner said the electricity bill was around two thousand baht a month, but it depends on how much you use the air conditioning."
+    "The previous owner said the electricity bill was around two thousand baht a month, but it depends on how much you use the air conditioning.",
+    "Around two thousand baht a month, not too bad!",
+    "The owner paid around two thousand baht a month. If you use less air conditioning, it will be even lower, and I can show you the past bills."
    ]
   },
   "around-1": {
@@ -90,7 +106,9 @@
    "r": [
     "Yes, it is private. It is one point five meters deep.",
     "Yes, the pool is private, and it is about one point five meters deep.",
-    "Yes, it is a private pool, about one point five meters at the deepest point. There is also a shallow area for children."
+    "Yes, it is a private pool, about one point five meters at the deepest point. There is also a shallow area for children.",
+    "Yes, it is all yours, and about one point five meters deep!",
+    "Yes, it is a private pool, about one point five meters deep. It is perfect for a family, and I can arrange a cleaning service too."
    ]
   },
   "around-2": {
@@ -98,7 +116,9 @@
    "r": [
     "About two hundred square meters. A gardener comes weekly.",
     "The garden is about two hundred square meters, and a gardener comes once a week.",
-    "The garden is about two hundred square meters. A gardener can come once a week, and I can arrange that for you if you like."
+    "The garden is about two hundred square meters. A gardener can come once a week, and I can arrange that for you if you like.",
+    "About two hundred square meters, and we can send a gardener!",
+    "The garden is about two hundred square meters. A weekly gardener is easy to arrange, and I will get you a price."
    ]
   },
   "around-3": {
@@ -106,7 +126,9 @@
    "r": [
     "Yes, there is a guard at the gate all night.",
     "Yes, the village has a guard at the gate twenty-four hours a day.",
-    "Yes, the village has security at the gate around the clock, and I am happy to introduce you to the village office."
+    "Yes, the village has security at the gate around the clock, and I am happy to introduce you to the village office.",
+    "Very safe! There is a guard at the gate all night.",
+    "Very safe. The gate has a guard around the clock, and I can introduce you to the village office so you can ask about security yourself."
    ]
   },
   "around-4": {
@@ -114,7 +136,9 @@
    "r": [
     "The supermarket is ten minutes away. The hospital is fifteen.",
     "The nearest supermarket is about ten minutes by car, and the hospital is about fifteen minutes.",
-    "The nearest supermarket is about ten minutes by car, and the nearest hospital is about fifteen minutes away. I can send you the map."
+    "The nearest supermarket is about ten minutes by car, and the nearest hospital is about fifteen minutes away. I can send you the map.",
+    "Supermarket in ten minutes, hospital in fifteen. Very convenient!",
+    "The supermarket is ten minutes away and the hospital is fifteen. I can drive you along both routes during the viewing."
    ]
   },
   "deal-1": {
@@ -122,7 +146,9 @@
    "r": [
     "What price did you have in mind?",
     "I understand. What price would you be comfortable with?",
-    "I understand, and thank you for being open about it. May I ask what budget you have in mind?"
+    "I understand, and thank you for being open about it. May I ask what budget you have in mind?",
+    "I hear you! What number would feel right for you?",
+    "I understand, and I want to find a price that works. Tell me your number, and I will see what I can do with the owner."
    ]
   },
   "deal-2": {
@@ -130,7 +156,9 @@
    "r": [
     "Let me ask the owner.",
     "That is a big reduction, but I will ask the owner about a cash discount.",
-    "Two million is a significant reduction, so I cannot promise anything, but I will present your cash offer to the owner today."
+    "Two million is a significant reduction, so I cannot promise anything, but I will present your cash offer to the owner today.",
+    "Cash helps! Let me talk to the owner for you.",
+    "Cash is a strong offer. I cannot promise, but I will present it to the owner today and push for the best discount."
    ]
   },
   "deal-3": {
@@ -138,7 +166,9 @@
    "r": [
     "I can try. Let me check.",
     "I think that is possible. Let me confirm with the owner and get back to you.",
-    "That sounds like a reasonable request. I will confirm with the owner and reply to you by this evening."
+    "That sounds like a reasonable request. I will confirm with the owner and reply to you by this evening.",
+    "I will do my best to get the furniture included!",
+    "That is a fair idea. I will ask the owner to include the furniture with the discount and call you this evening with an answer."
    ]
   },
   "deal-4": {
@@ -146,7 +176,9 @@
    "r": [
     "We can sign the reservation this week.",
     "We can sign a reservation agreement this week and transfer within thirty days.",
-    "We can sign a reservation agreement this week, and the ownership transfer usually takes place within thirty days."
+    "We can sign a reservation agreement this week, and the ownership transfer usually takes place within thirty days.",
+    "Fast! We can sign the reservation this week.",
+    "We can sign the reservation this week and transfer in about thirty days. I can prepare the documents now so we are ready."
    ]
   },
   "terms-1": {
@@ -154,7 +186,9 @@
    "r": [
     "Foreigners cannot own land in Thailand, but there are other options.",
     "Foreigners generally cannot own land in Thailand, but you can lease the land or own the house separately.",
-    "Under Thai law, foreigners generally cannot own land, but there are legal options such as a long-term lease. I recommend you consult a lawyer to confirm the details."
+    "Under Thai law, foreigners generally cannot own land, but there are legal options such as a long-term lease. I recommend you consult a lawyer to confirm the details.",
+    "Not the land itself, but there are safe ways to do it!",
+    "You cannot own the land directly, but a long-term lease or owning the house separately works well. I can introduce a lawyer to explain."
    ]
   },
   "terms-2": {
@@ -162,7 +196,9 @@
    "r": [
     "The deposit is one hundred thousand baht.",
     "The reservation deposit is one hundred thousand baht, and the refund terms are written in the contract.",
-    "The reservation deposit is one hundred thousand baht. Whether it is refundable depends on the terms in the contract, which we can go through together."
+    "The reservation deposit is one hundred thousand baht. Whether it is refundable depends on the terms in the contract, which we can go through together.",
+    "One hundred thousand baht, and the refund rules are in the contract.",
+    "The deposit is one hundred thousand baht. Refund terms are in the contract, so let us read them together before you decide."
    ]
   },
   "terms-3": {
@@ -170,7 +206,9 @@
    "r": [
     "We usually split the transfer fee fifty-fifty.",
     "The transfer fee is usually split fifty-fifty, and the seller pays the taxes.",
-    "By custom the transfer fee is split equally between buyer and seller, while the seller covers the taxes, but this can be negotiated."
+    "By custom the transfer fee is split equally between buyer and seller, while the seller covers the taxes, but this can be negotiated.",
+    "We split the transfer fee, and the seller pays the taxes.",
+    "Normally we split the transfer fee equally and the seller pays the taxes. It is negotiable, and I can ask for a better split for you."
    ]
   },
   "terms-4": {
@@ -178,7 +216,9 @@
    "r": [
     "Yes, we can arrange an installment plan.",
     "Yes, we can divide the payment into installments that follow the construction progress.",
-    "Yes, we can arrange installments that follow the construction milestones, and I will put the schedule in writing for you."
+    "Yes, we can arrange installments that follow the construction milestones, and I will put the schedule in writing for you.",
+    "Yes, we can pay in installments as it gets built!",
+    "Yes, installments that follow construction progress are possible. I will write the schedule down so you can see every payment date."
    ]
   },
   "viewing-1": {
@@ -186,7 +226,9 @@
    "r": [
     "Yes. What time would you like to come?",
     "Yes, Saturday morning is fine. What time works best for you?",
-    "Yes, Saturday morning is available. What time would suit you best? I can meet you at the gate."
+    "Yes, Saturday morning is available. What time would suit you best? I can meet you at the gate.",
+    "Saturday morning works! What time would be good?",
+    "Saturday morning is perfect. Tell me your time, and I will make sure the owner and the house are ready for you."
    ]
   },
   "viewing-2": {
@@ -194,7 +236,9 @@
    "r": [
     "I will meet you at the gate. I will send the map.",
     "I will meet you at the front gate and send you the map on Line.",
-    "I will meet you at the front gate. I will send you the map and my Line contact so you can find me easily."
+    "I will meet you at the front gate. I will send you the map and my Line contact so you can find me easily.",
+    "Meet me at the gate. I will send you the map!",
+    "I will wait for you at the front gate. I will send the map and my Line contact, so call me if you get lost."
    ]
   },
   "viewing-3": {
@@ -202,7 +246,9 @@
    "r": [
     "Yes, you can take photos.",
     "Yes, photos are fine. If the owner is living here, I will check first.",
-    "Photos are usually fine. If the owner is still living here, I will ask permission first, so please let me know before you start filming."
+    "Photos are usually fine. If the owner is still living here, I will ask permission first, so please let me know before you start filming.",
+    "Photos are fine! I will just check with the owner.",
+    "Yes, you can take photos and videos. If the owner is at home, I will ask first, so you can film freely and take your time."
    ]
   },
   "viewing-4": {
@@ -210,7 +256,9 @@
    "r": [
     "You make an offer, and I take it to the owner.",
     "You tell me your offer, I take it to the owner, and then we discuss the reservation.",
-    "You can tell me your offer in writing, I will present it to the owner, and if we agree, we can prepare the reservation agreement."
+    "You can tell me your offer in writing, I will present it to the owner, and if we agree, we can prepare the reservation agreement.",
+    "Just tell me your offer, and I will take it to the owner!",
+    "Tell me your offer, and I will present it to the owner right away. If they agree, we can prepare the reservation agreement together."
    ]
   }
  },
@@ -337,7 +385,7 @@
   "พูดเพื่อแปล": "Speak to translate",
   "ทิศทางการแปล": "Translation direction",
   "เลือกประโยคตอบ": "Choose your reply",
-  "เลือกประโยคตอบ (3 ระดับ)": "Choose your reply (3 levels)",
+  "เลือกประโยคตอบ (5 ระดับ)": "Choose your reply (5 levels)",
   "คัดลอก": "Copy",
   "เก็บ": "Save",
   "เก็บแล้ว": "Saved",
@@ -402,6 +450,10 @@
   "เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari": "This device has no built-in voice. Try opening in Chrome or Safari.",
   "เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย": "This browser cannot use the microphone. Open the page in Chrome (Android) or Safari (iPhone) to speak your replies. For now, tap a reply to choose it.",
   "เปิดในเบราว์เซอร์": "Open in browser",
-  "คัดลอกลิงก์": "Copy link"
+  "คัดลอกลิงก์": "Copy link",
+  "เป็นกันเอง": "Friendly",
+  "เชิงรุก": "Proactive",
+  "เปลี่ยนคำตอบ": "Change answer",
+  "ส่งคำตอบ": "Send"
  }
 }

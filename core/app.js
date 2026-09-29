@@ -86,13 +86,13 @@ function loadPack(code){
 function applyLang(){
   var n=PACKS[NATIVE],t=PACKS[TARGET];
   TL=langInfo(TARGET)[3];NL=langInfo(NATIVE)[3];
-  CATS=BASE.cats.map(function(c){return {id:c.id,th:n.cats[c.id],en:t.cats[c.id],turns:c.turns.map(function(x){return {id:x.id,mood:x.mood,en:t.turns[x.id].q,th:n.turns[x.id].q,r:[0,1,2].map(function(i){return [t.turns[x.id].r[i],n.turns[x.id].r[i]]})}})}});
+  CATS=BASE.cats.map(function(c){return {id:c.id,th:n.cats[c.id],en:t.cats[c.id],turns:c.turns.map(function(x){return {id:x.id,mood:x.mood,en:t.turns[x.id].q,th:n.turns[x.id].q,r:[0,1,2,3,4].map(function(i){return [t.turns[x.id].r[i],n.turns[x.id].r[i]]})}})}});
   PAIRS=BASE.pairs.map(function(p,i){return {w:p.w,en:t.pairs[i],th:n.pairs[i]}});
   DEMO=BASE.demo.map(function(d,i){return {id:d.id,en:t.demo[i],th:n.demo[i],cat:_('ตัวอย่าง')}});
   REACT=[0,1,2].map(function(i){return [t.react[i],n.react[i]]});
   RM=BASE.reaction_moods||[];
   G=n.gloss||{};
-  LV=[_('สั้น'),_('มาตรฐาน'),_('สุภาพ')];
+  LV=[_('สั้น'),_('มาตรฐาน'),_('สุภาพ'),_('เป็นกันเอง'),_('เชิงรุก')];
   LVTXT={ok:_('เพียงพอ'),warn:_('ใกล้หมด ควรเติมเร็ว ๆ นี้'),crit:_('เหลือน้อยมาก เติมเงินได้เลย'),out:_('หมดแล้ว ระบบหยุดแปลจนกว่าจะเติมเงิน')};
   LV=LV.map(_);Object.keys(LVTXT).forEach(function(k){LVTXT[k]=_(LVTXT[k])});
   DEMO.forEach(function(d){d.cat=_(d.cat)});
@@ -390,16 +390,18 @@ function renderCall(){
     h=bd+callTop(c,ch)+'<div class="cface small" id="faceBox">'+faceSVG(ch,'delighted')+_('</div><div class="cbottom"><div class="sub sum"><h3>จบสายแล้ว · ')+dur+_('</h3><p class="th">คุณตอบครบ ')+c.turns.length+_(' ข้อ ประโยคที่ตอบเก็บไว้ทบทวนได้</p><div class="sumlist">')+list+_('</div></div><div class="row"><button class="btn primary" data-act="again">โทรอีกรอบ</button><button class="btn glass" data-act="saveall">เก็บทั้งหมด</button><button class="btn glass" data-act="back">วางสาย</button></div></div>');
   }else{
     var t=c.turns[st.turn];var picked=st.picked!==null;
-    var mood=picked?(RM[st.picked]||'happy'):t.mood;st.mood=mood;
+    var sent=picked&&st.sent;var mood=sent?(RM[rx(st.picked)]||'happy'):t.mood;st.mood=mood;
     var i0=reg(t.en,t.th,c.th,aidQ(t.id));var focus=i0,my='',react='';
     if(picked){
       var r=t.r[st.picked];var i1=reg(r[0],r[1],c.th,aidR(t.id,st.picked));focus=i1;
       my=_('<div class="sub me"><div class="row" style="margin-bottom:6px"><span class="tag">คุณตอบ · ')+LV[st.picked]+'</span>'+(st.score!==null?_('<span class="tag">ตรงกับประโยค ')+st.score+'%</span>':'')+'</div><div class="en">'+words(r[0])+'</div>'+(st.showTh?'<div class="th">'+esc(r[1])+'</div>':'')+'</div>';
-      var rc=REACT[st.picked];
-      if(rc)react='<div class="react"><span class="rdot"></span><span><b>'+esc(ch.name)+'</b> '+esc(rc[0])+(st.showTh?' <em>'+esc(rc[1])+'</em>':'')+'</span></div>';
+      var rc=REACT[rx(st.picked)];
+      if(rc&&sent)react='<div class="react"><span class="rdot"></span><span><b>'+esc(ch.name)+'</b> '+esc(rc[0])+(st.showTh?' <em>'+esc(rc[1])+'</em>':'')+'</span></div>';
     }
     var fl=st.lines[focus];var saved=isSaved(fl.en);
-    var main=picked
+    var main=picked&&!sent
+      ?_('<div class="cbw main"><button class="cmain next" data-act="send" aria-label="ส่งคำตอบ">')+IC.next+_('</button><span class="cl">ส่งคำตอบ</span></div>')
+      :picked
       ?_('<div class="cbw main"><button class="cmain next" data-act="next" aria-label="ข้อต่อไป">')+IC.next+'</button><span class="cl">'+(st.turn+1>=c.turns.length?_('จบสาย'):_('ต่อไป'))+'</span></div>'
       :_('<div class="cbw main"><button class="cmain mic" data-act="mic" aria-label="กดแล้วพูดตอบ">')+IC.mic+_('</button><span class="cl">พูดตอบ</span></div>');
     var ctrls='<div class="ctrls">'+
@@ -408,7 +410,7 @@ function renderCall(){
       cb('toggleTh','','<b>'+langInfo(NATIVE)[2]+'</b>',_('คำแปล'),st.showTh?'on':'')+
       cb('save','data-i="'+focus+'"',icSave(saved),saved?_('เก็บแล้ว'):_('เก็บ'),saved?'on':'')+
       cb('copy','data-i="'+focus+'" data-side="en"',IC.copy,_('คัดลอก'))+'</div>';
-    var pill=picked?'':_('<button class="pillbtn" data-act="sheet"><span>เลือกประโยคตอบ (3 ระดับ)</span><span aria-hidden="true">▲</span></button>');
+    var pill=picked&&sent?'':picked?_('<button class="pillbtn" data-act="change"><span>เปลี่ยนคำตอบ</span><span aria-hidden="true">↺</span></button>'):_('<button class="pillbtn" data-act="sheet"><span>เลือกประโยคตอบ (5 ระดับ)</span><span aria-hidden="true">▲</span></button>');
     var sheet=picked?'':'<div class="sheet'+(st.sheet?' open':'')+_('" id="sheet" role="dialog" aria-label="เลือกประโยคตอบ"><div class="grab"></div><div class="row" style="justify-content:space-between"><h3>เลือกประโยคตอบ</h3><button class="btn sm glass" data-act="sheet">ปิด</button></div><div class="copts">')+
       t.r.map(function(r,i){return '<button class="copt" data-act="pick" data-r="'+i+'"><span class="tag lv">'+LV[i]+'</span><span class="e">'+esc(r[0])+'</span><span class="t">'+esc(r[1])+'</span></button>'}).join('')+'</div></div>';
     h=bd+callTop(c,ch)+'<div class="cface" id="faceBox">'+faceSVG(ch,mood)+'</div><div class="cbottom"><div class="cstack">'+react+
@@ -548,12 +550,17 @@ function addVault(en,th,cat){
   if(isSaved(en)){st.vault=st.vault.filter(function(v){return v.en!==en});saveVault();toast(_('เอาออกจากคลังแล้ว'));return false}
   st.vault.push({id:'v'+Date.now()+Math.floor(Math.random()*1000),en:en,th:th||'-',cat:cat||_('ทั่วไป')});saveVault();toast(_('เก็บเข้าคลังแล้ว'));return true;
 }
+function rx(r){return r<3?r:(r===3?1:2)}
 function pick(r,score){
-  st.picked=r;st.score=score==null?null:score;st.sheet=false;
+  st.picked=r;st.sent=false;st.score=score==null?null:score;st.sheet=false;
   var c=catById(st.cat);var t=c.turns[st.turn];
-  st.log.push({en:t.r[r][0],th:t.r[r][1]});
   render();
-  var rc=REACT[r];if(rc)playLine(aidX(r),rc[0],TL,1,true);
+  playLine(aidR(t.id,r),t.r[r][0],TL,1,false);
+}
+function sendReply(){
+  var c=catById(st.cat);var t=c.turns[st.turn];var r=st.picked;if(r===null)return;
+  stopAllSound();st.sent=true;st.log.push({en:t.r[r][0],th:t.r[r][1]});render();
+  var rc=REACT[rx(r)];if(rc)playLine(aidX(rx(r)),rc[0],TL,1,true);
 }
 function enterTurn(){
   st.sheet=false;render();
@@ -589,6 +596,8 @@ document.addEventListener('click',function(e){
   else if(a==='cat'){st.cat=b.getAttribute('data-cat');st.turn=0;st.picked=null;st.score=null;st.log=[];st.sheet=false;st.ring=true;startRing();render()}
   else if(a==='answer'){stopRing();st.ring=false;st.callStart=Date.now();st.callEnd=0;enterTurn()}
   else if(a==='again'){st.turn=0;st.picked=null;st.score=null;st.log=[];st.callStart=Date.now();st.callEnd=0;enterTurn()}
+  else if(a==='send'){sendReply()}
+  else if(a==='change'){stopAllSound();st.sent=false;st.picked=null;st.score=null;st.sheet=true;render()}
   else if(a==='sheet'){st.sheet=!st.sheet;var sh=$('#sheet');if(sh)sh.classList.toggle('open',st.sheet)}
   else if(a==='back'){stopRing();stopAllSound();st.cat=null;st.picked=null;st.ring=false;st.sheet=false;render()}
   else if(a==='toggleTh'){st.showTh=!st.showTh;store.set('th',st.showTh?'1':'0');render()}

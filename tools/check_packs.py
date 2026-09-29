@@ -40,7 +40,7 @@ def check(code):
     if set(d.get("turns", {})) != set(SRC["turns"]): errs.append("turns keys differ")
     else:
         for k, t in d["turns"].items():
-            if not t.get("q") or len(t.get("r", [])) != 3 or not all(t["r"]): errs.append("turn %s incomplete" % k)
+            if not t.get("q") or len(t.get("r", [])) != 5 or not all(t["r"]): errs.append("turn %s incomplete" % k)
     for f in ("react", "pairs", "demo"):
         if len(d.get(f, [])) != len(SRC[f]) or not all(d.get(f, [])): errs.append("%s must have %d non-empty items" % (f, len(SRC[f])))
     if code not in ("en",):

@@ -26,7 +26,9 @@
    "r": [
     "Gern. Wie viele Schlafzimmer brauchen Sie?",
     "Sehr gern. Wie viele Schlafzimmer brauchen Sie, und welches Budget haben Sie?",
-    "Selbstverständlich, sehr gern. Darf ich fragen, wie viele Schlafzimmer Sie benötigen und welches Budget Sie ungefähr im Sinn haben?"
+    "Selbstverständlich, sehr gern. Darf ich fragen, wie viele Schlafzimmer Sie benötigen und welches Budget Sie ungefähr im Sinn haben?",
+    "Sehr gern! Wie viele Schlafzimmer schweben Ihnen vor?",
+    "Sehr gern! Ich kenne einige richtig ruhige Ecken in Strandnähe. Nennen Sie mir Schlafzimmer und Budget, dann stelle ich Ihnen die besten Objekte zusammen."
    ]
   },
   "general-2": {
@@ -34,7 +36,9 @@
    "r": [
     "Kein Problem, aber ich erkläre Ihnen die Möglichkeiten.",
     "Für den Kauf ist das kein Problem, das Visum ist allerdings eine separate Frage. Ich erkläre Ihnen die Möglichkeiten.",
-    "Viele ausländische Käufer machen es genauso, doch das Visum ist eine separate Angelegenheit. Ich empfehle Ihnen daher, das mit einem Anwalt zu klären."
+    "Viele ausländische Käufer machen es genauso, doch das Visum ist eine separate Angelegenheit. Ich empfehle Ihnen daher, das mit einem Anwalt zu klären.",
+    "Kein Problem, das machen viele so! Nur das Visum sollte man prüfen.",
+    "Gute Nachricht: Sich nur einen Teil des Jahres hier aufzuhalten, ist ganz üblich. Ich erkläre Ihnen die Visa-Möglichkeiten und stelle Ihnen auf Wunsch einen vertrauenswürdigen Anwalt vor."
    ]
   },
   "general-3": {
@@ -42,7 +46,9 @@
    "r": [
     "In einer Wohnanlage gibt es Gemeinschaftseinrichtungen. Eine Villa ist privater.",
     "Ein Haus in einer Wohnanlage bietet Gemeinschaftseinrichtungen und Sicherheitsdienst, eine private Villa dagegen mehr Privatsphäre.",
-    "Bei einem Haus in einer Wohnanlage teilt man sich meist Einrichtungen wie den Sicherheitsdienst und ein Clubhaus. Eine private Villa bietet mehr Privatsphäre und Platz, dafür kümmern Sie sich selbst stärker um die Instandhaltung."
+    "Bei einem Haus in einer Wohnanlage teilt man sich meist Einrichtungen wie den Sicherheitsdienst und ein Clubhaus. Eine private Villa bietet mehr Privatsphäre und Platz, dafür kümmern Sie sich selbst stärker um die Instandhaltung.",
+    "Eine Wohnanlage ist gesellig und sicher. Eine Villa ist wie Ihre eigene kleine Welt.",
+    "Wenn Sie Gemeinschaft mit Sicherheitsdienst mögen, passt eine Wohnanlage zu Ihnen. Wenn Ihnen Privatsphäre am wichtigsten ist, ist eine Villa besser. Was trifft eher auf Sie zu?"
    ]
   },
   "general-4": {
@@ -50,7 +56,9 @@
    "r": [
     "Ja. Ich schicke Ihnen morgen drei Vorschläge.",
     "Ja, ich stelle drei Objekte zusammen und schicke Ihnen morgen die Details per Line.",
-    "Selbstverständlich. Ich stelle drei passende Objekte für Sie zusammen und sende Ihnen morgen die Details per Line, damit wir entscheiden können, welche wir besichtigen."
+    "Selbstverständlich. Ich stelle drei passende Objekte für Sie zusammen und sende Ihnen morgen die Details per Line, damit wir entscheiden können, welche wir besichtigen.",
+    "Gern! Ich schicke Ihnen morgen drei gute Objekte.",
+    "Ja, und ich wähle drei aus, die zu Ihren Wünschen passen. Ich melde mich morgen bei Ihnen, und wir können diese Woche Besichtigungen vereinbaren."
    ]
   },
   "home-1": {
@@ -58,7 +66,9 @@
    "r": [
     "Ja, alle Geräte sind inklusive.",
     "Ja, Kühlschrank, Backofen und Kochfeld sind im Preis enthalten.",
-    "Ja, Kühlschrank, Backofen und Kochfeld sind im Preis inbegriffen. Auf Wunsch sende ich Ihnen gern die vollständige Inventarliste."
+    "Ja, Kühlschrank, Backofen und Kochfeld sind im Preis inbegriffen. Auf Wunsch sende ich Ihnen gern die vollständige Inventarliste.",
+    "Ja, alle Geräte bleiben im Haus!",
+    "Ja, Kühlschrank, Backofen und Kochfeld bleiben alle da. Auf Wunsch erstelle ich Ihnen eine Liste aller Gegenstände, damit Sie genau wissen, was Sie bekommen."
    ]
   },
   "home-2": {
@@ -66,7 +76,9 @@
    "r": [
     "Drei Schlafzimmer, alle mit Klimaanlage.",
     "Es gibt drei Schlafzimmer, jedes hat eine eigene Klimaanlage.",
-    "Das Haus hat drei Schlafzimmer, und jedes Zimmer verfügt über eine eigene Klimaanlage. Möchten Sie zuerst das Hauptschlafzimmer sehen?"
+    "Das Haus hat drei Schlafzimmer, und jedes Zimmer verfügt über eine eigene Klimaanlage. Möchten Sie zuerst das Hauptschlafzimmer sehen?",
+    "Drei Schlafzimmer, und jedes hat eine eigene Klimaanlage!",
+    "Drei Schlafzimmer, jedes mit eigener Klimaanlage. Sollen wir mit dem Hauptschlafzimmer anfangen? Es ist mein Lieblingszimmer."
    ]
   },
   "home-3": {
@@ -74,7 +86,9 @@
    "r": [
     "Ja, beides ist gut.",
     "Der Wasserdruck ist kräftig, und alle drei Bäder haben einen Boiler.",
-    "Der Wasserdruck ist sehr gut, da es einen Druckbehälter mit Pumpe gibt, und jedes Bad hat seinen eigenen Warmwasserbereiter."
+    "Der Wasserdruck ist sehr gut, da es einen Druckbehälter mit Pumpe gibt, und jedes Bad hat seinen eigenen Warmwasserbereiter.",
+    "Ja, der Druck ist prima, und jedes Bad hat Warmwasser!",
+    "Ja, der Druck ist dank des Druckbehälters mit Pumpe kräftig, und jedes Bad hat Warmwasser. Ich drehe gern die Wasserhähne auf, damit Sie es selbst spüren."
    ]
   },
   "home-4": {
@@ -82,7 +96,9 @@
    "r": [
     "Etwa zweitausend Baht im Monat.",
     "Der frühere Eigentümer hat etwa zweitausend Baht im Monat gezahlt, mit laufender Klimaanlage.",
-    "Der frühere Eigentümer sagte, die Stromrechnung liege bei etwa zweitausend Baht im Monat, das hängt aber davon ab, wie viel Sie die Klimaanlage nutzen."
+    "Der frühere Eigentümer sagte, die Stromrechnung liege bei etwa zweitausend Baht im Monat, das hängt aber davon ab, wie viel Sie die Klimaanlage nutzen.",
+    "Etwa zweitausend Baht im Monat, das ist gar nicht schlecht!",
+    "Der Eigentümer hat etwa zweitausend Baht im Monat gezahlt. Wenn Sie die Klimaanlage weniger nutzen, wird es sogar noch weniger, und ich kann Ihnen die früheren Rechnungen zeigen."
    ]
   },
   "around-1": {
@@ -90,7 +106,9 @@
    "r": [
     "Ja, er ist privat. Er ist eineinhalb Meter tief.",
     "Ja, der Pool ist privat und etwa eineinhalb Meter tief.",
-    "Ja, es ist ein privater Pool, an der tiefsten Stelle etwa eineinhalb Meter. Es gibt auch einen flachen Bereich für Kinder."
+    "Ja, es ist ein privater Pool, an der tiefsten Stelle etwa eineinhalb Meter. Es gibt auch einen flachen Bereich für Kinder.",
+    "Ja, er gehört ganz Ihnen und ist etwa eineinhalb Meter tief!",
+    "Ja, es ist ein privater Pool, etwa eineinhalb Meter tief. Er ist ideal für eine Familie, und einen Reinigungsservice kann ich auch organisieren."
    ]
   },
   "around-2": {
@@ -98,7 +116,9 @@
    "r": [
     "Etwa zweihundert Quadratmeter. Ein Gärtner kommt wöchentlich.",
     "Der Garten ist etwa zweihundert Quadratmeter groß, und einmal pro Woche kommt ein Gärtner.",
-    "Der Garten hat etwa zweihundert Quadratmeter. Ein Gärtner kann einmal pro Woche kommen, das organisiere ich auf Wunsch gern für Sie."
+    "Der Garten hat etwa zweihundert Quadratmeter. Ein Gärtner kann einmal pro Woche kommen, das organisiere ich auf Wunsch gern für Sie.",
+    "Etwa zweihundert Quadratmeter, und wir können einen Gärtner schicken!",
+    "Der Garten hat etwa zweihundert Quadratmeter. Einen Gärtner einmal pro Woche zu organisieren ist einfach, und ich hole Ihnen ein Preisangebot ein."
    ]
   },
   "around-3": {
@@ -106,7 +126,9 @@
    "r": [
     "Ja, am Tor steht die ganze Nacht ein Wachmann.",
     "Ja, die Wohnanlage hat rund um die Uhr einen Wachmann am Tor.",
-    "Ja, die Wohnanlage hat rund um die Uhr Sicherheitspersonal am Tor, und ich stelle Sie gern dem Verwaltungsbüro der Anlage vor."
+    "Ja, die Wohnanlage hat rund um die Uhr Sicherheitspersonal am Tor, und ich stelle Sie gern dem Verwaltungsbüro der Anlage vor.",
+    "Sehr sicher! Die ganze Nacht steht ein Wachmann am Tor.",
+    "Sehr sicher. Am Tor steht rund um die Uhr ein Wachmann, und ich stelle Sie gern dem Verwaltungsbüro der Anlage vor, damit Sie sich selbst nach der Sicherheit erkundigen können."
    ]
   },
   "around-4": {
@@ -114,7 +136,9 @@
    "r": [
     "Der Supermarkt ist zehn Minuten entfernt, das Krankenhaus fünfzehn.",
     "Der nächste Supermarkt ist etwa zehn Autominuten entfernt, das Krankenhaus etwa fünfzehn Minuten.",
-    "Der nächste Supermarkt ist etwa zehn Autominuten entfernt, das nächste Krankenhaus etwa fünfzehn Minuten. Ich schicke Ihnen gern die Karte."
+    "Der nächste Supermarkt ist etwa zehn Autominuten entfernt, das nächste Krankenhaus etwa fünfzehn Minuten. Ich schicke Ihnen gern die Karte.",
+    "Supermarkt in zehn Minuten, Krankenhaus in fünfzehn. Sehr praktisch!",
+    "Der Supermarkt ist zehn Minuten entfernt und das Krankenhaus fünfzehn. Bei der Besichtigung fahre ich Sie gern beide Strecken ab."
    ]
   },
   "deal-1": {
@@ -122,7 +146,9 @@
    "r": [
     "Welchen Preis hatten Sie im Sinn?",
     "Ich verstehe. Mit welchem Preis wären Sie zufrieden?",
-    "Ich verstehe, und danke für Ihre Offenheit. Darf ich fragen, welches Budget Sie im Sinn haben?"
+    "Ich verstehe, und danke für Ihre Offenheit. Darf ich fragen, welches Budget Sie im Sinn haben?",
+    "Ich verstehe Sie! Welche Zahl fühlt sich für Sie richtig an?",
+    "Ich verstehe, und ich möchte einen Preis finden, der für Sie passt. Nennen Sie mir Ihre Zahl, dann sehe ich, was ich mit dem Eigentümer aushandeln kann."
    ]
   },
   "deal-2": {
@@ -130,7 +156,9 @@
    "r": [
     "Ich frage den Eigentümer.",
     "Das ist ein großer Nachlass, aber ich frage den Eigentümer nach einem Barzahlungsrabatt.",
-    "Zwei Millionen sind ein erheblicher Nachlass, daher kann ich nichts versprechen, aber ich werde Ihr Barangebot heute dem Eigentümer vorlegen."
+    "Zwei Millionen sind ein erheblicher Nachlass, daher kann ich nichts versprechen, aber ich werde Ihr Barangebot heute dem Eigentümer vorlegen.",
+    "Bargeld hilft! Ich spreche für Sie mit dem Eigentümer.",
+    "Bar zu zahlen ist ein starkes Angebot. Ich kann nichts versprechen, lege es dem Eigentümer aber noch heute vor und setze mich für den bestmöglichen Nachlass ein."
    ]
   },
   "deal-3": {
@@ -138,7 +166,9 @@
    "r": [
     "Ich kann es versuchen. Ich prüfe das.",
     "Ich denke, das ist möglich. Ich kläre es mit dem Eigentümer und melde mich bei Ihnen.",
-    "Das ist eine vernünftige Bitte. Ich kläre es mit dem Eigentümer und antworte Ihnen bis heute Abend."
+    "Das ist eine vernünftige Bitte. Ich kläre es mit dem Eigentümer und antworte Ihnen bis heute Abend.",
+    "Ich tue mein Bestes, damit die Möbel dabei sind!",
+    "Das ist ein fairer Vorschlag. Ich bitte den Eigentümer, die Möbel zum Nachlass dazuzugeben, und rufe Sie heute Abend mit einer Antwort an."
    ]
   },
   "deal-4": {
@@ -146,7 +176,9 @@
    "r": [
     "Wir können diese Woche die Reservierung unterschreiben.",
     "Wir können diese Woche eine Reservierungsvereinbarung unterzeichnen und innerhalb von dreißig Tagen übertragen.",
-    "Wir können diese Woche eine Reservierungsvereinbarung unterzeichnen, und die Eigentumsübertragung erfolgt üblicherweise innerhalb von dreißig Tagen."
+    "Wir können diese Woche eine Reservierungsvereinbarung unterzeichnen, und die Eigentumsübertragung erfolgt üblicherweise innerhalb von dreißig Tagen.",
+    "Schnell! Wir können diese Woche die Reservierung unterschreiben.",
+    "Wir können diese Woche die Reservierung unterschreiben und in etwa dreißig Tagen übertragen. Ich kann die Unterlagen schon jetzt vorbereiten, damit wir bereit sind."
    ]
   },
   "terms-1": {
@@ -154,7 +186,9 @@
    "r": [
     "Ausländer dürfen in Thailand kein Land besitzen, aber es gibt andere Möglichkeiten.",
     "Ausländer können in Thailand grundsätzlich kein Land besitzen, aber Sie können das Grundstück pachten oder das Haus separat besitzen.",
-    "Nach thailändischem Recht können Ausländer grundsätzlich kein Land besitzen, es gibt jedoch rechtliche Möglichkeiten wie einen langfristigen Pachtvertrag. Ich empfehle Ihnen, die Einzelheiten mit einem Anwalt zu klären."
+    "Nach thailändischem Recht können Ausländer grundsätzlich kein Land besitzen, es gibt jedoch rechtliche Möglichkeiten wie einen langfristigen Pachtvertrag. Ich empfehle Ihnen, die Einzelheiten mit einem Anwalt zu klären.",
+    "Nicht das Grundstück selbst, aber es gibt sichere Wege!",
+    "Das Land selbst können Sie nicht direkt besitzen, aber ein langfristiger Pachtvertrag oder der separate Besitz des Hauses funktioniert gut. Ich kann Sie mit einem Anwalt bekannt machen, der es Ihnen erklärt."
    ]
   },
   "terms-2": {
@@ -162,7 +196,9 @@
    "r": [
     "Die Anzahlung beträgt hunderttausend Baht.",
     "Die Reservierungsanzahlung beträgt hunderttausend Baht, die Rückerstattungsbedingungen stehen im Vertrag.",
-    "Die Reservierungsanzahlung beträgt hunderttausend Baht. Ob sie erstattet wird, hängt von den Vertragsbedingungen ab, die wir gemeinsam durchgehen können."
+    "Die Reservierungsanzahlung beträgt hunderttausend Baht. Ob sie erstattet wird, hängt von den Vertragsbedingungen ab, die wir gemeinsam durchgehen können.",
+    "Hunderttausend Baht, und die Rückerstattungsregeln stehen im Vertrag.",
+    "Die Anzahlung beträgt hunderttausend Baht. Die Rückerstattungsbedingungen stehen im Vertrag, lassen Sie uns sie also gemeinsam lesen, bevor Sie sich entscheiden."
    ]
   },
   "terms-3": {
@@ -170,7 +206,9 @@
    "r": [
     "Die Übertragungsgebühr teilt man üblicherweise fifty-fifty.",
     "Die Übertragungsgebühr wird üblicherweise hälftig geteilt, die Steuern zahlt der Verkäufer.",
-    "Üblicherweise teilen sich Käufer und Verkäufer die Übertragungsgebühr zu gleichen Teilen, während der Verkäufer die Steuern trägt, das ist aber verhandelbar."
+    "Üblicherweise teilen sich Käufer und Verkäufer die Übertragungsgebühr zu gleichen Teilen, während der Verkäufer die Steuern trägt, das ist aber verhandelbar.",
+    "Wir teilen die Übertragungsgebühr, und der Verkäufer zahlt die Steuern.",
+    "Normalerweise teilen wir die Übertragungsgebühr zu gleichen Teilen, und der Verkäufer zahlt die Steuern. Das ist verhandelbar, und ich kann für Sie eine bessere Aufteilung erfragen."
    ]
   },
   "terms-4": {
@@ -178,7 +216,9 @@
    "r": [
     "Ja, wir können einen Ratenplan vereinbaren.",
     "Ja, wir können die Zahlung in Raten aufteilen, die dem Baufortschritt folgen.",
-    "Ja, wir können Raten vereinbaren, die sich an den Bauabschnitten orientieren, und ich halte den Zahlungsplan für Sie schriftlich fest."
+    "Ja, wir können Raten vereinbaren, die sich an den Bauabschnitten orientieren, und ich halte den Zahlungsplan für Sie schriftlich fest.",
+    "Ja, wir können in Raten zahlen, während gebaut wird!",
+    "Ja, Raten, die dem Baufortschritt folgen, sind möglich. Ich halte den Zahlungsplan schriftlich fest, damit Sie jeden Zahlungstermin sehen."
    ]
   },
   "viewing-1": {
@@ -186,7 +226,9 @@
    "r": [
     "Ja. Um wie viel Uhr möchten Sie kommen?",
     "Ja, Samstagvormittag geht gut. Welche Uhrzeit passt Ihnen am besten?",
-    "Ja, Samstagvormittag ist frei. Welche Uhrzeit würde Ihnen am besten passen? Ich kann Sie am Tor empfangen."
+    "Ja, Samstagvormittag ist frei. Welche Uhrzeit würde Ihnen am besten passen? Ich kann Sie am Tor empfangen.",
+    "Samstagvormittag passt! Um wie viel Uhr wäre es Ihnen recht?",
+    "Samstagvormittag ist perfekt. Nennen Sie mir Ihre Uhrzeit, dann sorge ich dafür, dass Eigentümer und Haus für Sie bereit sind."
    ]
   },
   "viewing-2": {
@@ -194,7 +236,9 @@
    "r": [
     "Ich treffe Sie am Tor. Ich schicke die Karte.",
     "Ich treffe Sie am Haupttor und schicke Ihnen die Karte per Line.",
-    "Ich treffe Sie am Haupttor. Ich sende Ihnen die Karte und meinen Line-Kontakt, damit Sie mich leicht finden."
+    "Ich treffe Sie am Haupttor. Ich sende Ihnen die Karte und meinen Line-Kontakt, damit Sie mich leicht finden.",
+    "Wir treffen uns am Tor. Ich schicke Ihnen die Karte!",
+    "Ich warte am Haupttor auf Sie. Ich schicke Ihnen die Karte und meinen Line-Kontakt, rufen Sie mich also an, falls Sie sich verirren."
    ]
   },
   "viewing-3": {
@@ -202,7 +246,9 @@
    "r": [
     "Ja, Fotos sind möglich.",
     "Ja, Fotos sind in Ordnung. Wenn der Eigentümer noch hier wohnt, frage ich vorher nach.",
-    "Fotos sind in der Regel kein Problem. Wenn der Eigentümer noch hier wohnt, frage ich zuerst um Erlaubnis, bitte sagen Sie mir daher Bescheid, bevor Sie zu filmen beginnen."
+    "Fotos sind in der Regel kein Problem. Wenn der Eigentümer noch hier wohnt, frage ich zuerst um Erlaubnis, bitte sagen Sie mir daher Bescheid, bevor Sie zu filmen beginnen.",
+    "Fotos sind in Ordnung! Ich frage nur kurz den Eigentümer.",
+    "Ja, Sie dürfen Fotos und Videos machen. Wenn der Eigentümer zu Hause ist, frage ich vorher nach, dann können Sie in Ruhe filmen und sich Zeit lassen."
    ]
   },
   "viewing-4": {
@@ -210,7 +256,9 @@
    "r": [
     "Sie nennen mir Ihr Angebot, und ich gebe es an den Eigentümer weiter.",
     "Sie nennen mir Ihr Angebot, ich leite es an den Eigentümer weiter, und dann besprechen wir die Reservierung.",
-    "Sie können mir Ihr Angebot schriftlich mitteilen, ich lege es dem Eigentümer vor, und wenn wir uns einigen, können wir die Reservierungsvereinbarung vorbereiten."
+    "Sie können mir Ihr Angebot schriftlich mitteilen, ich lege es dem Eigentümer vor, und wenn wir uns einigen, können wir die Reservierungsvereinbarung vorbereiten.",
+    "Nennen Sie mir einfach Ihr Angebot, dann gebe ich es an den Eigentümer weiter!",
+    "Nennen Sie mir Ihr Angebot, dann lege ich es dem Eigentümer sofort vor. Wenn er zustimmt, können wir gemeinsam die Reservierungsvereinbarung vorbereiten."
    ]
   }
  },
@@ -426,7 +474,7 @@
   "พูดเพื่อแปล": "Zum Übersetzen sprechen",
   "ทิศทางการแปล": "Übersetzungsrichtung",
   "เลือกประโยคตอบ": "Antwort wählen",
-  "เลือกประโยคตอบ (3 ระดับ)": "Antwort wählen (3 Stufen)",
+  "เลือกประโยคตอบ (5 ระดับ)": "Antwort wählen (5 Stufen)",
   "คัดลอก": "Kopieren",
   "เก็บ": "Speichern",
   "เก็บแล้ว": "Gespeichert",
@@ -491,6 +539,10 @@
   "เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari": "Dieses Gerät hat keine eingebaute Stimme. Öffnen Sie die Seite in Chrome oder Safari.",
   "เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย": "Dieser Browser kann das Mikrofon nicht nutzen. Öffnen Sie die Seite in Chrome (Android) oder Safari (iPhone), um zu sprechen. Bis dahin können Sie eine Antwort antippen.",
   "เปิดในเบราว์เซอร์": "Im Browser öffnen",
-  "คัดลอกลิงก์": "Link kopieren"
+  "คัดลอกลิงก์": "Link kopieren",
+  "เป็นกันเอง": "Locker",
+  "เชิงรุก": "Proaktiv",
+  "เปลี่ยนคำตอบ": "Antwort ändern",
+  "ส่งคำตอบ": "Senden"
  }
 }

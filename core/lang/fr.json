@@ -26,7 +26,9 @@
    "r": [
     "Bien sûr. De combien de chambres avez-vous besoin ?",
     "Bien sûr, avec plaisir. De combien de chambres avez-vous besoin, et quel est votre budget ?",
-    "Certainement, ce sera un plaisir de vous aider. Puis-je vous demander de combien de chambres vous avez besoin et quel budget vous envisagez à peu près ?"
+    "Certainement, ce sera un plaisir de vous aider. Puis-je vous demander de combien de chambres vous avez besoin et quel budget vous envisagez à peu près ?",
+    "Bien sûr, avec grand plaisir ! Combien de chambres souhaitez-vous ?",
+    "Absolument ! Je connais des coins très calmes près de la plage. Dites-moi le nombre de chambres et votre budget, et je vous prépare une sélection des meilleurs biens."
    ]
   },
   "general-2": {
@@ -34,7 +36,9 @@
    "r": [
     "Pas de problème, mais laissez-moi vous expliquer les options.",
     "Ce n'est pas un problème pour l'achat, mais le visa est une question à part. Je peux vous expliquer les options.",
-    "Beaucoup d'acheteurs étrangers font la même chose, mais le visa est une question à part ; je vous recommande donc de le vérifier auprès d'un avocat."
+    "Beaucoup d'acheteurs étrangers font la même chose, mais le visa est une question à part ; je vous recommande donc de le vérifier auprès d'un avocat.",
+    "Pas de souci, beaucoup de gens font pareil ! Le visa est le point à vérifier.",
+    "Bonne nouvelle : séjourner une partie de l'année est très courant. Je vous explique les options de visa, et je peux vous présenter un avocat de confiance si vous le souhaitez."
    ]
   },
   "general-3": {
@@ -42,7 +46,9 @@
    "r": [
     "Une résidence a des équipements communs. Une villa est plus privée.",
     "Une maison dans une résidence a des équipements communs et un gardiennage, alors qu'une villa privée vous offre plus d'intimité.",
-    "Une maison dans une résidence partage généralement des équipements comme le gardiennage et un club-house, tandis qu'une villa privée vous offre plus d'intimité et d'espace, mais vous devez vous occuper davantage de l'entretien."
+    "Une maison dans une résidence partage généralement des équipements comme le gardiennage et un club-house, tandis qu'une villa privée vous offre plus d'intimité et d'espace, mais vous devez vous occuper davantage de l'entretien.",
+    "Une résidence, c'est convivial et sûr. Une villa, c'est votre petit monde à vous.",
+    "Si vous aimez l'esprit de communauté avec de la sécurité, une résidence vous conviendra. Si l'intimité passe avant tout, une villa est préférable. Lequel vous ressemble le plus ?"
    ]
   },
   "general-4": {
@@ -50,7 +56,9 @@
    "r": [
     "Oui. Je vous envoie trois options demain.",
     "Oui, je vais préparer trois options et vous envoyer les détails sur Line demain.",
-    "Certainement. Je vais préparer trois options qui correspondent à vos besoins et vous envoyer les détails sur Line demain, afin que nous choisissions lesquelles visiter."
+    "Certainement. Je vais préparer trois options qui correspondent à vos besoins et vous envoyer les détails sur Line demain, afin que nous choisissions lesquelles visiter.",
+    "Bien sûr ! Je vous en envoie trois bien demain.",
+    "Oui, et je choisirai trois biens qui correspondent à ce que vous m'avez dit. Je vous écris demain, et nous pourrons fixer des visites cette semaine."
    ]
   },
   "home-1": {
@@ -58,7 +66,9 @@
    "r": [
     "Oui, tout l'électroménager est inclus.",
     "Oui, le réfrigérateur, le four et la plaque de cuisson sont tous compris dans le prix.",
-    "Oui, le prix comprend le réfrigérateur, le four et la plaque de cuisson. Je peux vous envoyer la liste complète de l'inventaire si vous le souhaitez."
+    "Oui, le prix comprend le réfrigérateur, le four et la plaque de cuisson. Je peux vous envoyer la liste complète de l'inventaire si vous le souhaitez.",
+    "Oui, tout l'électroménager reste avec la maison !",
+    "Oui, le réfrigérateur, le four et la plaque de cuisson restent. Si vous voulez, je peux vous lister chaque élément pour que vous sachiez exactement ce que vous obtenez."
    ]
   },
   "home-2": {
@@ -66,7 +76,9 @@
    "r": [
     "Trois chambres, toutes climatisées.",
     "Il y a trois chambres, et chacune a son propre climatiseur.",
-    "La maison compte trois chambres, et chacune est équipée d'un climatiseur indépendant. Souhaitez-vous voir la chambre principale en premier ?"
+    "La maison compte trois chambres, et chacune est équipée d'un climatiseur indépendant. Souhaitez-vous voir la chambre principale en premier ?",
+    "Trois chambres, et chacune a son propre climatiseur !",
+    "Trois chambres, chacune avec son propre climatiseur. On commence par la chambre principale ? C'est ma pièce préférée."
    ]
   },
   "home-3": {
@@ -74,7 +86,9 @@
    "r": [
     "Oui, les deux sont bonnes.",
     "La pression de l'eau est forte, et les trois salles de bains ont un chauffe-eau.",
-    "La pression de l'eau est très bonne grâce à un réservoir avec pompe, et chaque salle de bains a son propre chauffe-eau."
+    "La pression de l'eau est très bonne grâce à un réservoir avec pompe, et chaque salle de bains a son propre chauffe-eau.",
+    "Oui, la pression est super, et chaque salle de bains a de l'eau chaude !",
+    "Oui, la pression est forte grâce au réservoir avec pompe, et chaque salle de bains a de l'eau chaude. Je peux ouvrir les robinets pour que vous le sentiez."
    ]
   },
   "home-4": {
@@ -82,7 +96,9 @@
    "r": [
     "Environ deux mille bahts par mois.",
     "L'ancien propriétaire payait environ deux mille bahts par mois, climatisation comprise.",
-    "L'ancien propriétaire m'a dit que la facture d'électricité était d'environ deux mille bahts par mois, mais cela dépend de votre usage de la climatisation."
+    "L'ancien propriétaire m'a dit que la facture d'électricité était d'environ deux mille bahts par mois, mais cela dépend de votre usage de la climatisation.",
+    "Environ deux mille bahts par mois, ce n'est pas trop mal !",
+    "Le propriétaire payait environ deux mille bahts par mois. Si vous utilisez moins la climatisation, ce sera encore moins, et je peux vous montrer les factures précédentes."
    ]
   },
   "around-1": {
@@ -90,7 +106,9 @@
    "r": [
     "Oui, elle est privée. Elle fait un mètre cinquante de profondeur.",
     "Oui, la piscine est privée, et elle fait environ un mètre cinquante de profondeur.",
-    "Oui, c'est une piscine privée, d'environ un mètre cinquante à l'endroit le plus profond. Il y a aussi une partie peu profonde pour les enfants."
+    "Oui, c'est une piscine privée, d'environ un mètre cinquante à l'endroit le plus profond. Il y a aussi une partie peu profonde pour les enfants.",
+    "Oui, elle est à vous seul, et elle fait environ un mètre cinquante de profondeur !",
+    "Oui, c'est une piscine privée, d'environ un mètre cinquante de profondeur. Elle est parfaite pour une famille, et je peux aussi organiser un service d'entretien."
    ]
   },
   "around-2": {
@@ -98,7 +116,9 @@
    "r": [
     "Environ deux cents mètres carrés. Un jardinier passe chaque semaine.",
     "Le jardin fait environ deux cents mètres carrés, et un jardinier vient une fois par semaine.",
-    "Le jardin fait environ deux cents mètres carrés. Un jardinier peut venir une fois par semaine, et je peux l'organiser pour vous si vous le souhaitez."
+    "Le jardin fait environ deux cents mètres carrés. Un jardinier peut venir une fois par semaine, et je peux l'organiser pour vous si vous le souhaitez.",
+    "Environ deux cents mètres carrés, et nous pouvons envoyer un jardinier !",
+    "Le jardin fait environ deux cents mètres carrés. Un jardinier chaque semaine, c'est facile à organiser, et je m'occupe de vous obtenir un prix."
    ]
   },
   "around-3": {
@@ -106,7 +126,9 @@
    "r": [
     "Oui, il y a un gardien au portail toute la nuit.",
     "Oui, la résidence a un gardien au portail vingt-quatre heures sur vingt-quatre.",
-    "Oui, la résidence est surveillée au portail vingt-quatre heures sur vingt-quatre, et je me ferai un plaisir de vous présenter au bureau de la résidence."
+    "Oui, la résidence est surveillée au portail vingt-quatre heures sur vingt-quatre, et je me ferai un plaisir de vous présenter au bureau de la résidence.",
+    "Très sûr ! Il y a un gardien au portail toute la nuit.",
+    "Très sûr. Le portail est gardé vingt-quatre heures sur vingt-quatre, et je peux vous présenter au bureau de la résidence pour que vous vous renseigniez vous-même sur la sécurité."
    ]
   },
   "around-4": {
@@ -114,7 +136,9 @@
    "r": [
     "Le supermarché est à dix minutes. L'hôpital, à quinze.",
     "Le supermarché le plus proche est à environ dix minutes en voiture, et l'hôpital à environ quinze minutes.",
-    "Le supermarché le plus proche est à environ dix minutes en voiture, et l'hôpital le plus proche à environ quinze minutes. Je peux vous envoyer le plan."
+    "Le supermarché le plus proche est à environ dix minutes en voiture, et l'hôpital le plus proche à environ quinze minutes. Je peux vous envoyer le plan.",
+    "Supermarché à dix minutes, hôpital à quinze. Très pratique !",
+    "Le supermarché est à dix minutes et l'hôpital à quinze. Je peux vous conduire sur les deux trajets pendant la visite."
    ]
   },
   "deal-1": {
@@ -122,7 +146,9 @@
    "r": [
     "Quel prix aviez-vous en tête ?",
     "Je comprends. Quel prix vous conviendrait ?",
-    "Je comprends, et je vous remercie de votre franchise. Puis-je vous demander quel budget vous envisagez ?"
+    "Je comprends, et je vous remercie de votre franchise. Puis-je vous demander quel budget vous envisagez ?",
+    "Je vous entends ! Quel chiffre vous conviendrait ?",
+    "Je comprends, et je veux trouver un prix qui fonctionne. Dites-moi votre chiffre, et je verrai ce que je peux faire avec le propriétaire."
    ]
   },
   "deal-2": {
@@ -130,7 +156,9 @@
    "r": [
     "Je vais demander au propriétaire.",
     "C'est une grosse réduction, mais je vais interroger le propriétaire sur une remise pour paiement comptant.",
-    "Deux millions représentent une réduction importante, je ne peux donc rien vous promettre, mais je présenterai votre offre comptant au propriétaire aujourd'hui."
+    "Deux millions représentent une réduction importante, je ne peux donc rien vous promettre, mais je présenterai votre offre comptant au propriétaire aujourd'hui.",
+    "Le comptant aide ! Je vais en parler au propriétaire pour vous.",
+    "Le paiement comptant est une offre solide. Je ne peux rien promettre, mais je la présenterai au propriétaire aujourd'hui et je ferai tout pour obtenir la meilleure remise."
    ]
   },
   "deal-3": {
@@ -138,7 +166,9 @@
    "r": [
     "Je peux essayer. Je vérifie.",
     "Je pense que c'est possible. Je vais confirmer avec le propriétaire et je reviens vers vous.",
-    "Cela me paraît une demande raisonnable. Je vais confirmer avec le propriétaire et vous répondre ce soir."
+    "Cela me paraît une demande raisonnable. Je vais confirmer avec le propriétaire et vous répondre ce soir.",
+    "Je ferai de mon mieux pour que les meubles soient inclus !",
+    "C'est une idée raisonnable. Je demanderai au propriétaire d'inclure les meubles avec la remise, et je vous appelle ce soir avec une réponse."
    ]
   },
   "deal-4": {
@@ -146,7 +176,9 @@
    "r": [
     "Nous pouvons signer la réservation cette semaine.",
     "Nous pouvons signer un contrat de réservation cette semaine et effectuer le transfert sous trente jours.",
-    "Nous pouvons signer un contrat de réservation cette semaine, et le transfert de propriété a généralement lieu dans les trente jours."
+    "Nous pouvons signer un contrat de réservation cette semaine, et le transfert de propriété a généralement lieu dans les trente jours.",
+    "Rapide ! Nous pouvons signer la réservation cette semaine.",
+    "Nous pouvons signer la réservation cette semaine et effectuer le transfert dans environ trente jours. Je peux préparer les documents dès maintenant pour que nous soyons prêts."
    ]
   },
   "terms-1": {
@@ -154,7 +186,9 @@
    "r": [
     "Les étrangers ne peuvent pas posséder de terrain en Thaïlande, mais il existe d'autres options.",
     "En général, les étrangers ne peuvent pas posséder de terrain en Thaïlande, mais vous pouvez louer le terrain ou être propriétaire de la maison séparément.",
-    "Selon la loi thaïlandaise, les étrangers ne peuvent généralement pas posséder de terrain, mais il existe des solutions légales comme le bail de longue durée. Je vous recommande de consulter un avocat pour confirmer les détails."
+    "Selon la loi thaïlandaise, les étrangers ne peuvent généralement pas posséder de terrain, mais il existe des solutions légales comme le bail de longue durée. Je vous recommande de consulter un avocat pour confirmer les détails.",
+    "Pas le terrain lui-même, mais il existe des solutions sûres !",
+    "Vous ne pouvez pas posséder le terrain directement, mais un bail de longue durée ou la propriété distincte de la maison fonctionne très bien. Je peux vous présenter un avocat pour vous l'expliquer."
    ]
   },
   "terms-2": {
@@ -162,7 +196,9 @@
    "r": [
     "L'acompte est de cent mille bahts.",
     "L'acompte de réservation est de cent mille bahts, et les conditions de remboursement figurent dans le contrat.",
-    "L'acompte de réservation est de cent mille bahts. Son remboursement dépend des conditions prévues au contrat, que nous pouvons examiner ensemble."
+    "L'acompte de réservation est de cent mille bahts. Son remboursement dépend des conditions prévues au contrat, que nous pouvons examiner ensemble.",
+    "Cent mille bahts, et les conditions de remboursement figurent dans le contrat.",
+    "L'acompte est de cent mille bahts. Les conditions de remboursement sont dans le contrat, alors lisons-les ensemble avant que vous ne décidiez."
    ]
   },
   "terms-3": {
@@ -170,7 +206,9 @@
    "r": [
     "Nous partageons généralement les frais de transfert moitié-moitié.",
     "Les frais de transfert sont généralement partagés moitié-moitié, et le vendeur paie les taxes.",
-    "Selon l'usage, les frais de transfert sont partagés à parts égales entre l'acheteur et le vendeur, tandis que le vendeur prend en charge les taxes, mais cela peut se négocier."
+    "Selon l'usage, les frais de transfert sont partagés à parts égales entre l'acheteur et le vendeur, tandis que le vendeur prend en charge les taxes, mais cela peut se négocier.",
+    "Nous partageons les frais de transfert, et le vendeur paie les taxes.",
+    "Normalement, nous partageons les frais de transfert à parts égales et le vendeur paie les taxes. C'est négociable, et je peux demander un meilleur partage pour vous."
    ]
   },
   "terms-4": {
@@ -178,7 +216,9 @@
    "r": [
     "Oui, nous pouvons prévoir un paiement échelonné.",
     "Oui, nous pouvons répartir le paiement en versements suivant l'avancement des travaux.",
-    "Oui, nous pouvons prévoir des versements suivant les étapes de la construction, et je vous fournirai l'échéancier par écrit."
+    "Oui, nous pouvons prévoir des versements suivant les étapes de la construction, et je vous fournirai l'échéancier par écrit.",
+    "Oui, nous pouvons payer par versements au fil de la construction !",
+    "Oui, des versements suivant l'avancement des travaux sont possibles. Je vous mettrai l'échéancier par écrit pour que vous voyiez chaque date de paiement."
    ]
   },
   "viewing-1": {
@@ -186,7 +226,9 @@
    "r": [
     "Oui. À quelle heure souhaitez-vous venir ?",
     "Oui, samedi matin convient. Quelle heure vous arrange le mieux ?",
-    "Oui, samedi matin est possible. Quelle heure vous conviendrait le mieux ? Je peux vous retrouver au portail."
+    "Oui, samedi matin est possible. Quelle heure vous conviendrait le mieux ? Je peux vous retrouver au portail.",
+    "Samedi matin, c'est parfait ! Quelle heure vous conviendrait ?",
+    "Samedi matin, c'est parfait. Dites-moi l'heure qui vous arrange, et je m'assure que le propriétaire et la maison seront prêts pour vous."
    ]
   },
   "viewing-2": {
@@ -194,7 +236,9 @@
    "r": [
     "Je vous retrouve au portail. Je vous envoie le plan.",
     "Je vous retrouve au portail d'entrée et je vous envoie le plan sur Line.",
-    "Je vous retrouverai au portail d'entrée. Je vous enverrai le plan et mon contact Line pour que vous puissiez me trouver facilement."
+    "Je vous retrouverai au portail d'entrée. Je vous enverrai le plan et mon contact Line pour que vous puissiez me trouver facilement.",
+    "Retrouvons-nous au portail. Je vous envoie le plan !",
+    "Je vous attendrai au portail d'entrée. Je vous enverrai le plan et mon contact Line, alors appelez-moi si vous vous perdez."
    ]
   },
   "viewing-3": {
@@ -202,7 +246,9 @@
    "r": [
     "Oui, vous pouvez prendre des photos.",
     "Oui, les photos sont possibles. Si le propriétaire habite ici, je vérifierai d'abord.",
-    "Les photos ne posent généralement pas de problème. Si le propriétaire habite encore ici, je demanderai d'abord son autorisation ; merci donc de me prévenir avant de filmer."
+    "Les photos ne posent généralement pas de problème. Si le propriétaire habite encore ici, je demanderai d'abord son autorisation ; merci donc de me prévenir avant de filmer.",
+    "Les photos, pas de souci ! Je vérifie juste avec le propriétaire.",
+    "Oui, vous pouvez prendre des photos et des vidéos. Si le propriétaire est chez lui, je demanderai d'abord, et vous pourrez filmer librement et prendre votre temps."
    ]
   },
   "viewing-4": {
@@ -210,7 +256,9 @@
    "r": [
     "Vous faites une offre, et je la transmets au propriétaire.",
     "Vous me donnez votre offre, je la transmets au propriétaire, puis nous discutons de la réservation.",
-    "Vous pouvez me communiquer votre offre par écrit, je la présenterai au propriétaire, et si nous trouvons un accord, nous préparerons le contrat de réservation."
+    "Vous pouvez me communiquer votre offre par écrit, je la présenterai au propriétaire, et si nous trouvons un accord, nous préparerons le contrat de réservation.",
+    "Dites-moi votre offre, et je la transmets au propriétaire !",
+    "Dites-moi votre offre, et je la présenterai tout de suite au propriétaire. S'il est d'accord, nous préparerons ensemble le contrat de réservation."
    ]
   }
  },
@@ -426,7 +474,7 @@
   "พูดเพื่อแปล": "Parlez pour traduire",
   "ทิศทางการแปล": "Sens de la traduction",
   "เลือกประโยคตอบ": "Choisissez votre réponse",
-  "เลือกประโยคตอบ (3 ระดับ)": "Choisissez votre réponse (3 niveaux)",
+  "เลือกประโยคตอบ (5 ระดับ)": "Choisissez votre réponse (5 niveaux)",
   "คัดลอก": "Copier",
   "เก็บ": "Enregistrer",
   "เก็บแล้ว": "Enregistré",
@@ -491,6 +539,10 @@
   "เครื่องนี้ไม่มีเสียงอ่านในตัว ลองเปิดใน Chrome หรือ Safari": "Cet appareil n'a pas de voix intégrée. Ouvrez la page dans Chrome ou Safari.",
   "เบราว์เซอร์นี้ใช้ไมค์พูดตอบไม่ได้ เปิดใน Chrome (Android) หรือ Safari (iPhone) จะพูดตอบได้ ตอนนี้แตะเลือกประโยคตอบได้เลย": "Ce navigateur ne peut pas utiliser le micro. Ouvrez la page dans Chrome (Android) ou Safari (iPhone) pour répondre à voix haute. En attendant, touchez une réponse pour la choisir.",
   "เปิดในเบราว์เซอร์": "Ouvrir dans le navigateur",
-  "คัดลอกลิงก์": "Copier le lien"
+  "คัดลอกลิงก์": "Copier le lien",
+  "เป็นกันเอง": "Chaleureux",
+  "เชิงรุก": "Proactif",
+  "เปลี่ยนคำตอบ": "Changer de réponse",
+  "ส่งคำตอบ": "Envoyer"
  }
 }
