@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Generate the mp3 files for every English line in core/content.json.
+"""Generate the mp3 files for every line the client and the sample replies speak, in all 8 languages (core/lang/*.json).
 
 Needs an API key in the environment:  OPENAI_API_KEY
-Files are written to core/audio/<line-id>.mp3 and existing files are skipped.
+Files are written to core/audio/<lang>/... (client lines per voice f/m, sample replies once) and existing files are skipped.
 
   python3 tools/make_audio.py --dry-run     # list what would be made, count characters, no key needed
   python3 tools/make_audio.py               # make the missing files
   python3 tools/make_audio.py --force       # remake everything (after changing voices or wording)
-  python3 tools/make_audio.py --only home-  # only ids that start with this text
+  python3 tools/make_audio.py --only zh/    # only ids that start with this text (here: Chinese)
 
 Settings can be changed with environment variables (check the provider docs for current model and voice names):
   OPENAI_TTS_MODEL   default gpt-4o-mini-tts
-  PT_VOICES          JSON such as {"carol":"nova","lars":"onyx","tom":"echo","agent":"alloy"}
+  PT_VOICES          JSON such as {"f":"nova","m":"onyx","agent":"alloy"}
 """
 import argparse
 import json
@@ -22,32 +22,38 @@ import urllib.error
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CONTENT = os.path.join(ROOT, "core", "content.json")
+LANGDIR = os.path.join(ROOT, "core", "lang")
+LANGS = ["th", "en", "zh", "ru", "de", "fr", "ja", "ko"]
 OUT = os.path.join(ROOT, "core", "audio")
 URL = "https://api.openai.com/v1/audio/speech"
-DEFAULT_VOICES = {"carol": "nova", "lars": "onyx", "tom": "echo", "agent": "alloy"}
-INSTRUCTIONS = "Speak naturally in a warm, clear, conversational tone at a moderate pace, like a real person talking about property."
+DEFAULT_VOICES = {"f": "nova", "m": "onyx", "agent": "alloy"}
+INSTRUCTIONS = "Speak naturally in {lang}, in a warm, clear, conversational tone at a moderate pace, like a real native speaker talking about property."
 
 
 def jobs(voices):
-    with open(CONTENT, encoding="utf-8") as f:
-        data = json.load(f)
     out = []
-    for cat in data["cats"]:
-        for t in cat["turns"]:
-            out.append((t["id"] + "-q", t["en"], voices.get(cat["char"], voices["agent"])))
+    for code in LANGS:
+        path = os.path.join(LANGDIR, code + ".json")
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8") as f:
+            p = json.load(f)
+        label = p["label"]
+        for tid, t in p["turns"].items():
+            for g in ("f", "m"):
+                out.append(("%s/%s/%s-q" % (code, g, tid), t["q"], voices[g], label))
             for i, r in enumerate(t["r"]):
-                out.append((t["id"] + "-r%d" % i, r[0], voices["agent"]))
-    for key in data["chars"]:
-        for i, r in enumerate(data.get("reactions", [])):
-            out.append(("react-%s-%d" % (key, i), r[0], voices.get(key, voices["agent"])))
+                out.append(("%s/%s-r%d" % (code, tid, i), r, voices["agent"], label))
+        for i, r in enumerate(p["react"]):
+            for g in ("f", "m"):
+                out.append(("%s/%s/react-%d" % (code, g, i), r, voices[g], label))
     return out
 
 
-def speak(text, voice, model, key):
+def speak(text, voice, model, key, label="English"):
     body = {"model": model, "voice": voice, "input": text, "response_format": "mp3"}
     if model.startswith("gpt-4o"):
-        body["instructions"] = INSTRUCTIONS
+        body["instructions"] = INSTRUCTIONS.format(lang=label)
     req = urllib.request.Request(
         URL,
         data=json.dumps(body).encode("utf-8"),
@@ -74,11 +80,11 @@ def main():
     if not a.force:
         todo = [j for j in todo if not os.path.exists(os.path.join(OUT, j[0] + ".mp3"))]
 
-    chars = sum(len(t) for _, t, _ in todo)
+    chars = sum(len(j[1]) for j in todo)
     print("%d files to make, %d characters, model=%s" % (len(todo), chars, model))
     if a.dry_run:
-        for i, t, v in todo[:8]:
-            print("  %-14s %-6s %s" % (i, v, t[:60]))
+        for i, t, v, _l in todo[:8]:
+            print("  %-22s %-6s %s" % (i, v, t[:50]))
         if len(todo) > 8:
             print("  ...")
         return
@@ -89,10 +95,11 @@ def main():
     os.makedirs(OUT, exist_ok=True)
 
     failed = []
-    for n, (id_, text, voice) in enumerate(todo, 1):
+    for n, (id_, text, voice, label) in enumerate(todo, 1):
         for attempt in range(3):
             try:
-                audio = speak(text, voice, model, key)
+                audio = speak(text, voice, model, key, label)
+                os.makedirs(os.path.dirname(os.path.join(OUT, id_ + ".mp3")), exist_ok=True)
                 with open(os.path.join(OUT, id_ + ".mp3"), "wb") as f:
                     f.write(audio)
                 print("[%d/%d] %s" % (n, len(todo), id_))

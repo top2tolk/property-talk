@@ -1,0 +1,493 @@
+{
+ "code": "fr",
+ "label": "Français",
+ "bcp": "fr-FR",
+ "origin": {
+  "th": "Client thaïlandais",
+  "en": "Client anglophone",
+  "zh": "Client chinois",
+  "ru": "Client russe",
+  "de": "Client allemand",
+  "fr": "Client français",
+  "ja": "Client japonais",
+  "ko": "Client coréen"
+ },
+ "cats": {
+  "general": "Renseignements généraux",
+  "home": "À l'intérieur de la maison",
+  "around": "Autour de la maison",
+  "deal": "Négociation du prix",
+  "terms": "Conditions de vente",
+  "viewing": "Organiser une visite"
+ },
+ "turns": {
+  "general-1": {
+   "q": "Bonjour ! Je cherche une maison au calme près de la plage. Pouvez-vous m'aider ?",
+   "r": [
+    "Bien sûr. De combien de chambres avez-vous besoin ?",
+    "Bien sûr, avec plaisir. De combien de chambres avez-vous besoin, et quel est votre budget ?",
+    "Certainement, ce sera un plaisir de vous aider. Puis-je vous demander de combien de chambres vous avez besoin et quel budget vous envisagez à peu près ?"
+   ]
+  },
+  "general-2": {
+   "q": "Je resterai en Thaïlande environ six mois par an. Est-ce un problème pour acheter une maison ?",
+   "r": [
+    "Pas de problème, mais laissez-moi vous expliquer les options.",
+    "Ce n'est pas un problème pour l'achat, mais le visa est une question à part. Je peux vous expliquer les options.",
+    "Beaucoup d'acheteurs étrangers font la même chose, mais le visa est une question à part ; je vous recommande donc de le vérifier auprès d'un avocat."
+   ]
+  },
+  "general-3": {
+   "q": "Quelle est la différence entre une maison dans une résidence et une villa privée ?",
+   "r": [
+    "Une résidence a des équipements communs. Une villa est plus privée.",
+    "Une maison dans une résidence a des équipements communs et un gardiennage, alors qu'une villa privée vous offre plus d'intimité.",
+    "Une maison dans une résidence partage généralement des équipements comme le gardiennage et un club-house, tandis qu'une villa privée vous offre plus d'intimité et d'espace, mais vous devez vous occuper davantage de l'entretien."
+   ]
+  },
+  "general-4": {
+   "q": "Ça me plaît. Pouvez-vous me montrer trois biens cette semaine ?",
+   "r": [
+    "Oui. Je vous envoie trois options demain.",
+    "Oui, je vais préparer trois options et vous envoyer les détails sur Line demain.",
+    "Certainement. Je vais préparer trois options qui correspondent à vos besoins et vous envoyer les détails sur Line demain, afin que nous choisissions lesquelles visiter."
+   ]
+  },
+  "home-1": {
+   "q": "Bonjour ! Cette cuisine est très jolie. Le prix comprend-il l'électroménager ?",
+   "r": [
+    "Oui, tout l'électroménager est inclus.",
+    "Oui, le réfrigérateur, le four et la plaque de cuisson sont tous compris dans le prix.",
+    "Oui, le prix comprend le réfrigérateur, le four et la plaque de cuisson. Je peux vous envoyer la liste complète de l'inventaire si vous le souhaitez."
+   ]
+  },
+  "home-2": {
+   "q": "Combien y a-t-il de chambres, et sont-elles toutes climatisées ?",
+   "r": [
+    "Trois chambres, toutes climatisées.",
+    "Il y a trois chambres, et chacune a son propre climatiseur.",
+    "La maison compte trois chambres, et chacune est équipée d'un climatiseur indépendant. Souhaitez-vous voir la chambre principale en premier ?"
+   ]
+  },
+  "home-3": {
+   "q": "La pression de l'eau est-elle bonne ? Et y a-t-il de l'eau chaude dans chaque salle de bains ?",
+   "r": [
+    "Oui, les deux sont bonnes.",
+    "La pression de l'eau est forte, et les trois salles de bains ont un chauffe-eau.",
+    "La pression de l'eau est très bonne grâce à un réservoir avec pompe, et chaque salle de bains a son propre chauffe-eau."
+   ]
+  },
+  "home-4": {
+   "q": "À combien s'élève en général la facture d'électricité mensuelle ?",
+   "r": [
+    "Environ deux mille bahts par mois.",
+    "L'ancien propriétaire payait environ deux mille bahts par mois, climatisation comprise.",
+    "L'ancien propriétaire m'a dit que la facture d'électricité était d'environ deux mille bahts par mois, mais cela dépend de votre usage de la climatisation."
+   ]
+  },
+  "around-1": {
+   "q": "La piscine est-elle privée ? Quelle est sa profondeur ?",
+   "r": [
+    "Oui, elle est privée. Elle fait un mètre cinquante de profondeur.",
+    "Oui, la piscine est privée, et elle fait environ un mètre cinquante de profondeur.",
+    "Oui, c'est une piscine privée, d'environ un mètre cinquante à l'endroit le plus profond. Il y a aussi une partie peu profonde pour les enfants."
+   ]
+  },
+  "around-2": {
+   "q": "Quelle est la taille du jardin, et qui s'en occupe ?",
+   "r": [
+    "Environ deux cents mètres carrés. Un jardinier passe chaque semaine.",
+    "Le jardin fait environ deux cents mètres carrés, et un jardinier vient une fois par semaine.",
+    "Le jardin fait environ deux cents mètres carrés. Un jardinier peut venir une fois par semaine, et je peux l'organiser pour vous si vous le souhaitez."
+   ]
+  },
+  "around-3": {
+   "q": "Le quartier est-il sûr ? Y a-t-il un gardiennage la nuit ?",
+   "r": [
+    "Oui, il y a un gardien au portail toute la nuit.",
+    "Oui, la résidence a un gardien au portail vingt-quatre heures sur vingt-quatre.",
+    "Oui, la résidence est surveillée au portail vingt-quatre heures sur vingt-quatre, et je me ferai un plaisir de vous présenter au bureau de la résidence."
+   ]
+  },
+  "around-4": {
+   "q": "À quelle distance se trouvent le supermarché et l'hôpital les plus proches ?",
+   "r": [
+    "Le supermarché est à dix minutes. L'hôpital, à quinze.",
+    "Le supermarché le plus proche est à environ dix minutes en voiture, et l'hôpital à environ quinze minutes.",
+    "Le supermarché le plus proche est à environ dix minutes en voiture, et l'hôpital le plus proche à environ quinze minutes. Je peux vous envoyer le plan."
+   ]
+  },
+  "deal-1": {
+   "q": "La villa me plaît, mais le prix demandé est un peu élevé pour moi.",
+   "r": [
+    "Quel prix aviez-vous en tête ?",
+    "Je comprends. Quel prix vous conviendrait ?",
+    "Je comprends, et je vous remercie de votre franchise. Puis-je vous demander quel budget vous envisagez ?"
+   ]
+  },
+  "deal-2": {
+   "q": "Le propriétaire accepterait-il deux millions de moins si je paie comptant ?",
+   "r": [
+    "Je vais demander au propriétaire.",
+    "C'est une grosse réduction, mais je vais interroger le propriétaire sur une remise pour paiement comptant.",
+    "Deux millions représentent une réduction importante, je ne peux donc rien vous promettre, mais je présenterai votre offre comptant au propriétaire aujourd'hui."
+   ]
+  },
+  "deal-3": {
+   "q": "Si le propriétaire baisse d'un million, pouvez-vous aussi inclure les meubles ?",
+   "r": [
+    "Je peux essayer. Je vérifie.",
+    "Je pense que c'est possible. Je vais confirmer avec le propriétaire et je reviens vers vous.",
+    "Cela me paraît une demande raisonnable. Je vais confirmer avec le propriétaire et vous répondre ce soir."
+   ]
+  },
+  "deal-4": {
+   "q": "Très bien. Si nous nous mettons d'accord, en combien de temps peut-on conclure ?",
+   "r": [
+    "Nous pouvons signer la réservation cette semaine.",
+    "Nous pouvons signer un contrat de réservation cette semaine et effectuer le transfert sous trente jours.",
+    "Nous pouvons signer un contrat de réservation cette semaine, et le transfert de propriété a généralement lieu dans les trente jours."
+   ]
+  },
+  "terms-1": {
+   "q": "Un étranger peut-il être propriétaire de cette maison et du terrain ?",
+   "r": [
+    "Les étrangers ne peuvent pas posséder de terrain en Thaïlande, mais il existe d'autres options.",
+    "En général, les étrangers ne peuvent pas posséder de terrain en Thaïlande, mais vous pouvez louer le terrain ou être propriétaire de la maison séparément.",
+    "Selon la loi thaïlandaise, les étrangers ne peuvent généralement pas posséder de terrain, mais il existe des solutions légales comme le bail de longue durée. Je vous recommande de consulter un avocat pour confirmer les détails."
+   ]
+  },
+  "terms-2": {
+   "q": "À combien s'élève l'acompte, et est-il remboursable ?",
+   "r": [
+    "L'acompte est de cent mille bahts.",
+    "L'acompte de réservation est de cent mille bahts, et les conditions de remboursement figurent dans le contrat.",
+    "L'acompte de réservation est de cent mille bahts. Son remboursement dépend des conditions prévues au contrat, que nous pouvons examiner ensemble."
+   ]
+  },
+  "terms-3": {
+   "q": "Qui paie les frais de transfert et les taxes ?",
+   "r": [
+    "Nous partageons généralement les frais de transfert moitié-moitié.",
+    "Les frais de transfert sont généralement partagés moitié-moitié, et le vendeur paie les taxes.",
+    "Selon l'usage, les frais de transfert sont partagés à parts égales entre l'acheteur et le vendeur, tandis que le vendeur prend en charge les taxes, mais cela peut se négocier."
+   ]
+  },
+  "terms-4": {
+   "q": "Puis-je payer par versements pendant la finition de la maison ?",
+   "r": [
+    "Oui, nous pouvons prévoir un paiement échelonné.",
+    "Oui, nous pouvons répartir le paiement en versements suivant l'avancement des travaux.",
+    "Oui, nous pouvons prévoir des versements suivant les étapes de la construction, et je vous fournirai l'échéancier par écrit."
+   ]
+  },
+  "viewing-1": {
+   "q": "Nous aimerions visiter la maison samedi matin. Est-ce possible ?",
+   "r": [
+    "Oui. À quelle heure souhaitez-vous venir ?",
+    "Oui, samedi matin convient. Quelle heure vous arrange le mieux ?",
+    "Oui, samedi matin est possible. Quelle heure vous conviendrait le mieux ? Je peux vous retrouver au portail."
+   ]
+  },
+  "viewing-2": {
+   "q": "Où nous retrouve-t-on, et comment s'y rend-on ?",
+   "r": [
+    "Je vous retrouve au portail. Je vous envoie le plan.",
+    "Je vous retrouve au portail d'entrée et je vous envoie le plan sur Line.",
+    "Je vous retrouverai au portail d'entrée. Je vous enverrai le plan et mon contact Line pour que vous puissiez me trouver facilement."
+   ]
+  },
+  "viewing-3": {
+   "q": "Pouvons-nous prendre des photos et des vidéos à l'intérieur ?",
+   "r": [
+    "Oui, vous pouvez prendre des photos.",
+    "Oui, les photos sont possibles. Si le propriétaire habite ici, je vérifierai d'abord.",
+    "Les photos ne posent généralement pas de problème. Si le propriétaire habite encore ici, je demanderai d'abord son autorisation ; merci donc de me prévenir avant de filmer."
+   ]
+  },
+  "viewing-4": {
+   "q": "Nous avons aimé. Quelles sont les prochaines étapes si nous voulons faire une offre ?",
+   "r": [
+    "Vous faites une offre, et je la transmets au propriétaire.",
+    "Vous me donnez votre offre, je la transmets au propriétaire, puis nous discutons de la réservation.",
+    "Vous pouvez me communiquer votre offre par écrit, je la présenterai au propriétaire, et si nous trouvons un accord, nous préparerons le contrat de réservation."
+   ]
+  }
+ },
+ "react": [
+  "D'accord, je vois.",
+  "C'est logique. Merci.",
+  "Parfait, c'est exactement ce que je voulais savoir. Merci beaucoup !"
+ ],
+ "pairs": [
+  "Bienvenue. Laissez-moi vous faire visiter la maison.",
+  "Le prix demandé est de douze millions de bahts.",
+  "Cette maison a une piscine privée.",
+  "À combien s'élèvent les charges communes mensuelles ?",
+  "Je vais d'abord demander au propriétaire.",
+  "C'est à cinq minutes de la plage en voiture.",
+  "Quel jour souhaitez-vous visiter la maison ?",
+  "Je peux vous envoyer les détails sur Line.",
+  "Le prix est-il négociable ?",
+  "Puis-je voir le titre de propriété ?",
+  "À quelle distance se trouve l'hôpital le plus proche ?",
+  "Cela m'intéresse. Donnez-moi un jour de réflexion, s'il vous plaît."
+ ],
+ "demo": [
+  "contrat de réservation",
+  "Le prix est-il négociable ?",
+  "frais de transfert"
+ ],
+ "gloss": {
+  "appliance": "appareil électroménager",
+  "included": "inclus",
+  "include": "inclure",
+  "refrigerator": "réfrigérateur",
+  "oven": "four",
+  "cooktop": "plaque de cuisson",
+  "inventory": "inventaire (liste du mobilier et équipements)",
+  "bedroom": "chambre",
+  "bathroom": "salle de bains",
+  "conditioner": "climatiseur",
+  "conditioning": "climatisation",
+  "separate": "séparé, distinct",
+  "master": "principale (chambre parentale)",
+  "pressure": "pression",
+  "heater": "chauffe-eau",
+  "pump": "pompe",
+  "tank": "réservoir, cuve",
+  "previous": "précédent",
+  "electricity": "électricité",
+  "bill": "facture",
+  "monthly": "mensuel",
+  "villa": "villa",
+  "asking": "demandé (prix demandé)",
+  "price": "prix",
+  "budget": "budget",
+  "owner": "propriétaire",
+  "cash": "comptant, espèces",
+  "reduction": "réduction, baisse de prix",
+  "significant": "important, considérable",
+  "promise": "promettre, garantir",
+  "present": "présenter, soumettre",
+  "offer": "offre",
+  "furniture": "meubles, mobilier",
+  "confirm": "confirmer",
+  "reasonable": "raisonnable",
+  "reservation": "réservation",
+  "agreement": "accord, contrat",
+  "transfer": "transfert (de propriété)",
+  "ownership": "propriété",
+  "deal": "affaire, transaction",
+  "foreigner": "étranger",
+  "land": "terrain, terre",
+  "lease": "bail, louer à bail",
+  "legal": "légal, juridique",
+  "lawyer": "avocat",
+  "consult": "consulter",
+  "deposit": "acompte, dépôt de garantie",
+  "refundable": "remboursable",
+  "refund": "remboursement",
+  "contract": "contrat",
+  "terms": "conditions",
+  "fee": "frais",
+  "tax": "impôt, taxe",
+  "split": "partager, répartir",
+  "seller": "vendeur",
+  "buyer": "acheteur",
+  "installment": "versement échelonné, mensualité",
+  "construction": "construction",
+  "milestone": "étape clé, jalon",
+  "schedule": "calendrier, échéancier",
+  "negotiated": "négocié",
+  "custom": "usage, coutume",
+  "discount": "remise, rabais",
+  "garden": "jardin",
+  "gardener": "jardinier",
+  "security": "sécurité, gardiennage",
+  "guard": "gardien, agent de sécurité",
+  "gate": "portail, entrée",
+  "village": "résidence, lotissement (village)",
+  "clubhouse": "club-house, espace commun",
+  "facility": "équipement, installation",
+  "privacy": "intimité, vie privée",
+  "maintenance": "entretien",
+  "supermarket": "supermarché",
+  "hospital": "hôpital",
+  "visa": "visa",
+  "immigration": "immigration, service de l'immigration",
+  "viewing": "visite (d'un bien)",
+  "swimming": "de natation",
+  "pool": "piscine",
+  "shallow": "peu profond",
+  "arrange": "organiser, prévoir",
+  "writing": "écrit (par écrit)",
+  "square": "carré",
+  "meter": "mètre",
+  "photo": "photo",
+  "permission": "autorisation, permission",
+  "option": "option, possibilité"
+ },
+ "ui": {
+  "โหลดเนื้อหาไม่ได้": "Impossible de charger le contenu",
+  "ต้องเปิดผ่านลิงก์เว็บ ไม่ใช่เปิดไฟล์ตรงจากเครื่อง ถ้าเปิดผ่านลิงก์แล้วยังเป็นแบบนี้ ให้แจ้งผู้ขาย": "Ouvrez-le via le lien web, et non comme un fichier de votre appareil. Si cela échoue encore via le lien, prévenez le vendeur.",
+  "กำลังโหลด...": "Chargement...",
+  "เบราว์เซอร์นี้ตรวจรหัสไม่ได้ กรุณาเปิดผ่านลิงก์ https ด้วย Chrome หรือ Safari": "Ce navigateur ne peut pas vérifier le code. Veuillez ouvrir le lien https dans Chrome ou Safari.",
+  "รหัสไม่ถูกต้อง ตรวจตัวอักษรอีกครั้ง": "Code incorrect. Vérifiez les caractères et réessayez.",
+  "เข้าใช้งาน": "Entrer",
+  "รหัสเข้าใช้": "Code d'accès",
+  "ใส่รหัสเข้าใช้งาน": "Saisissez votre code d'accès",
+  "รหัสส่งให้ทาง Line หลังชำระเงิน": "Le code vous est envoyé sur Line après le paiement",
+  "ครั้ง": "fois",
+  "จำลองเติมเงินแล้ว +": "Recharge simulée +",
+  "ปิด": "Fermer",
+  "คำศัพท์": "Vocabulaire",
+  "ยังไม่ตรงกับประโยคตัวอย่าง ลองอีกครั้งหรือแตะเลือก": "Cela ne correspond à aucune phrase d'exemple. Réessayez ou touchez pour choisir.",
+  "ได้ยินว่า": "Entendu",
+  "เก็บประโยคที่ตอบแล้ว": "Vos réponses ont été enregistrées",
+  "พิมพ์หรือพูดก่อนนะ": "Écrivez ou parlez d'abord",
+  "เก็บเข้าคลังแล้ว": "Enregistré dans votre carnet",
+  "ทั่วไป": "Général",
+  "เอาออกจากคลังแล้ว": "Retiré de votre carnet",
+  "ฟัง": "Écouter",
+  "เก็บคำนี้": "Enregistrer ce mot",
+  "ยังไม่มีในพจนานุกรมตัวอย่าง": "Pas encore dans le dictionnaire d'exemple",
+  "เครดิตหมดแล้ว ระบบหยุดแปล": "Crédit épuisé. La traduction est arrêtée.",
+  "เครดิตเหลือไม่ถึง 10% เติมเงินได้เลย": "Il reste moins de 10 % de crédit. Rechargez maintenant.",
+  "เครดิตเหลือไม่ถึง 25% ควรเติมเร็ว ๆ นี้": "Il reste moins de 25 % de crédit. Pensez à recharger bientôt.",
+  "เครดิต": "Crédit",
+  "คลังศัพท์": "Carnet",
+  "ล่ามสด": "Interprète en direct",
+  "ฝึกพูด": "Entraînement",
+  "ราคาแพ็ก": "Prix du pack",
+  "จำนวนครั้งแพ็ก": "Utilisations du pack",
+  "จำนวนครั้ง": "Utilisations",
+  "ราคาขาย (บาท)": "Prix de vente (THB)",
+  "เป้ากำไรต่อเดือน (บาท)": "Objectif de bénéfice mensuel (THB)",
+  "ค่าคงที่ต่อเดือน (บาท)": "Charges fixes mensuelles (THB)",
+  "ค่าธรรมเนียมชำระเงิน (%)": "Frais de paiement (%)",
+  "ต้นทุนแปลต่อครั้ง (บาท)": "Coût de traduction par utilisation (THB)",
+  "เครื่องคิดกำไร": "Calculateur de bénéfice",
+  "ตัวเลขทั้งหมดเป็นค่าสมมติที่แก้ได้ ใส่ต้นทุนจริงจากบิลบริการแปลและใบแจ้งค่าธรรมเนียมของผู้ให้บริการชำระเงิน": "Tous les chiffres sont des hypothèses modifiables. Saisissez les coûts réels de votre facture de traduction et du relevé de frais de votre prestataire de paiement.",
+  "ปุ่มนี้จำลองการเติมเท่านั้น ยังไม่มีการตัดเงินจริง ของจริงต้องต่อพร้อมเพย์หรือบัตรผ่านผู้ให้บริการชำระเงิน และเก็บยอดเครดิตไว้ที่ฝั่งเซิร์ฟเวอร์ เพราะยอดที่เก็บในเบราว์เซอร์แก้ไขได้": "Ce bouton ne fait que simuler une recharge. Aucun argent n'est prélevé. Pour de vrai, il faut brancher PromptPay ou les cartes via un prestataire de paiement, avec le solde de crédit conservé sur un serveur, car un solde stocké dans le navigateur peut être modifié.",
+  "จำลองเติมเงิน": "Simuler une recharge",
+  "ต่อครั้ง": "par utilisation",
+  "แพ็กเติมเงิน": "Packs de recharge",
+  "จำลองใช้ 1": "Simuler 1 utilisation",
+  "จำลองใช้ 10": "Simuler 10 utilisations",
+  "จำลองใช้ 50": "Simuler 50 utilisations",
+  "รีเซ็ตเป็น 100": "Remettre à 100",
+  "ครั้งจากการเติมล่าสุด · เขียว เพียงพอ · เหลือง ≤25% ใกล้หมด · แดง ≤10% ให้เติมเลย · 0 หยุดแปล": "utilisations depuis la dernière recharge · vert : suffisant · jaune ≤25 % : bientôt épuisé · rouge ≤10 % : rechargez maintenant · 0 : la traduction s'arrête",
+  "ถัง": "Réservoir de",
+  "เปอร์เซ็นต์": "pour cent",
+  "เครดิตเหลือ": "Crédit restant",
+  "เครดิตคงเหลือ (1 เครดิต = แปล 1 ครั้ง)": "Crédit restant (1 crédit = 1 traduction)",
+  "ทุกแพ็กมีกำไรเกิน 30% เครดิตที่ลูกค้าซื้อแล้วใช้ไม่หมดยังเป็นกำไรเพิ่ม แต่ยังไม่นับในตารางนี้": "Tous les packs dégagent plus de 30 % de bénéfice. Le crédit que les clients achètent sans l'utiliser est un bénéfice en plus, non compté dans ce tableau.",
+  "แพ็กที่กำไรต่ำกว่า 30% เสี่ยงหลุดขาดทุนเมื่อค่าแปลหรือค่าธรรมเนียมเปลี่ยน ลองปรับราคาขึ้นหรือลดจำนวนครั้งต่อแพ็ก": "Les packs sous 30 % de bénéfice risquent de devenir déficitaires si les coûts de traduction ou de frais changent. Essayez d'augmenter le prix ou de réduire le nombre d'utilisations par pack.",
+  "บาท": "THB",
+  "ราคาต่ำสุดที่ไม่ขาดทุน ต่อแพ็ก:": "Prix minimum sans perte par pack :",
+  "แพ็ก": "Pack",
+  "ขาดทุน": "Perte",
+  "ค่าธรรมเนียมชำระ": "Frais de paiement",
+  "ต้นทุนแปล": "Coût de traduction",
+  "กำไร": "Bénéfice",
+  "กำไร %": "Bénéfice %",
+  "ต้องขาย/เดือน": "Packs à vendre / mois",
+  "คลังเก็บอยู่ในเบราว์เซอร์เครื่องนี้ ถ้าล้างข้อมูลหรือเปลี่ยนเครื่องจะหาย ใช้ปุ่มคัดลอกทั้งหมดเพื่อสำรองไว้ใน Line หรือโน้ต": "Le carnet est conservé dans le navigateur de cet appareil. Si vous effacez les données ou changez d'appareil, il sera perdu. Utilisez Tout copier pour le sauvegarder dans Line ou une note.",
+  "ลบ": "Supprimer",
+  "ทบทวนแฟลชการ์ด": "Réviser les cartes",
+  "คัดลอกทั้งหมด": "Tout copier",
+  "ตอนนี้เป็นรายการตัวอย่าง กดปุ่ม เก็บ ข้างประโยคหรือแตะคำเพื่อเริ่มสะสมของจริง": "Ce sont pour l'instant des exemples. Touchez Enregistrer à côté d'une phrase, ou touchez un mot, pour commencer votre propre collection.",
+  "รายการ": "éléments",
+  "เก็บไว้": "Enregistrés : ",
+  "คลังศัพท์ของฉัน": "Mon carnet de vocabulaire",
+  "ถัดไป": "Suivant",
+  "ก่อนหน้า": "Précédent",
+  "ดูคำตอบ": "voir la réponse",
+  "ดูโจทย์": "voir la question",
+  "แตะเพื่อ": "Touchez pour ",
+  "แปลเป็นภาษาที่ฝึกว่าอะไร": "Comment dit-on cela dans la langue que vous pratiquez ?",
+  "แตะเพื่อพลิกการ์ด": "Touchez pour retourner la carte",
+  "← กลับคลัง": "← Retour au carnet",
+  "จอใหญ่": "Plein écran",
+  "ลูกค้าพูดว่า:": "Le client a dit :",
+  "คุณพูดว่า:": "Vous avez dit :",
+  "เลือกจากประโยคตัวอย่างด้านล่าง หรือรอเวอร์ชันที่ต่อบริการแปลจริง": "choisissez parmi les phrases d'exemple ci-dessous, ou attendez la version reliée à un vrai service de traduction.",
+  "ไม่ได้หักเครดิต": "Aucun crédit n'a été déduit ; ",
+  "ยังแปลประโยคนี้ไม่ได้ในต้นแบบ": "Cette phrase ne peut pas encore être traduite dans le prototype",
+  "ไปหน้าเติมเงิน": "Aller à la recharge",
+  "เครดิตหมด": "Crédit épuisé",
+  "ระบบหยุดแปลจนกว่าจะเติมเครดิต": "La traduction est en pause jusqu'à la recharge",
+  "ต้นแบบ: แปลได้เฉพาะประโยคตัวอย่างที่เตรียมไว้ การแปลอิสระต้องต่อบริการแปลที่มีค่าใช้จ่ายต่อครั้ง การแปลผิดในเรื่องสัญญามีผลทางกฎหมาย ควรตรวจกับเอกสารจริง": "Prototype : il ne traduit que les phrases d'exemple préparées. La traduction libre nécessite un service de traduction payant, facturé à l'utilisation. Une traduction erronée dans un contrat a des conséquences juridiques ; vérifiez donc toujours le document réel.",
+  "ประโยคตัวอย่าง แตะเพื่อแปล": "Phrases d'exemple : touchez pour traduire",
+  "ล้าง": "Effacer",
+  "(ใช้ 1 เครดิต)": "(utilise 1 crédit)",
+  "แปล": "Traduire",
+  "พูดเพื่อแปล": "Parlez pour traduire",
+  "ทิศทางการแปล": "Sens de la traduction",
+  "เลือกประโยคตอบ": "Choisissez votre réponse",
+  "เลือกประโยคตอบ (3 ระดับ)": "Choisissez votre réponse (3 niveaux)",
+  "คัดลอก": "Copier",
+  "เก็บ": "Enregistrer",
+  "เก็บแล้ว": "Enregistré",
+  "คำแปล": "Sous-titres",
+  "ช้า": "Lent",
+  "ฟังซ้ำ": "Réécouter",
+  "พูดตอบ": "Parler",
+  "กดแล้วพูดตอบ": "Appuyez et dites votre réponse",
+  "ต่อไป": "Suivant",
+  "จบสาย": "Raccrocher",
+  "ข้อต่อไป": "Question suivante",
+  "ตรงกับประโยค": "Correspond à",
+  "คุณตอบ ·": "Vous avez répondu ·",
+  "โทรอีกรอบ": "Rappeler",
+  "เก็บทั้งหมด": "Tout enregistrer",
+  "วางสาย": "Raccrocher",
+  "ข้อ ประโยคที่ตอบเก็บไว้ทบทวนได้": "questions. Vos réponses sont conservées pour révision.",
+  "คุณตอบครบ": "Vous avez répondu à toutes les",
+  "จบสายแล้ว ·": "Appel terminé ·",
+  "รับสาย": "Répondre",
+  "ปฏิเสธ": "Refuser",
+  "ปฏิเสธสาย": "Refuser l'appel",
+  "กำลังโทรหาคุณ": "Vous appelle",
+  "วิดีโอคอลเข้า ·": "Appel vidéo entrant ·",
+  "ความคืบหน้า": "Progression",
+  "บทสนทนาเป็นตัวอย่างสำหรับฝึกภาษา ไม่ใช่คำแนะนำทางกฎหมาย เงื่อนไขซื้อขายจริงควรตรวจกับเอกสารและทนาย": "Les conversations sont des exemples pour s'entraîner à la langue, pas des conseils juridiques. Vérifiez les conditions de vente réelles avec les documents et un avocat.",
+  "ข้อ": "questions",
+  "โทรเข้า ·": "appel de ·",
+  "ฝึกคุยกับลูกค้า": "Entraînez-vous à parler avec des clients",
+  "เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ": "Choisissez une situation, puis répondez à l'appel comme si un vrai client vous téléphonait.",
+  "ฟังช้า": "Écouter lentement",
+  "ฟังเสียงไม่สำเร็จ ลองอีกครั้งหรือเลือกประโยคตอบแทน": "Impossible de vous entendre. Réessayez ou choisissez plutôt une réponse.",
+  "ไม่ได้ยินเสียง ลองพูดอีกครั้ง": "Aucune voix détectée. Réessayez.",
+  "เบราว์เซอร์นี้ยังไม่รองรับการฟังเสียง ใช้ Chrome หรือเลือกประโยคตอบแทน": "Ce navigateur ne peut pas écouter. Utilisez Chrome, ou choisissez plutôt une réponse.",
+  "ไมค์ถูกบล็อก กรุณาอนุญาตการใช้ไมค์ในเบราว์เซอร์ หรือเลือกประโยคตอบแทน": "Le micro est bloqué. Autorisez l'accès au micro dans le navigateur, ou choisissez plutôt une réponse.",
+  "เล่นเสียงไม่ได้ในเครื่องนี้": "Impossible de lire le son sur cet appareil",
+  "เครื่องนี้ยังไม่รองรับเสียงอ่าน": "Cet appareil ne prend pas en charge les voix de lecture à haute voix",
+  "คัดลอกแล้ว": "Copié",
+  "คัดลอกไม่ได้ ลองกดค้างที่ข้อความ": "Copie impossible. Essayez d'appuyer longuement sur le texte.",
+  "หมดแล้ว ระบบหยุดแปลจนกว่าจะเติมเงิน": "Épuisé. La traduction s'arrête jusqu'à la recharge.",
+  "เหลือน้อยมาก เติมเงินได้เลย": "Très bas. Rechargez maintenant.",
+  "ใกล้หมด ควรเติมเร็ว ๆ นี้": "Bientôt épuisé. Pensez à recharger bientôt.",
+  "เพียงพอ": "Suffisant",
+  "สุภาพ": "Soutenu",
+  "มาตรฐาน": "Standard",
+  "สั้น": "Court",
+  "ตัวอย่าง": "Exemples",
+  "สำหรับ": "Pour ",
+  "ฝึกพูดสำหรับนายหน้าอสังหา": "Entraînement à l'oral pour agents immobiliers",
+  "ดูเครดิตคงเหลือ": "Voir le crédit restant",
+  "เมนูหลัก": "Menu principal",
+  "เลือกภาษา": "Choisir la langue",
+  "โหลดภาษานี้ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่": "Impossible de charger cette langue. Vérifiez votre connexion et réessayez.",
+  "เสร็จ": "Terminé",
+  "ฉันพูดภาษา": "Je parle",
+  "อยากฝึกภาษา": "Je veux pratiquer",
+  "ลูกค้าที่คุยด้วย": "Client",
+  "ผู้หญิง": "Femme",
+  "ผู้ชาย": "Homme",
+  "ฉันพูด": "Je parle",
+  "ลูกค้าพูด": "Le client parle",
+  "พิมพ์หรือพูด": "Écrire ou parler"
+ }
+}

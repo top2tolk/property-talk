@@ -5,5 +5,5 @@ window.PT_CONFIG = {
   codeHash: "",
   features: { interp: true, credit: true },
   audioBase: "../../core/audio/",
-  contentUrl: "../../core/content.json"
+  coreBase: "../../core/"
 };

@@ -60,7 +60,7 @@ CONFIG = """window.PT_CONFIG = {
   codeHash: "@@HASH@@",
   features: { interp: @@INTERP@@, credit: @@CREDIT@@ },
   audioBase: "../../core/audio/",
-  contentUrl: "../../core/content.json"
+  coreBase: "../../core/"
 };
 """
 

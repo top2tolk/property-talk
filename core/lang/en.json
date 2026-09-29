@@ -1,0 +1,404 @@
+{
+ "code": "en",
+ "label": "English",
+ "bcp": "en-US",
+ "origin": {
+  "th": "Thai client",
+  "en": "English-speaking client",
+  "zh": "Chinese client",
+  "ru": "Russian client",
+  "de": "German client",
+  "fr": "French client",
+  "ja": "Japanese client",
+  "ko": "Korean client"
+ },
+ "cats": {
+  "general": "General enquiries",
+  "home": "Inside the home",
+  "around": "Around the house",
+  "deal": "Price negotiation",
+  "terms": "Terms of sale",
+  "viewing": "Arranging a viewing"
+ },
+ "turns": {
+  "general-1": {
+   "q": "Hello! I am looking for a quiet house near the beach. Can you help me?",
+   "r": [
+    "Of course. How many bedrooms do you need?",
+    "Of course, I would be happy to help. How many bedrooms do you need, and what is your budget?",
+    "Certainly, it would be my pleasure to help. May I ask how many bedrooms you need and roughly what budget you have in mind?"
+   ]
+  },
+  "general-2": {
+   "q": "I will stay in Thailand for about six months a year. Is that a problem for buying a house?",
+   "r": [
+    "No problem, but let me explain the options.",
+    "It is not a problem for buying, but the visa is a separate matter. I can explain the options.",
+    "Many foreign buyers do the same, but the visa is a separate matter, so I recommend confirming it with a lawyer."
+   ]
+  },
+  "general-3": {
+   "q": "What is the difference between a house in a village and a private villa?",
+   "r": [
+    "A village has shared facilities. A villa is more private.",
+    "A house in a village has shared facilities and security, while a private villa gives you more privacy.",
+    "A house in a village usually shares facilities such as security and a clubhouse, while a private villa gives you more privacy and space, though you handle more of the maintenance yourself."
+   ]
+  },
+  "general-4": {
+   "q": "That sounds good. Can you show me three options this week?",
+   "r": [
+    "Yes. I will send you three options tomorrow.",
+    "Yes, I will prepare three options and send you the details on Line tomorrow.",
+    "Certainly. I will prepare three options that match your needs and send the details on Line tomorrow, so we can choose which ones to visit."
+   ]
+  },
+  "home-1": {
+   "q": "Hi! This is a lovely kitchen. Does the price include the appliances?",
+   "r": [
+    "Yes, all appliances are included.",
+    "Yes, the refrigerator, oven and cooktop are all included in the price.",
+    "Yes, the price includes the refrigerator, oven and cooktop. I can send you the full inventory list if you like."
+   ]
+  },
+  "home-2": {
+   "q": "How many bedrooms are there, and do they all have air conditioning?",
+   "r": [
+    "Three bedrooms, all with air conditioning.",
+    "There are three bedrooms, and each one has its own air conditioner.",
+    "The house has three bedrooms, and every bedroom comes with a separate air conditioner. Would you like to see the master bedroom first?"
+   ]
+  },
+  "home-3": {
+   "q": "Is the water pressure good? And is there hot water in every bathroom?",
+   "r": [
+    "Yes, both are good.",
+    "The water pressure is strong, and all three bathrooms have a water heater.",
+    "The water pressure is very good because there is a pump tank, and every bathroom has its own water heater."
+   ]
+  },
+  "home-4": {
+   "q": "What is the monthly electricity bill usually like?",
+   "r": [
+    "About two thousand baht a month.",
+    "The previous owner paid about two thousand baht a month, with the air conditioning on.",
+    "The previous owner said the electricity bill was around two thousand baht a month, but it depends on how much you use the air conditioning."
+   ]
+  },
+  "around-1": {
+   "q": "Is the swimming pool private? How deep is it?",
+   "r": [
+    "Yes, it is private. It is one point five meters deep.",
+    "Yes, the pool is private, and it is about one point five meters deep.",
+    "Yes, it is a private pool, about one point five meters at the deepest point. There is also a shallow area for children."
+   ]
+  },
+  "around-2": {
+   "q": "How big is the garden, and who takes care of it?",
+   "r": [
+    "About two hundred square meters. A gardener comes weekly.",
+    "The garden is about two hundred square meters, and a gardener comes once a week.",
+    "The garden is about two hundred square meters. A gardener can come once a week, and I can arrange that for you if you like."
+   ]
+  },
+  "around-3": {
+   "q": "Is the area safe? Is there security at night?",
+   "r": [
+    "Yes, there is a guard at the gate all night.",
+    "Yes, the village has a guard at the gate twenty-four hours a day.",
+    "Yes, the village has security at the gate around the clock, and I am happy to introduce you to the village office."
+   ]
+  },
+  "around-4": {
+   "q": "How far is the nearest supermarket and hospital?",
+   "r": [
+    "The supermarket is ten minutes away. The hospital is fifteen.",
+    "The nearest supermarket is about ten minutes by car, and the hospital is about fifteen minutes.",
+    "The nearest supermarket is about ten minutes by car, and the nearest hospital is about fifteen minutes away. I can send you the map."
+   ]
+  },
+  "deal-1": {
+   "q": "I like the villa, but the asking price is a little high for me.",
+   "r": [
+    "What price did you have in mind?",
+    "I understand. What price would you be comfortable with?",
+    "I understand, and thank you for being open about it. May I ask what budget you have in mind?"
+   ]
+  },
+  "deal-2": {
+   "q": "Would the owner accept two million less if I pay in cash?",
+   "r": [
+    "Let me ask the owner.",
+    "That is a big reduction, but I will ask the owner about a cash discount.",
+    "Two million is a significant reduction, so I cannot promise anything, but I will present your cash offer to the owner today."
+   ]
+  },
+  "deal-3": {
+   "q": "If the owner reduces by one million, can you include the furniture as well?",
+   "r": [
+    "I can try. Let me check.",
+    "I think that is possible. Let me confirm with the owner and get back to you.",
+    "That sounds like a reasonable request. I will confirm with the owner and reply to you by this evening."
+   ]
+  },
+  "deal-4": {
+   "q": "Good. If we agree, how fast can we close the deal?",
+   "r": [
+    "We can sign the reservation this week.",
+    "We can sign a reservation agreement this week and transfer within thirty days.",
+    "We can sign a reservation agreement this week, and the ownership transfer usually takes place within thirty days."
+   ]
+  },
+  "terms-1": {
+   "q": "Can a foreigner own this house and the land under it?",
+   "r": [
+    "Foreigners cannot own land in Thailand, but there are other options.",
+    "Foreigners generally cannot own land in Thailand, but you can lease the land or own the house separately.",
+    "Under Thai law, foreigners generally cannot own land, but there are legal options such as a long-term lease. I recommend you consult a lawyer to confirm the details."
+   ]
+  },
+  "terms-2": {
+   "q": "How much is the deposit, and is it refundable?",
+   "r": [
+    "The deposit is one hundred thousand baht.",
+    "The reservation deposit is one hundred thousand baht, and the refund terms are written in the contract.",
+    "The reservation deposit is one hundred thousand baht. Whether it is refundable depends on the terms in the contract, which we can go through together."
+   ]
+  },
+  "terms-3": {
+   "q": "Who pays the transfer fee and the taxes?",
+   "r": [
+    "We usually split the transfer fee fifty-fifty.",
+    "The transfer fee is usually split fifty-fifty, and the seller pays the taxes.",
+    "By custom the transfer fee is split equally between buyer and seller, while the seller covers the taxes, but this can be negotiated."
+   ]
+  },
+  "terms-4": {
+   "q": "Can I pay in installments while the house is being finished?",
+   "r": [
+    "Yes, we can arrange an installment plan.",
+    "Yes, we can divide the payment into installments that follow the construction progress.",
+    "Yes, we can arrange installments that follow the construction milestones, and I will put the schedule in writing for you."
+   ]
+  },
+  "viewing-1": {
+   "q": "We would like to see the house on Saturday morning. Is that possible?",
+   "r": [
+    "Yes. What time would you like to come?",
+    "Yes, Saturday morning is fine. What time works best for you?",
+    "Yes, Saturday morning is available. What time would suit you best? I can meet you at the gate."
+   ]
+  },
+  "viewing-2": {
+   "q": "Where should we meet, and how do we get there?",
+   "r": [
+    "I will meet you at the gate. I will send the map.",
+    "I will meet you at the front gate and send you the map on Line.",
+    "I will meet you at the front gate. I will send you the map and my Line contact so you can find me easily."
+   ]
+  },
+  "viewing-3": {
+   "q": "Can we take photos and videos inside the house?",
+   "r": [
+    "Yes, you can take photos.",
+    "Yes, photos are fine. If the owner is living here, I will check first.",
+    "Photos are usually fine. If the owner is still living here, I will ask permission first, so please let me know before you start filming."
+   ]
+  },
+  "viewing-4": {
+   "q": "We liked it. What are the next steps if we want to make an offer?",
+   "r": [
+    "You make an offer, and I take it to the owner.",
+    "You tell me your offer, I take it to the owner, and then we discuss the reservation.",
+    "You can tell me your offer in writing, I will present it to the owner, and if we agree, we can prepare the reservation agreement."
+   ]
+  }
+ },
+ "react": [
+  "Okay, I see.",
+  "That makes sense. Thank you.",
+  "Wonderful, that is exactly what I wanted to know. Thank you so much!"
+ ],
+ "pairs": [
+  "Welcome. Let me show you around the house.",
+  "The asking price is twelve million baht.",
+  "This house has a private swimming pool.",
+  "How much is the monthly common fee?",
+  "Let me ask the owner first.",
+  "It is five minutes from the beach by car.",
+  "Which day would you like to view the house?",
+  "I can send you the details on Line.",
+  "Is the price negotiable?",
+  "Can I see the title deed?",
+  "How far is the nearest hospital?",
+  "I am interested. Please give me one day to think."
+ ],
+ "demo": [
+  "reservation agreement",
+  "Is the price negotiable?",
+  "transfer fee"
+ ],
+ "gloss": {},
+ "ui": {
+  "โหลดเนื้อหาไม่ได้": "Could not load the content",
+  "ต้องเปิดผ่านลิงก์เว็บ ไม่ใช่เปิดไฟล์ตรงจากเครื่อง ถ้าเปิดผ่านลิงก์แล้วยังเป็นแบบนี้ ให้แจ้งผู้ขาย": "Open it through the web link, not as a file from your device. If it still fails through the link, tell the seller.",
+  "กำลังโหลด...": "Loading...",
+  "เบราว์เซอร์นี้ตรวจรหัสไม่ได้ กรุณาเปิดผ่านลิงก์ https ด้วย Chrome หรือ Safari": "This browser cannot check the code. Please open the https link in Chrome or Safari.",
+  "รหัสไม่ถูกต้อง ตรวจตัวอักษรอีกครั้ง": "Incorrect code. Check the characters and try again.",
+  "เข้าใช้งาน": "Enter",
+  "รหัสเข้าใช้": "Access code",
+  "ใส่รหัสเข้าใช้งาน": "Enter your access code",
+  "รหัสส่งให้ทาง Line หลังชำระเงิน": "The code is sent to you on Line after payment",
+  "ครั้ง": "times",
+  "จำลองเติมเงินแล้ว +": "Simulated top-up +",
+  "ปิด": "Close",
+  "คำศัพท์": "Vocabulary",
+  "ยังไม่ตรงกับประโยคตัวอย่าง ลองอีกครั้งหรือแตะเลือก": "That does not match a sample sentence. Try again or tap to choose.",
+  "ได้ยินว่า": "Heard",
+  "เก็บประโยคที่ตอบแล้ว": "Saved your replies",
+  "พิมพ์หรือพูดก่อนนะ": "Type or speak first",
+  "เก็บเข้าคลังแล้ว": "Saved to your vault",
+  "ทั่วไป": "General",
+  "เอาออกจากคลังแล้ว": "Removed from your vault",
+  "ฟัง": "Listen",
+  "เก็บคำนี้": "Save this word",
+  "ยังไม่มีในพจนานุกรมตัวอย่าง": "Not in the sample dictionary yet",
+  "เครดิตหมดแล้ว ระบบหยุดแปล": "Credit is used up. Translation has stopped.",
+  "เครดิตเหลือไม่ถึง 10% เติมเงินได้เลย": "Credit is below 10%. Top up now.",
+  "เครดิตเหลือไม่ถึง 25% ควรเติมเร็ว ๆ นี้": "Credit is below 25%. Top up soon.",
+  "เครดิต": "Credit",
+  "คลังศัพท์": "Vault",
+  "ล่ามสด": "Live interpreter",
+  "ฝึกพูด": "Practice",
+  "ราคาแพ็ก": "Price of pack",
+  "จำนวนครั้งแพ็ก": "Uses in pack",
+  "จำนวนครั้ง": "Uses",
+  "ราคาขาย (บาท)": "Selling price (THB)",
+  "เป้ากำไรต่อเดือน (บาท)": "Monthly profit target (THB)",
+  "ค่าคงที่ต่อเดือน (บาท)": "Fixed costs per month (THB)",
+  "ค่าธรรมเนียมชำระเงิน (%)": "Payment fee (%)",
+  "ต้นทุนแปลต่อครั้ง (บาท)": "Translation cost per use (THB)",
+  "เครื่องคิดกำไร": "Profit calculator",
+  "ตัวเลขทั้งหมดเป็นค่าสมมติที่แก้ได้ ใส่ต้นทุนจริงจากบิลบริการแปลและใบแจ้งค่าธรรมเนียมของผู้ให้บริการชำระเงิน": "All numbers are editable assumptions. Enter real costs from your translation bill and your payment provider's fee statement.",
+  "ปุ่มนี้จำลองการเติมเท่านั้น ยังไม่มีการตัดเงินจริง ของจริงต้องต่อพร้อมเพย์หรือบัตรผ่านผู้ให้บริการชำระเงิน และเก็บยอดเครดิตไว้ที่ฝั่งเซิร์ฟเวอร์ เพราะยอดที่เก็บในเบราว์เซอร์แก้ไขได้": "This button only simulates a top-up. No money is charged. The real thing needs PromptPay or cards through a payment provider, with the credit balance kept on a server, because a balance stored in the browser can be edited.",
+  "จำลองเติมเงิน": "Simulate top-up",
+  "ต่อครั้ง": "per use",
+  "แพ็กเติมเงิน": "Top-up packs",
+  "จำลองใช้ 1": "Simulate using 1",
+  "จำลองใช้ 10": "Simulate using 10",
+  "จำลองใช้ 50": "Simulate using 50",
+  "รีเซ็ตเป็น 100": "Reset to 100",
+  "ครั้งจากการเติมล่าสุด · เขียว เพียงพอ · เหลือง ≤25% ใกล้หมด · แดง ≤10% ให้เติมเลย · 0 หยุดแปล": "uses from the last top-up · green: enough · yellow: ≤25% running low · red: ≤10% top up now · 0: translation stops",
+  "ถัง": "Tank of",
+  "เปอร์เซ็นต์": "percent",
+  "เครดิตเหลือ": "Credit remaining",
+  "เครดิตคงเหลือ (1 เครดิต = แปล 1 ครั้ง)": "Credit remaining (1 credit = 1 translation)",
+  "ทุกแพ็กมีกำไรเกิน 30% เครดิตที่ลูกค้าซื้อแล้วใช้ไม่หมดยังเป็นกำไรเพิ่ม แต่ยังไม่นับในตารางนี้": "Every pack earns more than 30% profit. Credit that customers buy but never use is extra profit, not counted in this table.",
+  "แพ็กที่กำไรต่ำกว่า 30% เสี่ยงหลุดขาดทุนเมื่อค่าแปลหรือค่าธรรมเนียมเปลี่ยน ลองปรับราคาขึ้นหรือลดจำนวนครั้งต่อแพ็ก": "Packs under 30% profit can turn into a loss if translation or fee costs change. Try raising the price or lowering the uses per pack.",
+  "บาท": "THB",
+  "ราคาต่ำสุดที่ไม่ขาดทุน ต่อแพ็ก:": "Lowest break-even price per pack:",
+  "แพ็ก": "Pack",
+  "ขาดทุน": "Loss",
+  "ค่าธรรมเนียมชำระ": "Payment fee",
+  "ต้นทุนแปล": "Translation cost",
+  "กำไร": "Profit",
+  "กำไร %": "Profit %",
+  "ต้องขาย/เดือน": "Packs to sell / month",
+  "คลังเก็บอยู่ในเบราว์เซอร์เครื่องนี้ ถ้าล้างข้อมูลหรือเปลี่ยนเครื่องจะหาย ใช้ปุ่มคัดลอกทั้งหมดเพื่อสำรองไว้ใน Line หรือโน้ต": "The vault lives in this device's browser. If you clear data or change device it is lost. Use Copy all to back it up in Line or a note.",
+  "ลบ": "Delete",
+  "ทบทวนแฟลชการ์ด": "Review flashcards",
+  "คัดลอกทั้งหมด": "Copy all",
+  "ตอนนี้เป็นรายการตัวอย่าง กดปุ่ม เก็บ ข้างประโยคหรือแตะคำเพื่อเริ่มสะสมของจริง": "These are sample items for now. Tap Save next to a sentence, or tap a word, to start collecting your own.",
+  "รายการ": "items",
+  "เก็บไว้": "Saved ",
+  "คลังศัพท์ของฉัน": "My vocabulary vault",
+  "ถัดไป": "Next",
+  "ก่อนหน้า": "Previous",
+  "ดูคำตอบ": "see the answer",
+  "ดูโจทย์": "see the question",
+  "แตะเพื่อ": "Tap to ",
+  "แปลเป็นภาษาที่ฝึกว่าอะไร": "How do you say this in the language you are practising?",
+  "แตะเพื่อพลิกการ์ด": "Tap to flip the card",
+  "← กลับคลัง": "← Back to vault",
+  "จอใหญ่": "Full screen",
+  "ลูกค้าพูดว่า:": "The client said:",
+  "คุณพูดว่า:": "You said:",
+  "เลือกจากประโยคตัวอย่างด้านล่าง หรือรอเวอร์ชันที่ต่อบริการแปลจริง": "choose from the sample sentences below, or wait for the version connected to a real translation service.",
+  "ไม่ได้หักเครดิต": "No credit was deducted; ",
+  "ยังแปลประโยคนี้ไม่ได้ในต้นแบบ": "This sentence cannot be translated in the prototype yet",
+  "ไปหน้าเติมเงิน": "Go to top-up",
+  "เครดิตหมด": "Out of credit",
+  "ระบบหยุดแปลจนกว่าจะเติมเครดิต": "Translation is paused until you top up",
+  "ต้นแบบ: แปลได้เฉพาะประโยคตัวอย่างที่เตรียมไว้ การแปลอิสระต้องต่อบริการแปลที่มีค่าใช้จ่ายต่อครั้ง การแปลผิดในเรื่องสัญญามีผลทางกฎหมาย ควรตรวจกับเอกสารจริง": "Prototype: it translates only the prepared sample sentences. Free translation needs a paid translation service billed per use. A wrong translation in a contract has legal consequences, so always check the real document.",
+  "ประโยคตัวอย่าง แตะเพื่อแปล": "Sample sentences: tap to translate",
+  "ล้าง": "Clear",
+  "(ใช้ 1 เครดิต)": "(uses 1 credit)",
+  "แปล": "Translate",
+  "พูดเพื่อแปล": "Speak to translate",
+  "ทิศทางการแปล": "Translation direction",
+  "เลือกประโยคตอบ": "Choose your reply",
+  "เลือกประโยคตอบ (3 ระดับ)": "Choose your reply (3 levels)",
+  "คัดลอก": "Copy",
+  "เก็บ": "Save",
+  "เก็บแล้ว": "Saved",
+  "คำแปล": "Subtitles",
+  "ช้า": "Slow",
+  "ฟังซ้ำ": "Replay",
+  "พูดตอบ": "Speak",
+  "กดแล้วพูดตอบ": "Press and speak your reply",
+  "ต่อไป": "Next",
+  "จบสาย": "End call",
+  "ข้อต่อไป": "Next question",
+  "ตรงกับประโยค": "Match",
+  "คุณตอบ ·": "You replied ·",
+  "โทรอีกรอบ": "Call again",
+  "เก็บทั้งหมด": "Save all",
+  "วางสาย": "Hang up",
+  "ข้อ ประโยคที่ตอบเก็บไว้ทบทวนได้": "questions. Your replies are kept for review.",
+  "คุณตอบครบ": "You answered all",
+  "จบสายแล้ว ·": "Call ended ·",
+  "รับสาย": "Answer",
+  "ปฏิเสธ": "Decline",
+  "ปฏิเสธสาย": "Decline the call",
+  "กำลังโทรหาคุณ": "Calling you",
+  "วิดีโอคอลเข้า ·": "Incoming video call ·",
+  "ความคืบหน้า": "Progress",
+  "บทสนทนาเป็นตัวอย่างสำหรับฝึกภาษา ไม่ใช่คำแนะนำทางกฎหมาย เงื่อนไขซื้อขายจริงควรตรวจกับเอกสารและทนาย": "The conversations are language-practice samples, not legal advice. Check real terms of sale against the documents and a lawyer.",
+  "ข้อ": "questions",
+  "โทรเข้า ·": "calling ·",
+  "ฝึกคุยกับลูกค้า": "Practise talking with clients",
+  "เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ": "Pick a situation, then answer the call as if a real client were phoning you.",
+  "ฟังช้า": "Listen slowly",
+  "ฟังเสียงไม่สำเร็จ ลองอีกครั้งหรือเลือกประโยคตอบแทน": "Could not hear you. Try again or choose a reply instead.",
+  "ไม่ได้ยินเสียง ลองพูดอีกครั้ง": "No speech heard. Try again.",
+  "เบราว์เซอร์นี้ยังไม่รองรับการฟังเสียง ใช้ Chrome หรือเลือกประโยคตอบแทน": "This browser cannot listen. Use Chrome, or choose a reply instead.",
+  "ไมค์ถูกบล็อก กรุณาอนุญาตการใช้ไมค์ในเบราว์เซอร์ หรือเลือกประโยคตอบแทน": "The microphone is blocked. Allow microphone access in the browser, or choose a reply instead.",
+  "เล่นเสียงไม่ได้ในเครื่องนี้": "Cannot play audio on this device",
+  "เครื่องนี้ยังไม่รองรับเสียงอ่าน": "This device does not support read-aloud voices",
+  "คัดลอกแล้ว": "Copied",
+  "คัดลอกไม่ได้ ลองกดค้างที่ข้อความ": "Could not copy. Try pressing and holding the text.",
+  "หมดแล้ว ระบบหยุดแปลจนกว่าจะเติมเงิน": "Used up. Translation stops until you top up.",
+  "เหลือน้อยมาก เติมเงินได้เลย": "Very low. Top up now.",
+  "ใกล้หมด ควรเติมเร็ว ๆ นี้": "Running low. Top up soon.",
+  "เพียงพอ": "Enough",
+  "สุภาพ": "Polite",
+  "มาตรฐาน": "Standard",
+  "สั้น": "Short",
+  "ตัวอย่าง": "Examples",
+  "สำหรับ": "For ",
+  "ฝึกพูดสำหรับนายหน้าอสังหา": "Speaking practice for property agents",
+  "ดูเครดิตคงเหลือ": "View remaining credit",
+  "เมนูหลัก": "Main menu",
+  "เลือกภาษา": "Choose language",
+  "โหลดภาษานี้ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่": "Could not load this language. Check your connection and try again.",
+  "เสร็จ": "Done",
+  "ฉันพูดภาษา": "I speak",
+  "อยากฝึกภาษา": "I want to practise",
+  "ลูกค้าที่คุยด้วย": "Client",
+  "ผู้หญิง": "Woman",
+  "ผู้ชาย": "Man",
+  "ฉันพูด": "I speak",
+  "ลูกค้าพูด": "The client speaks",
+  "พิมพ์หรือพูด": "Type or speak"
+ }
+}

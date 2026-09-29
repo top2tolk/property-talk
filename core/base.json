@@ -1,0 +1,184 @@
+{
+ "cats": [
+  {
+   "id": "general",
+   "turns": [
+    {
+     "id": "general-1",
+     "mood": "happy"
+    },
+    {
+     "id": "general-2",
+     "mood": "concerned"
+    },
+    {
+     "id": "general-3",
+     "mood": "neutral"
+    },
+    {
+     "id": "general-4",
+     "mood": "happy"
+    }
+   ]
+  },
+  {
+   "id": "home",
+   "turns": [
+    {
+     "id": "home-1",
+     "mood": "happy"
+    },
+    {
+     "id": "home-2",
+     "mood": "neutral"
+    },
+    {
+     "id": "home-3",
+     "mood": "thinking"
+    },
+    {
+     "id": "home-4",
+     "mood": "happy"
+    }
+   ]
+  },
+  {
+   "id": "around",
+   "turns": [
+    {
+     "id": "around-1",
+     "mood": "neutral"
+    },
+    {
+     "id": "around-2",
+     "mood": "happy"
+    },
+    {
+     "id": "around-3",
+     "mood": "thinking"
+    },
+    {
+     "id": "around-4",
+     "mood": "neutral"
+    }
+   ]
+  },
+  {
+   "id": "deal",
+   "turns": [
+    {
+     "id": "deal-1",
+     "mood": "concerned"
+    },
+    {
+     "id": "deal-2",
+     "mood": "surprised"
+    },
+    {
+     "id": "deal-3",
+     "mood": "thinking"
+    },
+    {
+     "id": "deal-4",
+     "mood": "happy"
+    }
+   ]
+  },
+  {
+   "id": "terms",
+   "turns": [
+    {
+     "id": "terms-1",
+     "mood": "thinking"
+    },
+    {
+     "id": "terms-2",
+     "mood": "concerned"
+    },
+    {
+     "id": "terms-3",
+     "mood": "neutral"
+    },
+    {
+     "id": "terms-4",
+     "mood": "happy"
+    }
+   ]
+  },
+  {
+   "id": "viewing",
+   "turns": [
+    {
+     "id": "viewing-1",
+     "mood": "happy"
+    },
+    {
+     "id": "viewing-2",
+     "mood": "neutral"
+    },
+    {
+     "id": "viewing-3",
+     "mood": "thinking"
+    },
+    {
+     "id": "viewing-4",
+     "mood": "happy"
+    }
+   ]
+  }
+ ],
+ "pairs": [
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "a"
+  },
+  {
+   "w": "c"
+  },
+  {
+   "w": "c"
+  },
+  {
+   "w": "c"
+  },
+  {
+   "w": "c"
+  }
+ ],
+ "reaction_moods": [
+  "neutral",
+  "happy",
+  "delighted"
+ ],
+ "demo": [
+  {
+   "id": "d1"
+  },
+  {
+   "id": "d2"
+  },
+  {
+   "id": "d3"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+  "th": {
+    "f": {"name":"Nok","skin":"#d6a67c","hair":"#1d1512","eyes":"#3a2418","lips":"#b5606a","jacket":"#1f5f66","inner":"#f4efe6","style":"bun","attire":"sabai","trim":"#a8296a","accent":"#f0c766","hairpin":"jasmine","necklace":"gold","eyeOpen":0.88,"lash":3.6,"brow":6,"blush":0.06,"age":0},
+    "m": {"name":"Chai","skin":"#cc9a6e","hair":"#1a1310","eyes":"#33200f","lips":"#a86a5c","jacket":"#f1eee6","inner":"#f4efe6","style":"short","attire":"thai_jacket","accent":"#d9b04a","eyeOpen":0.88,"brow":8,"age":0.3}
+  },
+  "en": {
+    "f": {"name":"Carol","skin":"#efc2a4","hair":"#d5d0c8","eyes":"#5b8f9a","lips":"#c4707a","jacket":"#4f7f7a","inner":"#f4efe6","style":"bob","glasses":true,"necklace":true,"pin":"#e2b950","lash":3.4,"brow":6,"age":0.5},
+    "m": {"name":"Tom","skin":"#e0b08d","hair":"#9aa0a6","eyes":"#6b7f8f","lips":"#b26f66","jacket":"#2f3c55","inner":"#c9d9e6","style":"sidepart","glasses":true,"tie":"#7b2f3a","pin":"#c9ced6","brow":8,"age":0.8}
+  },
+  "zh": {
+    "f": {"name":"Mei","skin":"#ecc9a6","hair":"#161112","eyes":"#2b1a12","lips":"#b5474f","jacket":"#a8232f","inner":"#f4efe6","style":"long","attire":"qipao","trim":"#2f9d84","accent":"#f2cf72","earring":"#3fae8f","eyeOpen":0.86,"lash":3.6,"brow":6,"age":0},
+    "m": {"name":"Wei","skin":"#e0b78c","hair":"#15100f","eyes":"#2b1a12","lips":"#a8675a","jacket":"#1d2c46","inner":"#f4efe6","style":"sidepart","attire":"tang","trim":"#b58b2e","accent":"#d9b04a","eyeOpen":0.87,"brow":8.5,"age":0.35}
+  },
+  "ru": {
+    "f": {"name":"Olga","skin":"#f1cfb6","hair":"#7a5233","eyes":"#6f8f8a","lips":"#b85a5e","jacket":"#f1e7d5","inner":"#f4efe6","style":"none","attire":"shawl","hat":"scarf","accent":"#221a1e","blush":0.12,"lash":3.4,"brow":6,"age":0.55},
+    "m": {"name":"Dmitri","skin":"#e8bf9f","hair":"#5a4a3a","eyes":"#5f7f96","lips":"#a86a60","jacket":"#2b2d33","inner":"#f4efe6","style":"none","attire":"coat","hat":"ushanka","hatColor":"#6b5442","accent":"#b02a2f","beard":true,"blush":0.05,"brow":8.5,"age":0.6}
+  },
+  "de": {
+    "f": {"name":"Anna","skin":"#f3d0b5","hair":"#b8894f","eyes":"#5c86b3","lips":"#c26a70","jacket":"#1f6a4a","inner":"#fbf7ee","style":"braids","attire":"dirndl","accent":"#e2c15a","trim":"#f4efe6","necklace":"gold","hairpin":"edelweiss","blush":0.1,"lash":3.4,"brow":6,"age":0},
+    "m": {"name":"Klaus","skin":"#e9bd9a","hair":"#aaa59c","eyes":"#4f7fa0","lips":"#a8675a","jacket":"#b3262d","inner":"#f4efe6","style":"short","attire":"tracht","hat":"trachten","hatColor":"#4a6b47","accent":"#f4efe6","trim":"#3d5b3a","beard":true,"blush":0.12,"brow":8.5,"age":0.8}
+  },
+  "fr": {
+    "f": {"name":"Claire","skin":"#f0cdb0","hair":"#4a2f22","eyes":"#6a5a3a","lips":"#b8434f","jacket":"#1f2f57","inner":"#f4efe6","style":"bob","attire":"breton","neckwear":"scarf","hat":"beret","hatColor":"#1c1f2a","trim":"#c8352f","accent":"#f4efe6","blush":0.08,"lash":3.6,"brow":6,"age":0.25},
+    "m": {"name":"Louis","skin":"#e7bd9a","hair":"#3b2c24","eyes":"#5a4636","lips":"#a8675a","jacket":"#1f2f57","inner":"#f4efe6","style":"sidepart","attire":"breton","neckwear":"kerchief","hat":"beret","hatColor":"#1c1f2a","trim":"#c8352f","accent":"#f4efe6","brow":8.5,"age":0.55}
+  },
+  "ja": {
+    "f": {"name":"Yuki","skin":"#f0d2b8","hair":"#181215","eyes":"#2b1a12","lips":"#c05a6a","jacket":"#e9a3b6","inner":"#f4efe6","style":"updo","attire":"kimono","trim":"#2d6b6a","accent":"#e6c56a","hairpin":"kanzashi","eyeOpen":0.85,"lash":3.6,"brow":6,"blush":0.08,"age":0},
+    "m": {"name":"Kenji","skin":"#e4bd98","hair":"#17110f","eyes":"#2b1a12","lips":"#a8675a","jacket":"#1f2a4a","inner":"#5b6a8f","style":"short","attire":"haori","eyeOpen":0.86,"brow":8.5,"age":0.4}
+  },
+  "ko": {
+    "f": {"name":"Jiyeon","skin":"#f2d4bc","hair":"#1a1212","eyes":"#2b1a12","lips":"#c8607a","jacket":"#f4c7d1","inner":"#f4efe6","style":"ponytail","attire":"hanbok_f","trim":"#7d2a52","accent":"#3d6f8a","tie":"#7d2a52","eyeOpen":0.87,"lash":3.6,"brow":6,"blush":0.1,"age":0},
+    "m": {"name":"Minjun","skin":"#e9c7a6","hair":"#15100f","eyes":"#2b1a12","lips":"#a8675a","jacket":"#1f5c63","inner":"#f4efe6","style":"sidepart","attire":"hanbok_m","trim":"#11383f","accent":"#f4efe6","eyeOpen":0.87,"brow":8.5,"age":0}
+  }
+}
