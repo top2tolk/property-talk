@@ -169,16 +169,20 @@ function stopRing(){clearInterval(ringTimer);ringTimer=null}
 function stopAllSound(){try{if(curAudio){curAudio.pause();curAudio=null}if('speechSynthesis' in window)speechSynthesis.cancel()}catch(e){}setTalk(false)}
 var talkT=null,curAudio=null;
 function speak(text,lang,rate,face){
-  if(!('speechSynthesis' in window)){toast(_('เครื่องนี้ยังไม่รองรับเสียงอ่าน'));return}
+  /* The mouth moves for the estimated length of the line even when the device makes no sound (muted, no voices, preview frames). */
+  var est=text.length*95/(rate||1)+1200;
+  function mouth(){if(face){setTalk(true);clearTimeout(talkT);talkT=setTimeout(function(){setTalk(false)},est)}}
+  if(!('speechSynthesis' in window)){mouth();toast(_('เครื่องนี้ยังไม่รองรับเสียงอ่าน'));return}
   try{
     speechSynthesis.cancel();
     var u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate||1;
     var vs=speechSynthesis.getVoices();var pre=lang.slice(0,2).toLowerCase();var v=null;
     for(var i=0;i<vs.length;i++){var vl=(vs[i].lang||'').replace('_','-').toLowerCase();if(vl===lang.toLowerCase()){v=vs[i];break}if(!v&&vl.indexOf(pre)===0)v=vs[i]}
     if(v)u.voice=v;
-    if(face){u.onstart=function(){setTalk(true)};u.onend=u.onerror=function(){setTalk(false)};clearTimeout(talkT);talkT=setTimeout(function(){setTalk(false)},text.length*95/(rate||1)+1800)}
+    mouth();
+    if(face){u.onend=function(){clearTimeout(talkT);setTalk(false)}}
     speechSynthesis.speak(u);
-  }catch(e){toast(_('เล่นเสียงไม่ได้ในเครื่องนี้'))}
+  }catch(e){mouth();toast(_('เล่นเสียงไม่ได้ในเครื่องนี้'))}
 }
 /* Plays the pre-generated mp3 when it exists, otherwise falls back to the device voice. */
 function playLine(aid,text,lang,rate,face){
