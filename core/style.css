@@ -213,3 +213,10 @@ nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border
   .sub.me .en{font-size:15px}
   .cmain{width:62px;height:62px}
 }
+@media (max-height:700px){
+  .cstack{max-height:40vh}
+  .sub.me .en{font-size:14px;line-height:1.35}
+  .sub.me .th{font-size:12px}
+  .react .th{display:none}
+  .cface{bottom:52%}
+}
