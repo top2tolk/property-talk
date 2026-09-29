@@ -481,13 +481,13 @@
   "เลือกภาษา": "Choisir la langue",
   "โหลดภาษานี้ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่": "Impossible de charger cette langue. Vérifiez votre connexion et réessayez.",
   "เสร็จ": "Terminé",
-  "ฉันพูดภาษา": "Je parle",
-  "อยากฝึกภาษา": "Je veux pratiquer",
   "ลูกค้าที่คุยด้วย": "Client",
   "ผู้หญิง": "Femme",
   "ผู้ชาย": "Homme",
   "ฉันพูด": "Je parle",
   "ลูกค้าพูด": "Le client parle",
-  "พิมพ์หรือพูด": "Écrire ou parler"
+  "พิมพ์หรือพูด": "Écrire ou parler",
+  "ภาษาของฉัน": "Ma langue",
+  "ภาษาคู่สนทนา": "Langue de l'interlocuteur"
  }
 }

@@ -63,6 +63,7 @@ function aidR(id,i){return TARGET+'/'+id+'-r'+i}
 function aidX(i){return TARGET+'/'+GENDER+'/react-'+i}
 function loadPack(code){
   if(PACKS[code])return Promise.resolve(PACKS[code]);
+  if(window.PT_INLINE&&PT_INLINE.lang&&PT_INLINE.lang[code]){PACKS[code]=PT_INLINE.lang[code];return Promise.resolve(PACKS[code])}
   return fetch(CORE+'lang/'+code+'.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}).then(function(d){PACKS[code]=d;return d});
 }
 function applyLang(){
@@ -110,8 +111,8 @@ function langModalHTML(){
   var cs=CASTS[TARGET]||CASTS.en;
   function pick(g,label){var c=cs[g];return '<button class="cpick'+(GENDER===g?' on':'')+'" data-act="gender" data-g="'+g+'" aria-pressed="'+(GENDER===g)+'"><span class="cth">'+PT_ART.avatar(c,'happy')+'</span><b>'+esc(c.name)+'</b><span class="small muted">'+label+'</span></button>'}
   return '<div class="lmc"><div class="row" style="justify-content:space-between"><h3>'+esc(_('เลือกภาษา'))+'</h3><button class="btn sm primary" data-act="langclose">'+esc(_('เสร็จ'))+'</button></div>'+
-    '<p class="lmh">'+esc(_('ฉันพูดภาษา'))+'</p>'+chips('lang-n',NATIVE,TARGET)+
-    '<p class="lmh">'+esc(_('อยากฝึกภาษา'))+'</p>'+chips('lang-t',TARGET,NATIVE)+
+    '<p class="lmh">'+esc(_('ภาษาของฉัน'))+'</p>'+chips('lang-n',NATIVE,TARGET)+
+    '<p class="lmh">'+esc(_('ภาษาคู่สนทนา'))+'</p>'+chips('lang-t',TARGET,NATIVE)+
     '<p class="lmh">'+esc(_('ลูกค้าที่คุยด้วย'))+' · '+esc(origin())+'</p><div class="cpicks">'+pick('f',esc(_('ผู้หญิง')))+pick('m',esc(_('ผู้ชาย')))+'</div></div>';
 }
 function updateLangModal(){var m=$('#lang');if(m&&!m.hidden)m.innerHTML=langModalHTML()}
@@ -556,7 +557,7 @@ function boot(){
   var ok=function(c){return LANGS.some(function(l){return l[0]===c})};
   if(ok(n0))NATIVE=n0;if(ok(t0))TARGET=t0;if(g0==='m')GENDER='m';
   if(NATIVE===TARGET)TARGET=NATIVE==='en'?'th':'en';
-  Promise.all([fetch(CORE+'base.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}),fetch(CORE+'casts.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}),loadPack(NATIVE),loadPack(TARGET),loadPack('en')]).then(function(x){
+  Promise.all([window.PT_INLINE?Promise.resolve(PT_INLINE.base):fetch(CORE+'base.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}),window.PT_INLINE?Promise.resolve(PT_INLINE.casts):fetch(CORE+'casts.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}),loadPack(NATIVE),loadPack(TARGET),loadPack('en')]).then(function(x){
     BASE=x[0];CASTS=x[1];applyLang();
     if(CFG.codeHash&&store.get('unlock')!=='1')showGate(start);else start();
   }).catch(function(){

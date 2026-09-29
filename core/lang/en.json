@@ -392,13 +392,13 @@
   "เลือกภาษา": "Choose language",
   "โหลดภาษานี้ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่": "Could not load this language. Check your connection and try again.",
   "เสร็จ": "Done",
-  "ฉันพูดภาษา": "I speak",
-  "อยากฝึกภาษา": "I want to practise",
   "ลูกค้าที่คุยด้วย": "Client",
   "ผู้หญิง": "Woman",
   "ผู้ชาย": "Man",
   "ฉันพูด": "I speak",
   "ลูกค้าพูด": "The client speaks",
-  "พิมพ์หรือพูด": "Type or speak"
+  "พิมพ์หรือพูด": "Type or speak",
+  "ภาษาของฉัน": "My language",
+  "ภาษาคู่สนทนา": "Partner's language"
  }
 }
