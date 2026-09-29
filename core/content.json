@@ -1,0 +1,150 @@
+{
+  "chars": {
+    "carol": {"name": "Carol", "role": "คู่รักเกษียณจากสหรัฐฯ", "skin": "#e9bd9c", "hair": "#cfc9c0", "shirt": "#5f8f86", "glasses": true},
+    "lars": {"name": "Lars", "role": "นักลงทุนจากยุโรป", "skin": "#f0caa9", "hair": "#a97f47", "shirt": "#2f4a6b", "beard": true},
+    "tom": {"name": "Tom", "role": "ผู้เกษียณจากอังกฤษ", "skin": "#dcae8c", "hair": "#8d9296", "shirt": "#8a5a44"}
+  },
+  "cats": [
+    {"id": "general", "th": "ทั่วไป", "en": "General enquiries", "char": "tom", "turns": [
+      {"id": "general-1", "mood": "happy", "en": "Hello! I am looking for a quiet house near the beach. Can you help me?", "th": "สวัสดีครับ ผมกำลังหาบ้านเงียบ ๆ ใกล้ทะเล ช่วยผมได้ไหม", "r": [
+        ["Of course. How many bedrooms do you need?", "ได้เลยครับ คุณต้องการกี่ห้องนอนครับ"],
+        ["Of course, I would be happy to help. How many bedrooms do you need, and what is your budget?", "ได้เลยครับ ยินดีช่วย คุณต้องการกี่ห้องนอน และงบประมาณเท่าไหร่ครับ"],
+        ["Certainly, it would be my pleasure to help. May I ask how many bedrooms you need and roughly what budget you have in mind?", "ยินดีเป็นอย่างยิ่งครับ ขอถามได้ไหมครับว่าต้องการกี่ห้องนอน และมีงบประมาณคร่าว ๆ เท่าไหร่"]]},
+      {"id": "general-2", "mood": "thinking", "en": "I will stay in Thailand for about six months a year. Is that a problem for buying a house?", "th": "ผมจะอยู่ไทยประมาณหกเดือนต่อปี ซื้อบ้านมีปัญหาไหม", "r": [
+        ["No problem, but let me explain the options.", "ไม่มีปัญหาครับ แต่ขออธิบายทางเลือกก่อนนะครับ"],
+        ["It is not a problem for buying, but the visa is a separate matter. I can explain the options.", "ไม่เป็นปัญหาสำหรับการซื้อครับ แต่เรื่องวีซ่าเป็นอีกเรื่องหนึ่ง ผมอธิบายทางเลือกให้ได้ครับ"],
+        ["Many foreign buyers do the same, but the visa is a separate matter, so I recommend confirming it with a lawyer.", "ผู้ซื้อชาวต่างชาติหลายคนก็ทำแบบนี้ครับ แต่เรื่องวีซ่าเป็นอีกเรื่องหนึ่ง ผมแนะนำให้ยืนยันกับทนายครับ"]]},
+      {"id": "general-3", "mood": "neutral", "en": "What is the difference between a house in a village and a private villa?", "th": "บ้านในหมู่บ้านจัดสรรกับวิลล่าส่วนตัวต่างกันอย่างไร", "r": [
+        ["A village has shared facilities. A villa is more private.", "หมู่บ้านมีส่วนกลางร่วมกัน วิลล่าเป็นส่วนตัวกว่าครับ"],
+        ["A house in a village has shared facilities and security, while a private villa gives you more privacy.", "บ้านในหมู่บ้านมีส่วนกลางและรักษาความปลอดภัยร่วมกัน ส่วนวิลล่าส่วนตัวให้ความเป็นส่วนตัวมากกว่าครับ"],
+        ["A house in a village usually shares facilities such as security and a clubhouse, while a private villa gives you more privacy and space, though you handle more of the maintenance yourself.", "บ้านในหมู่บ้านมักใช้ส่วนกลางร่วมกัน เช่น รักษาความปลอดภัยและคลับเฮาส์ ส่วนวิลล่าส่วนตัวให้ความเป็นส่วนตัวและพื้นที่มากกว่า แต่คุณดูแลรักษาเองมากขึ้นครับ"]]},
+      {"id": "general-4", "mood": "happy", "en": "That sounds good. Can you show me three options this week?", "th": "ฟังดีครับ ช่วยหาสามตัวเลือกให้ผมดูสัปดาห์นี้ได้ไหม", "r": [
+        ["Yes. I will send you three options tomorrow.", "ได้ครับ พรุ่งนี้ผมส่งสามตัวเลือกให้ครับ"],
+        ["Yes, I will prepare three options and send you the details on Line tomorrow.", "ได้ครับ ผมจะเตรียมสามตัวเลือกและส่งรายละเอียดทาง Line ให้พรุ่งนี้ครับ"],
+        ["Certainly. I will prepare three options that match your needs and send the details on Line tomorrow, so we can choose which ones to visit.", "ได้แน่นอนครับ ผมจะเตรียมสามตัวเลือกที่ตรงกับความต้องการ และส่งรายละเอียดทาง Line พรุ่งนี้ เพื่อเลือกกันว่าจะไปดูหลังไหนครับ"]]}
+    ]},
+    {"id": "home", "th": "ภายในบ้าน", "en": "Inside the home", "char": "carol", "turns": [
+      {"id": "home-1", "mood": "happy", "en": "Hi! This is a lovely kitchen. Does the price include the appliances?", "th": "สวัสดีค่ะ ครัวสวยมาก ราคานี้รวมเครื่องใช้ไฟฟ้าไหมคะ", "r": [
+        ["Yes, all appliances are included.", "รวมเครื่องใช้ไฟฟ้าทั้งหมดครับ"],
+        ["Yes, the refrigerator, oven and cooktop are all included in the price.", "รวมครับ ตู้เย็น เตาอบ และเตาไฟฟ้ารวมอยู่ในราคาแล้ว"],
+        ["Yes, the price includes the refrigerator, oven and cooktop. I can send you the full inventory list if you like.", "รวมครับ ราคานี้รวมตู้เย็น เตาอบ และเตาไฟฟ้า ผมส่งรายการทรัพย์สินทั้งหมดให้ได้ถ้าสนใจ"]]},
+      {"id": "home-2", "mood": "neutral", "en": "How many bedrooms are there, and do they all have air conditioning?", "th": "มีกี่ห้องนอน และทุกห้องมีแอร์ไหมคะ", "r": [
+        ["Three bedrooms, all with air conditioning.", "สามห้องนอน มีแอร์ทุกห้องครับ"],
+        ["There are three bedrooms, and each one has its own air conditioner.", "มีสามห้องนอน และแต่ละห้องมีแอร์ของตัวเองครับ"],
+        ["The house has three bedrooms, and every bedroom comes with a separate air conditioner. Would you like to see the master bedroom first?", "บ้านมีสามห้องนอน ทุกห้องมีแอร์แยกเครื่อง อยากดูห้องนอนใหญ่ก่อนไหมครับ"]]},
+      {"id": "home-3", "mood": "thinking", "en": "Is the water pressure good? And is there hot water in every bathroom?", "th": "แรงดันน้ำดีไหมคะ และทุกห้องน้ำมีน้ำอุ่นไหม", "r": [
+        ["Yes, both are good.", "ดีทั้งสองอย่างครับ"],
+        ["The water pressure is strong, and all three bathrooms have a water heater.", "แรงดันน้ำแรง และห้องน้ำทั้งสามห้องมีเครื่องทำน้ำอุ่นครับ"],
+        ["The water pressure is very good because there is a pump tank, and every bathroom has its own water heater.", "แรงดันน้ำดีมากเพราะมีถังปั๊มน้ำ และทุกห้องน้ำมีเครื่องทำน้ำอุ่นของตัวเองครับ"]]},
+      {"id": "home-4", "mood": "happy", "en": "What is the monthly electricity bill usually like?", "th": "ค่าไฟรายเดือนปกติประมาณเท่าไหร่คะ", "r": [
+        ["About two thousand baht a month.", "ประมาณสองพันบาทต่อเดือนครับ"],
+        ["The previous owner paid about two thousand baht a month, with the air conditioning on.", "เจ้าของเดิมจ่ายประมาณสองพันบาทต่อเดือน รวมการเปิดแอร์ครับ"],
+        ["The previous owner said the electricity bill was around two thousand baht a month, but it depends on how much you use the air conditioning.", "เจ้าของเดิมบอกว่าค่าไฟประมาณสองพันบาทต่อเดือน แต่ขึ้นอยู่กับว่าเปิดแอร์มากแค่ไหนครับ"]]}
+    ]},
+    {"id": "around", "th": "รอบบ้าน", "en": "Around the house", "char": "tom", "turns": [
+      {"id": "around-1", "mood": "neutral", "en": "Is the swimming pool private? How deep is it?", "th": "สระว่ายน้ำเป็นของส่วนตัวไหม ลึกแค่ไหน", "r": [
+        ["Yes, it is private. It is one point five meters deep.", "เป็นส่วนตัวครับ ลึกหนึ่งเมตรครึ่งครับ"],
+        ["Yes, the pool is private, and it is about one point five meters deep.", "ใช่ครับ สระเป็นของส่วนตัว ลึกประมาณหนึ่งเมตรครึ่งครับ"],
+        ["Yes, it is a private pool, about one point five meters at the deepest point. There is also a shallow area for children.", "ใช่ครับ เป็นสระส่วนตัว จุดที่ลึกที่สุดประมาณหนึ่งเมตรครึ่ง และมีโซนน้ำตื้นสำหรับเด็กด้วยครับ"]]},
+      {"id": "around-2", "mood": "happy", "en": "How big is the garden, and who takes care of it?", "th": "สวนใหญ่แค่ไหน และใครดูแลบ้าง", "r": [
+        ["About two hundred square meters. A gardener comes weekly.", "ประมาณสองร้อยตารางเมตร มีคนสวนมาทุกสัปดาห์ครับ"],
+        ["The garden is about two hundred square meters, and a gardener comes once a week.", "สวนกว้างประมาณสองร้อยตารางเมตร และมีคนสวนมาสัปดาห์ละครั้งครับ"],
+        ["The garden is about two hundred square meters. A gardener can come once a week, and I can arrange that for you if you like.", "สวนกว้างประมาณสองร้อยตารางเมตร คนสวนมาได้สัปดาห์ละครั้ง และผมจัดหาให้ได้ถ้าคุณต้องการครับ"]]},
+      {"id": "around-3", "mood": "thinking", "en": "Is the area safe? Is there security at night?", "th": "ย่านนี้ปลอดภัยไหม กลางคืนมีรักษาความปลอดภัยไหม", "r": [
+        ["Yes, there is a guard at the gate all night.", "ปลอดภัยครับ มียามที่ประตูทั้งคืน"],
+        ["Yes, the village has a guard at the gate twenty-four hours a day.", "ปลอดภัยครับ หมู่บ้านมียามที่ประตูตลอดยี่สิบสี่ชั่วโมง"],
+        ["Yes, the village has security at the gate around the clock, and I am happy to introduce you to the village office.", "ปลอดภัยครับ หมู่บ้านมีรักษาความปลอดภัยที่ประตูตลอดเวลา และผมยินดีแนะนำให้รู้จักสำนักงานหมู่บ้านครับ"]]},
+      {"id": "around-4", "mood": "neutral", "en": "How far is the nearest supermarket and hospital?", "th": "ซูเปอร์มาร์เก็ตและโรงพยาบาลที่ใกล้ที่สุดอยู่ไกลแค่ไหน", "r": [
+        ["The supermarket is ten minutes away. The hospital is fifteen.", "ซูเปอร์มาร์เก็ตห่างสิบนาที โรงพยาบาลห่างสิบห้านาทีครับ"],
+        ["The nearest supermarket is about ten minutes by car, and the hospital is about fifteen minutes.", "ซูเปอร์มาร์เก็ตที่ใกล้ที่สุดห่างประมาณสิบนาทีโดยรถ และโรงพยาบาลห่างประมาณสิบห้านาทีครับ"],
+        ["The nearest supermarket is about ten minutes by car, and the nearest hospital is about fifteen minutes away. I can send you the map.", "ซูเปอร์มาร์เก็ตที่ใกล้ที่สุดห่างประมาณสิบนาทีโดยรถ และโรงพยาบาลที่ใกล้ที่สุดห่างประมาณสิบห้านาที ผมส่งแผนที่ให้ได้ครับ"]]}
+    ]},
+    {"id": "deal", "th": "ต่อรองราคา", "en": "Price negotiation", "char": "lars", "turns": [
+      {"id": "deal-1", "mood": "thinking", "en": "I like the villa, but the asking price is a little high for me.", "th": "ผมชอบวิลล่านี้ แต่ราคาที่ตั้งไว้สูงไปนิดสำหรับผม", "r": [
+        ["What price did you have in mind?", "คุณคิดไว้ที่ราคาเท่าไหร่ครับ"],
+        ["I understand. What price would you be comfortable with?", "เข้าใจครับ ราคาเท่าไหร่ที่คุณสบายใจครับ"],
+        ["I understand, and thank you for being open about it. May I ask what budget you have in mind?", "เข้าใจครับ ขอบคุณที่บอกตรง ๆ ผมขอถามได้ไหมครับว่างบที่คุณคิดไว้อยู่ที่เท่าไหร่"]]},
+      {"id": "deal-2", "mood": "neutral", "en": "Would the owner accept two million less if I pay in cash?", "th": "ถ้าผมจ่ายเงินสด เจ้าของจะยอมลดลงสองล้านบาทไหม", "r": [
+        ["Let me ask the owner.", "ขอผมถามเจ้าของก่อนนะครับ"],
+        ["That is a big reduction, but I will ask the owner about a cash discount.", "ส่วนลดค่อนข้างมาก แต่ผมจะถามเจ้าของเรื่องส่วนลดเงินสดให้ครับ"],
+        ["Two million is a significant reduction, so I cannot promise anything, but I will present your cash offer to the owner today.", "สองล้านเป็นส่วนลดที่มาก ผมรับปากไม่ได้ แต่วันนี้ผมจะนำข้อเสนอเงินสดของคุณไปเสนอเจ้าของครับ"]]},
+      {"id": "deal-3", "mood": "thinking", "en": "If the owner reduces by one million, can you include the furniture as well?", "th": "ถ้าเจ้าของลดหนึ่งล้าน รวมเฟอร์นิเจอร์ให้ด้วยได้ไหม", "r": [
+        ["I can try. Let me check.", "ผมลองดูให้ครับ ขอเช็กก่อน"],
+        ["I think that is possible. Let me confirm with the owner and get back to you.", "น่าจะเป็นไปได้ครับ ผมขอยืนยันกับเจ้าของแล้วตอบกลับนะครับ"],
+        ["That sounds like a reasonable request. I will confirm with the owner and reply to you by this evening.", "เป็นคำขอที่สมเหตุสมผลครับ ผมจะยืนยันกับเจ้าของและตอบคุณภายในเย็นนี้"]]},
+      {"id": "deal-4", "mood": "happy", "en": "Good. If we agree, how fast can we close the deal?", "th": "ดีครับ ถ้าเราตกลงกัน ปิดดีลได้เร็วแค่ไหน", "r": [
+        ["We can sign the reservation this week.", "เซ็นสัญญาจองได้ภายในสัปดาห์นี้ครับ"],
+        ["We can sign a reservation agreement this week and transfer within thirty days.", "เซ็นสัญญาจองได้สัปดาห์นี้ และโอนได้ภายในสามสิบวันครับ"],
+        ["We can sign a reservation agreement this week, and the ownership transfer usually takes place within thirty days.", "เซ็นสัญญาจองได้ในสัปดาห์นี้ และการโอนกรรมสิทธิ์มักเกิดขึ้นภายในสามสิบวันครับ"]]}
+    ]},
+    {"id": "terms", "th": "เงื่อนไขซื้อขาย", "en": "Terms of sale", "char": "lars", "turns": [
+      {"id": "terms-1", "mood": "neutral", "en": "Can a foreigner own this house and the land under it?", "th": "ชาวต่างชาติถือครองบ้านและที่ดินใต้บ้านได้ไหม", "r": [
+        ["Foreigners cannot own land in Thailand, but there are other options.", "ชาวต่างชาติถือครองที่ดินในไทยไม่ได้ แต่มีทางเลือกอื่นครับ"],
+        ["Foreigners generally cannot own land in Thailand, but you can lease the land or own the house separately.", "โดยทั่วไปชาวต่างชาติถือครองที่ดินไม่ได้ แต่เช่าที่ดินหรือถือครองตัวบ้านแยกได้ครับ"],
+        ["Under Thai law, foreigners generally cannot own land, but there are legal options such as a long-term lease. I recommend you consult a lawyer to confirm the details.", "ตามกฎหมายไทย ชาวต่างชาติโดยทั่วไปถือครองที่ดินไม่ได้ แต่มีทางเลือกตามกฎหมาย เช่น เช่าระยะยาว แนะนำให้ปรึกษาทนายเพื่อยืนยันรายละเอียดครับ"]]},
+      {"id": "terms-2", "mood": "thinking", "en": "How much is the deposit, and is it refundable?", "th": "มัดจำเท่าไหร่ และคืนได้ไหม", "r": [
+        ["The deposit is one hundred thousand baht.", "มัดจำหนึ่งแสนบาทครับ"],
+        ["The reservation deposit is one hundred thousand baht, and the refund terms are written in the contract.", "เงินมัดจำจองหนึ่งแสนบาท และเงื่อนไขการคืนเขียนไว้ในสัญญาครับ"],
+        ["The reservation deposit is one hundred thousand baht. Whether it is refundable depends on the terms in the contract, which we can go through together.", "เงินมัดจำจองหนึ่งแสนบาท การคืนเงินขึ้นอยู่กับเงื่อนไขในสัญญา ซึ่งเราอ่านด้วยกันได้ครับ"]]},
+      {"id": "terms-3", "mood": "neutral", "en": "Who pays the transfer fee and the taxes?", "th": "ใครจ่ายค่าธรรมเนียมการโอนและภาษี", "r": [
+        ["We usually split the transfer fee fifty-fifty.", "ปกติเราแบ่งค่าโอนคนละครึ่งครับ"],
+        ["The transfer fee is usually split fifty-fifty, and the seller pays the taxes.", "ค่าโอนมักแบ่งคนละครึ่ง และผู้ขายจ่ายภาษีครับ"],
+        ["By custom the transfer fee is split equally between buyer and seller, while the seller covers the taxes, but this can be negotiated.", "ตามธรรมเนียม ค่าโอนแบ่งเท่ากันระหว่างผู้ซื้อและผู้ขาย ส่วนภาษีผู้ขายเป็นผู้จ่าย แต่ต่อรองกันได้ครับ"]]},
+      {"id": "terms-4", "mood": "happy", "en": "Can I pay in installments while the house is being finished?", "th": "ผมผ่อนชำระเป็นงวดระหว่างที่บ้านกำลังสร้างเสร็จได้ไหม", "r": [
+        ["Yes, we can arrange an installment plan.", "ได้ครับ เราจัดแผนผ่อนเป็นงวดให้ได้"],
+        ["Yes, we can divide the payment into installments that follow the construction progress.", "ได้ครับ เราแบ่งจ่ายเป็นงวดตามความคืบหน้าของการก่อสร้างได้"],
+        ["Yes, we can arrange installments that follow the construction milestones, and I will put the schedule in writing for you.", "ได้ครับ เราจัดงวดชำระตามขั้นตอนการก่อสร้างได้ และผมจะทำตารางเป็นลายลักษณ์อักษรให้ครับ"]]}
+    ]},
+    {"id": "viewing", "th": "นัดชมบ้าน", "en": "Arranging a viewing", "char": "carol", "turns": [
+      {"id": "viewing-1", "mood": "happy", "en": "We would like to see the house on Saturday morning. Is that possible?", "th": "เราอยากดูบ้านเช้าวันเสาร์ ได้ไหมคะ", "r": [
+        ["Yes. What time would you like to come?", "ได้ครับ คุณอยากมาเวลาไหนครับ"],
+        ["Yes, Saturday morning is fine. What time works best for you?", "ได้ครับ เช้าวันเสาร์ไม่มีปัญหา เวลาไหนสะดวกที่สุดครับ"],
+        ["Yes, Saturday morning is available. What time would suit you best? I can meet you at the gate.", "ได้ครับ เช้าวันเสาร์ว่างอยู่ เวลาไหนเหมาะกับคุณที่สุดครับ ผมรอที่ประตูได้ครับ"]]},
+      {"id": "viewing-2", "mood": "neutral", "en": "Where should we meet, and how do we get there?", "th": "เราจะนัดเจอกันที่ไหน และไปยังไงคะ", "r": [
+        ["I will meet you at the gate. I will send the map.", "ผมรอที่ประตู และจะส่งแผนที่ให้ครับ"],
+        ["I will meet you at the front gate and send you the map on Line.", "ผมรอที่ประตูหน้า และส่งแผนที่ให้ทาง Line ครับ"],
+        ["I will meet you at the front gate. I will send you the map and my Line contact so you can find me easily.", "ผมรอที่ประตูหน้า และจะส่งแผนที่กับไลน์ของผมให้ เพื่อให้คุณหาผมเจอง่าย ๆ ครับ"]]},
+      {"id": "viewing-3", "mood": "thinking", "en": "Can we take photos and videos inside the house?", "th": "ถ่ายรูปและวิดีโอในบ้านได้ไหมคะ", "r": [
+        ["Yes, you can take photos.", "ถ่ายรูปได้ครับ"],
+        ["Yes, photos are fine. If the owner is living here, I will check first.", "ได้ครับ ถ่ายรูปได้ ถ้าเจ้าของอาศัยอยู่ ผมจะเช็กก่อนครับ"],
+        ["Photos are usually fine. If the owner is still living here, I will ask permission first, so please let me know before you start filming.", "ถ่ายรูปได้ตามปกติครับ ถ้าเจ้าของยังอยู่อาศัย ผมจะขออนุญาตก่อน จึงขอให้แจ้งผมก่อนเริ่มถ่ายวิดีโอครับ"]]},
+      {"id": "viewing-4", "mood": "happy", "en": "We liked it. What are the next steps if we want to make an offer?", "th": "เราชอบบ้านนี้ ถ้าจะยื่นข้อเสนอ ขั้นตอนต่อไปคืออะไรคะ", "r": [
+        ["You make an offer, and I take it to the owner.", "คุณเสนอราคา แล้วผมนำไปเสนอเจ้าของครับ"],
+        ["You tell me your offer, I take it to the owner, and then we discuss the reservation.", "คุณบอกข้อเสนอ ผมนำไปเสนอเจ้าของ แล้วเราคุยเรื่องการจองกันต่อครับ"],
+        ["You can tell me your offer in writing, I will present it to the owner, and if we agree, we can prepare the reservation agreement.", "คุณส่งข้อเสนอเป็นลายลักษณ์อักษรมาได้ ผมจะนำเสนอเจ้าของ และถ้าตกลงกัน เราเตรียมสัญญาจองได้เลยครับ"]]}
+    ]}
+  ],
+  "glossary": {
+    "appliance": "เครื่องใช้ไฟฟ้า", "included": "รวมอยู่ (ในราคา)", "include": "รวม", "refrigerator": "ตู้เย็น", "oven": "เตาอบ", "cooktop": "เตาไฟฟ้า", "inventory": "รายการทรัพย์สิน",
+    "bedroom": "ห้องนอน", "bathroom": "ห้องน้ำ", "conditioner": "เครื่องปรับอากาศ", "conditioning": "เครื่องปรับอากาศ", "separate": "แยก", "master": "ห้องนอนใหญ่",
+    "pressure": "แรงดัน", "heater": "เครื่องทำน้ำอุ่น", "pump": "ปั๊มน้ำ", "tank": "ถัง", "previous": "ก่อนหน้า", "electricity": "ไฟฟ้า", "bill": "บิล ค่าใช้จ่าย", "monthly": "รายเดือน",
+    "villa": "วิลล่า", "asking": "ที่ตั้งขาย", "price": "ราคา", "budget": "งบประมาณ", "owner": "เจ้าของ", "cash": "เงินสด", "reduction": "การลดราคา", "significant": "มาก สำคัญ",
+    "promise": "สัญญา รับปาก", "present": "นำเสนอ", "offer": "ข้อเสนอ", "furniture": "เฟอร์นิเจอร์", "confirm": "ยืนยัน", "reasonable": "สมเหตุสมผล", "reservation": "การจอง",
+    "agreement": "ข้อตกลง สัญญา", "transfer": "โอน", "ownership": "กรรมสิทธิ์", "deal": "ดีล ข้อตกลง", "foreigner": "ชาวต่างชาติ", "land": "ที่ดิน", "lease": "เช่า", "legal": "ตามกฎหมาย",
+    "lawyer": "ทนาย", "consult": "ปรึกษา", "deposit": "เงินมัดจำ", "refundable": "คืนเงินได้", "refund": "คืนเงิน", "contract": "สัญญา", "terms": "เงื่อนไข", "fee": "ค่าธรรมเนียม",
+    "tax": "ภาษี", "split": "แบ่ง", "seller": "ผู้ขาย", "buyer": "ผู้ซื้อ", "installment": "งวดผ่อนชำระ", "construction": "การก่อสร้าง", "milestone": "ขั้นตอนสำคัญ", "schedule": "ตารางเวลา",
+    "negotiated": "ต่อรองได้", "custom": "ธรรมเนียม", "discount": "ส่วนลด", "garden": "สวน", "gardener": "คนสวน", "security": "การรักษาความปลอดภัย", "guard": "ยาม", "gate": "ประตู",
+    "village": "หมู่บ้านจัดสรร", "clubhouse": "คลับเฮาส์", "facility": "ส่วนกลาง สิ่งอำนวยความสะดวก", "privacy": "ความเป็นส่วนตัว", "maintenance": "การบำรุงรักษา", "supermarket": "ซูเปอร์มาร์เก็ต",
+    "hospital": "โรงพยาบาล", "visa": "วีซ่า", "immigration": "การเข้าเมือง", "viewing": "การนัดชมบ้าน", "swimming": "ว่ายน้ำ", "pool": "สระ", "shallow": "ตื้น", "arrange": "จัดการ จัดให้",
+    "writing": "ลายลักษณ์อักษร", "square": "ตาราง", "meter": "เมตร", "photo": "รูปถ่าย", "permission": "การอนุญาต", "option": "ทางเลือก"
+  },
+  "pairs": [
+    {"w": "a", "th": "ยินดีต้อนรับครับ ผมพาชมบ้านนะครับ", "en": "Welcome. Let me show you around the house."},
+    {"w": "a", "th": "ราคาขายคือสิบสองล้านบาท", "en": "The asking price is twelve million baht."},
+    {"w": "a", "th": "บ้านหลังนี้มีสระว่ายน้ำส่วนตัว", "en": "This house has a private swimming pool."},
+    {"w": "a", "th": "ค่าส่วนกลางเดือนละเท่าไหร่", "en": "How much is the monthly common fee?"},
+    {"w": "a", "th": "ผมขอถามเจ้าของก่อนนะครับ", "en": "Let me ask the owner first."},
+    {"w": "a", "th": "ที่นี่ห่างจากทะเลห้านาทีโดยรถยนต์", "en": "It is five minutes from the beach by car."},
+    {"w": "a", "th": "คุณต้องการนัดชมบ้านวันไหนครับ", "en": "Which day would you like to view the house?"},
+    {"w": "a", "th": "ผมส่งรายละเอียดทาง Line ให้ได้ครับ", "en": "I can send you the details on Line."},
+    {"w": "c", "th": "ราคาต่อรองได้ไหม", "en": "Is the price negotiable?"},
+    {"w": "c", "th": "ขอดูโฉนดที่ดินได้ไหม", "en": "Can I see the title deed?"},
+    {"w": "c", "th": "โรงพยาบาลที่ใกล้ที่สุดอยู่ไกลแค่ไหน", "en": "How far is the nearest hospital?"},
+    {"w": "c", "th": "ผมสนใจ ขอเวลาคิดหนึ่งวัน", "en": "I am interested. Please give me one day to think."}
+  ],
+  "demo": [
+    {"id": "d1", "en": "reservation agreement", "th": "สัญญาจอง", "cat": "ตัวอย่าง"},
+    {"id": "d2", "en": "Is the price negotiable?", "th": "ราคาต่อรองได้ไหม", "cat": "ตัวอย่าง"},
+    {"id": "d3", "en": "transfer fee", "th": "ค่าธรรมเนียมการโอน", "cat": "ตัวอย่าง"}
+  ]
+}

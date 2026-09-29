@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Property Talk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../core/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 id="ptitle">Property Talk</h1>
+      <p class="muted small" id="psub"></p>
+    </div>
+    <button class="pill" id="pill" data-act="tab" data-tab="credit" aria-label="ดูเครดิตคงเหลือ" hidden><span class="dot" id="pdot"></span><span id="ptxt">เครดิต</span></button>
+  </header>
+  <main id="app"></main>
+</div>
+<nav class="tabs" id="nav" aria-label="เมนูหลัก"></nav>
+<div id="toast" hidden role="status"></div>
+<div id="big" hidden></div>
+<script src="config.js"></script>
+<script src="../../core/app.js"></script>
+</body>
+</html>
