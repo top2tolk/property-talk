@@ -250,3 +250,15 @@ header.top{gap:8px}
 header.top h1{font-size:17px}
 .langbtn{padding:5px 9px;gap:4px}
 .pill{padding:5px 10px}
+.flag{width:24px;height:16px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.18);flex:none;display:block;overflow:hidden}
+.langbtn i,.lbl i{font-style:normal;color:var(--muted)}
+.lbl{display:inline-flex;align-items:center;gap:6px}
+.lchips .chip{display:inline-flex;align-items:center;gap:8px}
+.lchips .chip .flag{width:26px;height:17px}
+.lchips .chip.on .flag{box-shadow:0 0 0 2px var(--accent-ink)}
+.flag{width:24px;height:16px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.18);flex:none;display:block;overflow:hidden}
+.langbtn i,.lbl i{font-style:normal;color:var(--muted)}
+.lbl{display:inline-flex;align-items:center;gap:6px}
+.lchips .chip{display:inline-flex;align-items:center;gap:8px}
+.lchips .chip .flag{width:26px;height:17px}
+.lchips .chip.on .flag{box-shadow:0 0 0 2px var(--accent-ink)}

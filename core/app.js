@@ -55,6 +55,23 @@ function _(s){
     return v===undefined?run:m[1]+v+m[3];
   });
 }
+
+/* ---------- flags (inline SVG, so they show on every device) ---------- */
+function star(cx,cy,r,rot){var p=[];for(var i=0;i<10;i++){var a=(rot||-90)*Math.PI/180+i*Math.PI/5,rr=i%2?r*.382:r;p.push((cx+rr*Math.cos(a)).toFixed(2)+','+(cy+rr*Math.sin(a)).toFixed(2))}return '<polygon points="'+p.join(' ')+'" fill="#ffde00"/>'}
+function flag(c){
+  var b={
+   th:'<rect width="30" height="20" fill="#a51931"/><rect y="3.33" width="30" height="13.34" fill="#f4f5f8"/><rect y="6.66" width="30" height="6.68" fill="#2d2a4a"/>',
+   en:'<rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.4"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#c8102e" stroke-width="3.4"/>',
+   zh:'<rect width="30" height="20" fill="#de2910"/>'+star(5,5,3)+star(10,2.2,1,-70)+star(12,4.4,1,-50)+star(12,7.4,1,-25)+star(10,9.6,1,-10),
+   ru:'<rect width="30" height="20" fill="#fff"/><rect y="6.66" width="30" height="6.67" fill="#0039a6"/><rect y="13.33" width="30" height="6.67" fill="#d52b1e"/>',
+   de:'<rect width="30" height="20" fill="#000"/><rect y="6.66" width="30" height="6.67" fill="#dd0000"/><rect y="13.33" width="30" height="6.67" fill="#ffce00"/>',
+   fr:'<rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/>',
+   ja:'<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#bc002d"/>',
+   ko:'<rect width="30" height="20" fill="#fff"/><path d="M10.5 10a4.5 4.5 0 0 1 9 0z" fill="#cd2e3a"/><path d="M10.5 10a4.5 4.5 0 0 0 9 0z" fill="#0047a0"/><circle cx="12.75" cy="10" r="2.25" fill="#0047a0"/><circle cx="17.25" cy="10" r="2.25" fill="#cd2e3a"/>'+
+      [[5,4,-35],[25,4,35],[5,16,35],[25,16,-35]].map(function(q){return '<g transform="translate('+q[0]+' '+q[1]+') rotate('+q[2]+')" stroke="#000" stroke-width=".9"><path d="M-2.2 -1.4H2.2M-2.2 0H2.2M-2.2 1.4H2.2"/></g>'}).join('')
+  }[c]||'';
+  return '<svg class="flag" viewBox="0 0 30 20" aria-hidden="true">'+b+'</svg>';
+}
 function langInfo(c){for(var i=0;i<LANGS.length;i++)if(LANGS[i][0]===c)return LANGS[i];return LANGS[1]}
 function cast(){var c=CASTS[TARGET]||CASTS.en;return c[GENDER]||c.f}
 function origin(){var o=PACKS[NATIVE]&&PACKS[NATIVE].origin;return (o&&o[TARGET])||''}
@@ -90,7 +107,7 @@ function buildLangBtn(){
   var b=$('#langbtn');
   if(!b){b=document.createElement('button');b.id='langbtn';b.className='langbtn';b.setAttribute('data-act','langs');hd.insertBefore(b,$('#pill'))}
   b.setAttribute('aria-label',_('เลือกภาษา'));
-  b.innerHTML='<span>'+langInfo(NATIVE)[2]+'</span><i aria-hidden="true">→</i><span>'+langInfo(TARGET)[2]+'</span>';
+  b.innerHTML=flag(NATIVE)+'<i aria-hidden="true">→</i>'+flag(TARGET);
 }
 function refreshAll(){
   st.vault=jget(vkey(),[]);st.cat=null;st.picked=null;st.ring=false;st.sheet=false;st.review=null;st.out=null;st.text='';st.dir='th-en';st.word=null;
@@ -107,7 +124,7 @@ function setLangs(n,tg,g){
   },function(){toast(_('โหลดภาษานี้ไม่ได้ ตรวจอินเทอร์เน็ตแล้วลองใหม่'))});
 }
 function langModalHTML(){
-  function chips(kind,cur,other){return '<div class="chips lchips">'+LANGS.map(function(l){return '<button class="chip'+(l[0]===cur?' on':'')+'" data-act="'+kind+'" data-l="'+l[0]+'"'+(l[0]===other?' disabled':'')+'>'+l[1]+'</button>'}).join('')+'</div>'}
+  function chips(kind,cur,other){return '<div class="chips lchips">'+LANGS.map(function(l){return '<button class="chip'+(l[0]===cur?' on':'')+'" data-act="'+kind+'" data-l="'+l[0]+'"'+(l[0]===other?' disabled':'')+'>'+flag(l[0])+'<span>'+l[1]+'</span></button>'}).join('')+'</div>'}
   var cs=CASTS[TARGET]||CASTS.en;
   function pick(g,label){var c=cs[g];return '<button class="cpick'+(GENDER===g?' on':'')+'" data-act="gender" data-g="'+g+'" aria-pressed="'+(GENDER===g)+'"><span class="cth">'+PT_ART.avatar(c,'happy')+'</span><b>'+esc(c.name)+'</b><span class="small muted">'+label+'</span></button>'}
   return '<div class="lmc"><div class="row" style="justify-content:space-between"><h3>'+esc(_('เลือกภาษา'))+'</h3><button class="btn sm primary" data-act="langclose">'+esc(_('เสร็จ'))+'</button></div>'+
@@ -237,7 +254,7 @@ function faceSVG(ch,mood){return PT_ART.avatar(ch,mood)}
 /* ---------- views ---------- */
 function catById(id){return CATS.filter(function(x){return x.id===id})[0]}
 function vMenu(){
-  var h=_('<div class="hero"><h2>ฝึกคุยกับลูกค้า</h2><p>เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ</p></div>')+'<button class="langbar" data-act="langs"><span class="lbf">'+PT_ART.avatar(cast(),'happy')+'</span><span class="lbt"><b>'+esc(cast().name)+'</b><span class="small muted">'+esc(origin())+'</span></span><span class="lbl">'+langInfo(NATIVE)[2]+' → '+langInfo(TARGET)[2]+'</span></button><div class="cats">';
+  var h=_('<div class="hero"><h2>ฝึกคุยกับลูกค้า</h2><p>เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ</p></div>')+'<button class="langbar" data-act="langs"><span class="lbf">'+PT_ART.avatar(cast(),'happy')+'</span><span class="lbt"><b>'+esc(cast().name)+'</b><span class="small muted">'+esc(origin())+'</span></span><span class="lbl">'+flag(NATIVE)+'<i>→</i>'+flag(TARGET)+'</span></button><div class="cats">';
   CATS.forEach(function(c){
     var ch=cast();
     h+='<button class="catcard" data-act="cat" data-cat="'+c.id+'"><span class="cbg">'+PT_ART.scene(c.id)+'</span><span class="cshade"></span><span class="cav">'+faceSVG(ch,'happy')+'</span><span class="ctext"><b>'+c.th+'</b><span class="cen">'+c.en+'</span><span class="cmeta"><i class="live"></i>'+esc(ch.name)+_(' โทรเข้า · ')+c.turns.length+_(' ข้อ</span></span></button>');
