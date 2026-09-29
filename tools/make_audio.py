@@ -38,6 +38,9 @@ def jobs(voices):
             out.append((t["id"] + "-q", t["en"], voices.get(cat["char"], voices["agent"])))
             for i, r in enumerate(t["r"]):
                 out.append((t["id"] + "-r%d" % i, r[0], voices["agent"]))
+    for key in data["chars"]:
+        for i, r in enumerate(data.get("reactions", [])):
+            out.append(("react-%s-%d" % (key, i), r[0], voices.get(key, voices["agent"])))
     return out
 
 

@@ -14,7 +14,8 @@ var store={
 function jget(k,d){try{var v=store.get(k);return v?JSON.parse(v):d}catch(e){return d}}
 function fmt(n,d){return Number(n).toLocaleString('th-TH',{maximumFractionDigits:d==null?2:d})}
 
-var C=null,CHARS={},CATS=[],G={},PAIRS=[],DEMO=[];
+var C=null,CHARS={},CATS=[],G={},PAIRS=[],DEMO=[],REACT=[],RM=[];
+var MOUTH_FOR={neutral:'neutral',happy:'smile',delighted:'grin',thinking:'think',concerned:'frown',surprised:'o'};
 var LV=['สั้น','มาตรฐาน','สุภาพ'];
 var AUDIO_BASE=CFG.audioBase||'../../core/audio/';
 
@@ -24,7 +25,7 @@ function initState(){
   wallet=(W0&&typeof W0.bal==='number')?W0:{bal:100,cap:100};
   calc=jget('calc',null)||{cpt:0.5,fee:3.5,fixed:0,target:20000,packs:[{c:100,p:199},{c:300,p:499},{c:1000,p:1290}]};
   st={tab:'practice',cat:null,turn:0,picked:null,score:null,log:[],showTh:store.get('th')!=='0',word:null,
-      vault:jget('vault',[]),review:null,dir:'th-en',text:'',out:null,lines:[]};
+      vault:jget('vault',[]),review:null,dir:'th-en',text:'',out:null,lines:[],ring:false,sheet:false,mood:'neutral',curChar:null,callStart:0,callEnd:0};
 }
 function saveWallet(){store.set('wallet',JSON.stringify(wallet))}
 function saveVault(){store.set('vault',JSON.stringify(st.vault))}
@@ -47,7 +48,28 @@ function copyText(text){
   }
   try{navigator.clipboard.writeText(text).then(function(){toast('คัดลอกแล้ว')},fb)}catch(e){fb()}
 }
-function setTalk(on){var f=$('#faceBox');if(f)f.classList.toggle('talk',on)}
+var lipT=null;
+function setMouth(key){var f=$('#faceBox');if(!f||!st.curChar)return;var m=f.querySelector('.mouth');if(m)m.innerHTML=PT_ART.mouth(st.curChar,key)}
+function setTalk(on){
+  var f=$('#faceBox');if(f)f.classList.toggle('talk',on);
+  clearInterval(lipT);lipT=null;
+  if(on){var k=0;lipT=setInterval(function(){var T=PT_ART.TALK;k=(k+1+Math.floor(Math.random()*3))%T.length;setMouth(T[k])},115)}
+  else setMouth(MOUTH_FOR[st.mood||'neutral']||'neutral');
+}
+var ac=null,ringTimer=null;
+function ringOnce(){
+  try{
+    ac=ac||new (window.AudioContext||window.webkitAudioContext)();var t=ac.currentTime;
+    [[0,880],[.18,660],[.36,880],[.54,660]].forEach(function(n){
+      var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=n[1];
+      g.gain.setValueAtTime(0,t+n[0]);g.gain.linearRampToValueAtTime(.12,t+n[0]+.02);g.gain.linearRampToValueAtTime(0,t+n[0]+.16);
+      o.connect(g);g.connect(ac.destination);o.start(t+n[0]);o.stop(t+n[0]+.18);
+    });
+  }catch(e){}
+}
+function startRing(){stopRing();ringOnce();ringTimer=setInterval(ringOnce,2200)}
+function stopRing(){clearInterval(ringTimer);ringTimer=null}
+function stopAllSound(){try{if(curAudio){curAudio.pause();curAudio=null}if('speechSynthesis' in window)speechSynthesis.cancel()}catch(e){}setTalk(false)}
 var talkT=null,curAudio=null;
 function speak(text,lang,rate,face){
   if(!('speechSynthesis' in window)){toast('เครื่องนี้ยังไม่รองรับเสียงอ่าน');return}
@@ -113,6 +135,9 @@ var IC={
  play:'<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>',
  copy:'<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9" fill="none" stroke="currentColor" stroke-width="2"/></svg>',
  mic:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3" fill="currentColor"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+ end:'<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 14.5c5-5 13-5 18 0l-2.2 3.2-3.6-1.6v-2.3a10 10 0 0 0-6.4 0v2.3l-3.6 1.6z" fill="currentColor"/></svg>',
+ ans:'<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 7h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3zM16.5 11l5-3v8l-5-3z" fill="currentColor"/></svg>',
+ next:'<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
  big:'<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
 };
 function icSave(on){return '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z" fill="'+(on?'currentColor':'none')+'" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>'}
@@ -126,64 +151,77 @@ function acts(i,side,extra){
 }
 
 /* ---------- faces ---------- */
-var fid=0;
-function faceSVG(ch,mood){
-  fid++;
-  var brow=mood==='thinking'?'M60 65 L76 67 M84 62 L100 58':mood==='happy'?'M60 66 Q68 60 76 66 M84 66 Q92 60 100 66':'M60 65 L76 65 M84 65 L100 65';
-  var smile=mood==='happy'?'M67 91 Q80 106 93 91':mood==='thinking'?'M72 96 Q80 93 88 97':'M70 93 Q80 100 90 93';
-  var hair=ch.beard
-    ?'<path d="M50 72 Q48 38 80 38 Q112 38 110 72 Q102 52 80 52 Q58 52 50 72Z" fill="'+ch.hair+'"/><path d="M52 84 Q56 114 80 114 Q104 114 108 84 Q100 101 80 101 Q60 101 52 84Z" fill="'+ch.hair+'"/>'
-    :(ch.glasses?'<path d="M46 94 Q36 34 80 34 Q124 34 114 94 Q112 62 96 54 Q80 62 64 54 Q48 62 46 94Z" fill="'+ch.hair+'"/>'
-    :'<path d="M50 70 Q50 38 80 38 Q110 38 110 70 Q104 52 80 50 Q56 52 50 70Z" fill="'+ch.hair+'"/>');
-  var gl=ch.glasses?'<g fill="none" stroke="#2b3a40" stroke-width="2"><circle cx="68" cy="76" r="10"/><circle cx="92" cy="76" r="10"/><path d="M78 76h4"/></g>':'';
-  return '<svg viewBox="0 0 160 160" role="img" aria-label="'+esc(ch.name)+'"><defs><clipPath id="cp'+fid+'"><circle cx="80" cy="80" r="78"/></clipPath></defs><g clip-path="url(#cp'+fid+')">'+
-   '<rect width="160" height="160" fill="var(--face-bg)"/>'+
-   '<path d="M14 160 Q20 118 80 116 Q140 118 146 160Z" fill="'+ch.shirt+'"/>'+
-   '<rect x="70" y="98" width="20" height="24" fill="'+ch.skin+'"/>'+
-   '<ellipse cx="80" cy="76" rx="30" ry="34" fill="'+ch.skin+'"/>'+hair+
-   '<circle class="eye" cx="68" cy="76" r="3.2" fill="#1c2b30"/><circle class="eye" cx="92" cy="76" r="3.2" fill="#1c2b30"/>'+gl+
-   '<path d="'+brow+'" stroke="#3a3128" stroke-width="2.4" stroke-linecap="round" fill="none"/>'+
-   '<path d="M80 80 L77 88 L82 88" stroke="rgba(0,0,0,.25)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'+
-   '<path class="m-smile" d="'+smile+'" stroke="#7b2d2d" stroke-width="2.6" fill="none" stroke-linecap="round"/>'+
-   '<ellipse class="m-open" cx="80" cy="95" rx="7" ry="5" fill="#7b2d2d"/></g></svg>';
-}
+function faceSVG(ch,mood){return PT_ART.avatar(ch,mood)}
 
 /* ---------- views ---------- */
 function catById(id){return CATS.filter(function(x){return x.id===id})[0]}
 function vMenu(){
-  var h='<div class="cats">';
+  var h='<div class="hero"><h2>ฝึกคุยกับลูกค้าต่างชาติ</h2><p>เลือกสถานการณ์ แล้วรับสายเหมือนลูกค้าโทรเข้ามาจริง ๆ</p></div><div class="cats">';
   CATS.forEach(function(c){
-    h+='<button class="cat" data-act="cat" data-cat="'+c.id+'"><span class="mini">'+faceSVG(CHARS[c.char],'happy')+'</span><span><b>'+c.th+'</b><span class="muted small">'+c.en+' · '+c.turns.length+' บทสนทนา · คุยกับ '+CHARS[c.char].name+'</span></span></button>';
+    var ch=CHARS[c.char];
+    h+='<button class="catcard" data-act="cat" data-cat="'+c.id+'"><span class="cbg">'+PT_ART.scene(c.id)+'</span><span class="cshade"></span><span class="cav">'+faceSVG(ch,'happy')+'</span><span class="ctext"><b>'+c.th+'</b><span class="cen">'+c.en+'</span><span class="cmeta"><i class="live"></i>'+esc(ch.name)+' โทรเข้า · '+c.turns.length+' ข้อ</span></span></button>';
   });
-  h+='</div>';
-  return '<div class="card"><h2>เลือกหมวดที่อยากฝึก</h2><p class="muted small" style="margin-top:4px">กดเลือกหมวด ฟังลูกค้าพูด แล้วตอบด้วยเสียงหรือเลือกประโยคตอบ แต่ละข้อมี 3 ระดับ สั้น มาตรฐาน สุภาพ</p></div>'+h+
-   '<p class="note">บทสนทนาเป็นตัวอย่างสำหรับฝึกภาษา ไม่ใช่คำแนะนำทางกฎหมาย เงื่อนไขซื้อขายจริงควรตรวจกับเอกสารและทนาย</p>';
-}
-function vScene(){
-  var c=catById(st.cat);var ch=CHARS[c.char];
-  var head='<div class="row" style="justify-content:space-between"><button class="btn sm" data-act="back">← หมวดทั้งหมด</button><span class="row"><b>'+c.th+'</b><button class="btn sm'+(st.showTh?' on':'')+'" data-act="toggleTh" aria-pressed="'+st.showTh+'">คำแปลไทย</button></span></div>';
-  var dots='<div class="dots" aria-label="ความคืบหน้า">'+c.turns.map(function(_,i){return '<i class="'+(i<st.turn||(i===st.turn&&st.picked!==null)?'done':'')+'"></i>'}).join('')+'</div>';
-  if(st.turn>=c.turns.length){
-    var list=st.log.map(function(l){var i=reg(l.en,l.th,c.th,null);return '<div class="item"><div><div class="e">'+esc(l.en)+'</div><div class="muted small">'+esc(l.th)+'</div></div><button class="btn sm" data-act="save" data-i="'+i+'">'+icSave(isSaved(l.en))+'เก็บ</button></div>'}).join('');
-    return head+dots+'<div class="card"><h2>จบบทสนทนา ทำครบ '+c.turns.length+' ข้อ</h2><p class="muted small" style="margin-top:4px">ประโยคที่คุณตอบ เก็บเข้าคลังไว้ทบทวนได้</p><div style="margin-top:8px">'+list+'</div><div class="acts"><button class="btn primary" data-act="cat" data-cat="'+c.id+'">เล่นอีกรอบ</button><button class="btn" data-act="back">เลือกหมวดอื่น</button><button class="btn" data-act="saveall">เก็บทั้งหมด</button></div></div>';
-  }
-  var t=c.turns[st.turn];var mood=st.picked!==null?'happy':t.mood;
-  var i0=reg(t.en,t.th,c.th,t.id+'-q');
-  var h=head+dots;
-  h+='<div class="stage"><div class="face" id="faceBox">'+faceSVG(ch,mood)+'</div><div><h3>'+ch.name+'</h3><p class="muted small">'+ch.role+'</p></div></div>';
-  h+='<div class="bubble"><div class="en">'+words(t.en)+'</div>'+(st.showTh?'<div class="th">'+esc(t.th)+'</div>':'')+acts(i0,'en')+'</div>';
-  h+='<div class="wordbar" id="wordbar"></div>';
-  if(st.picked===null){
-    h+='<div class="card"><div class="row" style="flex-wrap:nowrap"><button class="mic" data-act="mic" aria-label="กดแล้วพูดตอบ">'+IC.mic+'</button><div><h3>พูดตอบเป็นภาษาอังกฤษ</h3><p class="muted small">กดไมค์แล้วพูดประโยคใดประโยคหนึ่งด้านล่าง หรือแตะเลือกเลย</p></div></div></div>';
-    h+='<div class="opts">'+t.r.map(function(r,i){return '<button class="opt" data-act="pick" data-r="'+i+'"><span class="tag lv">'+LV[i]+'</span><span class="e">'+esc(r[0])+'</span><span class="t">'+esc(r[1])+'</span></button>'}).join('')+'</div>';
-  }else{
-    var r=t.r[st.picked];var i1=reg(r[0],r[1],c.th,t.id+'-r'+st.picked);
-    h+='<div class="bubble me"><div class="row" style="margin-bottom:6px"><span class="tag">คุณตอบ · '+LV[st.picked]+'</span>'+(st.score!==null?'<span class="tag">ตรงกับประโยค '+st.score+'%</span>':'')+'</div><div class="en">'+words(r[0])+'</div>'+(st.showTh?'<div class="th">'+esc(r[1])+'</div>':'')+acts(i1,'en')+'</div>';
-    h+='<button class="btn primary" data-act="next">'+(st.turn+1>=c.turns.length?'จบบทสนทนา':'ข้อต่อไป →')+'</button>';
-  }
+  h+='</div><p class="note">บทสนทนาเป็นตัวอย่างสำหรับฝึกภาษา ไม่ใช่คำแนะนำทางกฎหมาย เงื่อนไขซื้อขายจริงควรตรวจกับเอกสารและทนาย</p>';
   return h;
 }
-function vPractice(){return st.cat?vScene():vMenu()}
+function vPractice(){return vMenu()}
+
+var callTimer=null;
+function fmtTime(ms){var s=Math.max(0,Math.floor(ms/1000));return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2)}
+function callTop(c,ch){
+  var dots='<div class="cprog" aria-label="ความคืบหน้า">'+c.turns.map(function(_,i){return '<i class="'+(i<st.turn||(i===st.turn&&st.picked!==null)?'done':'')+'"></i>'}).join('')+'</div>';
+  return '<header class="ctop"><button class="cbtn end sm" data-act="back" aria-label="วางสาย">'+IC.end+'</button><div class="cwho"><b>'+esc(ch.name)+'</b><span><i class="live"></i>'+esc(ch.role)+' · <span id="ctime">'+fmtTime((st.callEnd||Date.now())-st.callStart)+'</span></span></div>'+dots+'</header>';
+}
+function cb(act,attrs,icon,label,cls){return '<div class="cbw"><button class="cbtn'+(cls?' '+cls:'')+'" data-act="'+act+'" '+attrs+' aria-label="'+label+'">'+icon+'</button><span class="cl">'+label+'</span></div>'}
+function renderCall(){
+  var el=$('#call');if(!el)return;
+  if(st.cat===null||st.tab!=='practice'){
+    el.hidden=true;el.innerHTML='';document.body.style.overflow='';clearInterval(callTimer);callTimer=null;return;
+  }
+  var c=catById(st.cat);var ch=CHARS[c.char];st.curChar=ch;
+  var bd='<div class="bd">'+PT_ART.scene(c.id)+'</div><div class="shade"></div>';
+  var h;
+  if(st.ring){
+    st.mood='happy';
+    h=bd+'<div class="ringbox"><div class="ringav"><i></i><i></i><i></i><div class="rface" id="faceBox">'+faceSVG(ch,'happy')+'</div></div><h2>'+esc(ch.name)+'</h2><p class="rsub">วิดีโอคอลเข้า · '+esc(c.th)+'</p><p class="rcall">กำลังโทรหาคุณ</p></div>'+
+      '<div class="ringbtns"><div class="rb"><button class="cbtn end big" data-act="back" aria-label="ปฏิเสธสาย">'+IC.end+'</button><span class="cl">ปฏิเสธ</span></div><div class="rb"><button class="cbtn ans big" data-act="answer" aria-label="รับสาย">'+IC.ans+'</button><span class="cl">รับสาย</span></div></div>';
+  }else if(st.turn>=c.turns.length){
+    st.mood='delighted';
+    var dur=fmtTime((st.callEnd||Date.now())-st.callStart);
+    var list=st.log.map(function(l){var i=reg(l.en,l.th,c.th,null);return '<div class="item"><div style="min-width:0"><div class="e">'+esc(l.en)+'</div><div class="small dim">'+esc(l.th)+'</div></div><button class="btn sm glass" data-act="save" data-i="'+i+'">'+icSave(isSaved(l.en))+'เก็บ</button></div>'}).join('');
+    h=bd+callTop(c,ch)+'<div class="cface small" id="faceBox">'+faceSVG(ch,'delighted')+'</div><div class="cbottom"><div class="sub sum"><h3>จบสายแล้ว · '+dur+'</h3><p class="th">คุณตอบครบ '+c.turns.length+' ข้อ ประโยคที่ตอบเก็บไว้ทบทวนได้</p><div class="sumlist">'+list+'</div></div><div class="row"><button class="btn primary" data-act="again">โทรอีกรอบ</button><button class="btn glass" data-act="saveall">เก็บทั้งหมด</button><button class="btn glass" data-act="back">วางสาย</button></div></div>';
+  }else{
+    var t=c.turns[st.turn];var picked=st.picked!==null;
+    var mood=picked?(RM[st.picked]||'happy'):t.mood;st.mood=mood;
+    var i0=reg(t.en,t.th,c.th,t.id+'-q');var focus=i0,my='',react='';
+    if(picked){
+      var r=t.r[st.picked];var i1=reg(r[0],r[1],c.th,t.id+'-r'+st.picked);focus=i1;
+      my='<div class="sub me"><div class="row" style="margin-bottom:6px"><span class="tag">คุณตอบ · '+LV[st.picked]+'</span>'+(st.score!==null?'<span class="tag">ตรงกับประโยค '+st.score+'%</span>':'')+'</div><div class="en">'+words(r[0])+'</div>'+(st.showTh?'<div class="th">'+esc(r[1])+'</div>':'')+'</div>';
+      var rc=REACT[st.picked];
+      if(rc)react='<div class="react"><span class="rdot"></span><span><b>'+esc(ch.name)+'</b> '+esc(rc[0])+(st.showTh?' <em>'+esc(rc[1])+'</em>':'')+'</span></div>';
+    }
+    var fl=st.lines[focus];var saved=isSaved(fl.en);
+    var main=picked
+      ?'<div class="cbw main"><button class="cmain next" data-act="next" aria-label="ข้อต่อไป">'+IC.next+'</button><span class="cl">'+(st.turn+1>=c.turns.length?'จบสาย':'ต่อไป')+'</span></div>'
+      :'<div class="cbw main"><button class="cmain mic" data-act="mic" aria-label="กดแล้วพูดตอบ">'+IC.mic+'</button><span class="cl">พูดตอบ</span></div>';
+    var ctrls='<div class="ctrls">'+
+      cb('say','data-i="'+focus+'" data-side="en" data-rate="1"',IC.play,'ฟังซ้ำ')+
+      cb('say','data-i="'+focus+'" data-side="en" data-rate="0.7"','<b>0.7×</b>','ช้า')+main+
+      cb('toggleTh','','<b>ไทย</b>','คำแปล',st.showTh?'on':'')+
+      cb('save','data-i="'+focus+'"',icSave(saved),saved?'เก็บแล้ว':'เก็บ',saved?'on':'')+
+      cb('copy','data-i="'+focus+'" data-side="en"',IC.copy,'คัดลอก')+'</div>';
+    var pill=picked?'':'<button class="pillbtn" data-act="sheet"><span>เลือกประโยคตอบ (3 ระดับ)</span><span aria-hidden="true">▲</span></button>';
+    var sheet=picked?'':'<div class="sheet'+(st.sheet?' open':'')+'" id="sheet" role="dialog" aria-label="เลือกประโยคตอบ"><div class="grab"></div><div class="row" style="justify-content:space-between"><h3>เลือกประโยคตอบ</h3><button class="btn sm glass" data-act="sheet">ปิด</button></div><div class="copts">'+
+      t.r.map(function(r,i){return '<button class="copt" data-act="pick" data-r="'+i+'"><span class="tag lv">'+LV[i]+'</span><span class="e">'+esc(r[0])+'</span><span class="t">'+esc(r[1])+'</span></button>'}).join('')+'</div></div>';
+    h=bd+callTop(c,ch)+'<div class="cface" id="faceBox">'+faceSVG(ch,mood)+'</div><div class="cbottom"><div class="cstack">'+react+
+      '<div class="sub'+(picked?' mini':'')+'"><div class="en">'+words(t.en)+'</div>'+(st.showTh?'<div class="th">'+esc(t.th)+'</div>':'')+'</div>'+my+
+      '<div class="wordbar" id="wordbar"></div></div>'+pill+ctrls+'</div>'+sheet;
+  }
+  el.innerHTML=h;el.className='call'+(st.ring?' ringing':'');el.hidden=false;document.body.style.overflow='hidden';
+  clearInterval(callTimer);callTimer=null;
+  if(!st.ring&&st.turn<c.turns.length){callTimer=setInterval(function(){var tt=$('#ctime');if(tt)tt.textContent=fmtTime(Date.now()-st.callStart)},1000)}
+}
+
 
 function vInterp(){
   var th=st.dir==='th-en';
@@ -287,6 +325,7 @@ function render(){
   $('#app').innerHTML='<div style="display:flex;flex-direction:column;gap:14px;min-width:0">'+v+'</div>';
   if(st.tab==='interp')updateOut();
   updatePill();
+  renderCall();
 }
 function refreshWallet(){
   updatePill();
@@ -312,13 +351,14 @@ function addVault(en,th,cat){
   st.vault.push({id:'v'+Date.now()+Math.floor(Math.random()*1000),en:en,th:th||'-',cat:cat||'ทั่วไป'});saveVault();toast('เก็บเข้าคลังแล้ว');return true;
 }
 function pick(r,score){
-  st.picked=r;st.score=score==null?null:score;
+  st.picked=r;st.score=score==null?null:score;st.sheet=false;
   var c=catById(st.cat);var t=c.turns[st.turn];
   st.log.push({en:t.r[r][0],th:t.r[r][1]});
   render();
+  var rc=REACT[r];if(rc)playLine('react-'+c.char+'-'+r,rc[0],'en-US',1,true);
 }
 function enterTurn(){
-  render();
+  st.sheet=false;render();
   var c=catById(st.cat);
   if(c&&st.turn<c.turns.length){var t=c.turns[st.turn];playLine(t.id+'-q',t.en,'en-US',1,true)}
 }
@@ -341,16 +381,19 @@ document.addEventListener('click',function(e){
   var a=b.getAttribute('data-act');
   var L=function(){return st.lines[+b.getAttribute('data-i')]};
   if(a==='tab'){st.tab=b.getAttribute('data-tab');render();window.scrollTo(0,0)}
-  else if(a==='cat'){st.cat=b.getAttribute('data-cat');st.turn=0;st.picked=null;st.score=null;st.log=[];enterTurn();window.scrollTo(0,0)}
-  else if(a==='back'){st.cat=null;st.picked=null;render()}
+  else if(a==='cat'){st.cat=b.getAttribute('data-cat');st.turn=0;st.picked=null;st.score=null;st.log=[];st.sheet=false;st.ring=true;startRing();render()}
+  else if(a==='answer'){stopRing();st.ring=false;st.callStart=Date.now();st.callEnd=0;enterTurn()}
+  else if(a==='again'){st.turn=0;st.picked=null;st.score=null;st.log=[];st.callStart=Date.now();st.callEnd=0;enterTurn()}
+  else if(a==='sheet'){st.sheet=!st.sheet;var sh=$('#sheet');if(sh)sh.classList.toggle('open',st.sheet)}
+  else if(a==='back'){stopRing();stopAllSound();st.cat=null;st.picked=null;st.ring=false;st.sheet=false;render()}
   else if(a==='toggleTh'){st.showTh=!st.showTh;store.set('th',st.showTh?'1':'0');render()}
   else if(a==='say'){var l=L();var side=b.getAttribute('data-side');var rate=parseFloat(b.getAttribute('data-rate'));
-    if(side==='th')speak(l.th,'th-TH',rate,false);else playLine(l.aid,l.en,'en-US',rate,st.tab==='practice')}
+    if(side==='th')speak(l.th,'th-TH',rate,false);else playLine(l.aid,l.en,'en-US',rate,!!(l.aid&&/-q$|^react-/.test(l.aid)))}
   else if(a==='copy'){var l2=L();copyText(b.getAttribute('data-side')==='th'?l2.th:l2.en)}
   else if(a==='save'){var l3=L();addVault(l3.en,l3.th,l3.cat);render()}
   else if(a==='saveall'){var c=catById(st.cat);st.log.forEach(function(l4){if(!isSaved(l4.en)){st.vault.push({id:'v'+Date.now()+Math.floor(Math.random()*1000),en:l4.en,th:l4.th,cat:c.th})}});saveVault();toast('เก็บประโยคที่ตอบแล้ว');render()}
   else if(a==='pick'){pick(+b.getAttribute('data-r'),null)}
-  else if(a==='next'){st.turn++;st.picked=null;st.score=null;enterTurn();window.scrollTo(0,0)}
+  else if(a==='next'){stopAllSound();st.turn++;st.picked=null;st.score=null;if(st.turn>=catById(st.cat).turns.length)st.callEnd=Date.now();enterTurn()}
   else if(a==='mic'){
     var c2=catById(st.cat);var t=c2.turns[st.turn];
     listen('en-US',function(txt){
@@ -426,7 +469,7 @@ function boot(){
   document.title=CFG.product||'Property Talk';
   $('#app').innerHTML='<p class="muted">กำลังโหลด...</p>';
   fetch(CFG.contentUrl||'../../core/content.json').then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json()}).then(function(data){
-    C=data;CHARS=data.chars;CATS=data.cats;G=data.glossary;PAIRS=data.pairs;DEMO=data.demo;
+    C=data;CHARS=data.chars;CATS=data.cats;G=data.glossary;PAIRS=data.pairs;DEMO=data.demo;REACT=data.reactions||[];RM=data.reaction_moods||[];
     if(CFG.codeHash&&store.get('unlock')!=='1')showGate(start);else start();
   }).catch(function(){
     $('#app').innerHTML='<div class="card"><h3>โหลดเนื้อหาไม่ได้</h3><p class="muted small" style="margin-top:4px">ต้องเปิดผ่านลิงก์เว็บ ไม่ใช่เปิดไฟล์ตรงจากเครื่อง ถ้าเปิดผ่านลิงก์แล้วยังเป็นแบบนี้ ให้แจ้งผู้ขาย</p></div>';

@@ -44,8 +44,10 @@ TEMPLATE = """<!doctype html>
 </div>
 <nav class="tabs" id="nav" aria-label="เมนูหลัก"></nav>
 <div id="toast" hidden role="status"></div>
+<div id="call" class="call" hidden></div>
 <div id="big" hidden></div>
 <script src="config.js"></script>
+<script src="../../core/art.js"></script>
 <script src="../../core/app.js"></script>
 </body>
 </html>
